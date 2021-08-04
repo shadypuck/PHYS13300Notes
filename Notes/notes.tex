@@ -1,0 +1,36 @@
+\documentclass{report}
+
+\input{../preamble.tex}
+
+\externaldocument{notes}
+
+\title{PHYS 13300 (Waves, Optics, and Heat) Notes}
+\author{Steven Labalme}
+
+\begin{document}
+    
+
+
+
+\maketitle
+
+
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+
+
+\pagenumbering{arabic}
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{14}
+\subfile{Chapter15/chapter15.tex}
+
+\printbibliography[heading=bibintoc]
+
+
+
+
+\end{document}
