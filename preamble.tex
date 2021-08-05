@@ -1,8 +1,17 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{fancyhdr}
+\usepackage{csquotes}
 \usepackage{marginnote}
 \usepackage[style=apa]{biblatex}
 \usepackage{xr}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{scrextend}
+\usepackage[bottom]{footmisc}
+\usepackage{tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{physics,mathtools}
 \usepackage[hidelinks]{hyperref}
 
 \fancypagestyle{main}{
@@ -16,7 +25,19 @@
     \fancyhead{}
 }
 
+\MakeOuterQuote{"}
+
 \reversemarginpar
+
+\setitemize[3]{label={\scriptsize$\blacksquare$}}
+
+\deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
+\deffootnote[2.1em]{0em}{0em}{\textsuperscript{\thefootnote}}
+
+\colorlet{orx}{orange!70!yellow!88!black}
+\colorlet{orz}{orx!25}
+\colorlet{blx}{cyan}
+\colorlet{pix}{magenta}
 
 \addbibresource{../main.bib}
 \DefineBibliographyStrings{english}{bibliography={References}}

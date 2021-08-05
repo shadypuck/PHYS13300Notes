@@ -10,8 +10,246 @@
 
 
 \chapter{Mechanical Waves}
+\section{Course Information}
 \begin{itemize}
-    \item \marginnote{8/5:}hi
+    \item \marginnote{8/5:}HW 1 will be posted after class. Due Monday at 10 AM.
+    \item 2 labs, 2 days each.
+    \begin{itemize}
+        \item Department policy is that you have to do all the labs to pass the class.
+    \end{itemize}
+    \item First meeting with lab TA will be on Monday at 2:30, 3:30, or 4:30.
+    \begin{itemize}
+        \item Email Dr. Gazes for later timeslot.
+    \end{itemize}
+    \item HW accounts for 85\% of your grade because it helps with the tests.
+    \item Quiz assignment that you print out, write on, and then scan and upload.
+    \item Office hours (Gazes): 5:30-7:00. TA office hours to be posted soon.
+    \item Wants us to learn the material, not compete with each other.
+    \begin{itemize}
+        \item Expects collaboration on the homework, but wants us to write up our own answers.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Wave Basics}
+\begin{itemize}
+    \item \textbf{Wave}: A disturbance that propagates (carrying energy).
+    \item \textbf{Mechanical} (wave): A wave in a medium that has an equilibrium.
+    \begin{itemize}
+        \item Air, for instance, is in equilibrium when its pressure/density is everywhere equal. But you can create a disturbance by making a high-pressure region somewhere in space. This disturbance then propagates.
+        \item When a slinky compression wave is created, what's propagating isn't the slinky --- no coil can move past another. What's moving is the \emph{high-density region}.
+    \end{itemize}
+    \item \textbf{Compression}: The high-density region of a wave.
+    \item \textbf{Rarefaction}: The low-density region of a wave.
+    \item \textbf{Longitudinal} (wave): A wave where the disturbance is parallel to the propagation of the wave.
+    \begin{itemize}
+        \item Example: Compression wave in a slinky; air (sound).
+    \end{itemize}
+    \item \textbf{Transverse} (wave): A wave where the disturbance is perpendicular to the propagation of the wave.
+    \begin{itemize}
+        \item Example: A string tied to the wall where you shake one end; waves at the beach (the water is going up and down but the wave is moving toward the beach).
+    \end{itemize}
+    \item A charge $q$ creates an electric field. If $q$ moves at a constant velocity $v$, it will create a magnetic field. If you make the charge accelerate with acceleration $a$, it will produce an \textbf{electromagnetic wave}.
+    \item \textbf{Electromagnetic} (wave): A wave that does not require a medium to move in.
+    \begin{itemize}
+        \item A medium is physical; made up of matter. The electric and magnetic fields in which an electromagnetic wave moves are not media --- they can contain energy, but not in the same way a physical medium can.
+    \end{itemize}
+    \item \textbf{Wavefunction}: A mathematical function that represents the behavior of a wave.
+    \begin{itemize}
+        \item $y(x,t)$ represents a one-dimensional wave, $x$ being position and $t$ being time.
+        \item $y$ represents the magnitude of the disturbance.
+        \begin{itemize}
+            \item Example: The density of slinky links in a longitudinal wave; the displacement of a transverse wave from the $x$-axis, taken to be equilibrium.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Wave speed}: The velocity with which the wave propagates. \emph{Denoted by} $\bm{v}$.
+    \begin{itemize}
+        \item NOT, for example, the speed with which the string moves up and down in a transverse wave.
+    \end{itemize}
+    \item If we let the $xy$-axes be the standard ones, we can also define $x'y'$-axes that move with the wave with velocity $v$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw [stealth-stealth] (0,2) node[above]{$y$} -- (0,0) -- (5,0) node[right]{$x$};
+            \draw [stealth-stealth,xshift=5mm,yshift=-6mm] (0,2) node[above]{$y'$} -- (0,0) -- (5,0) node[right]{$x'$};
+            \draw [line width=0.3pt,dashed] (1.5,1.5) -- (1.5,-1.1);
+            \node [below right,text height=1.5ex,text depth=0.25ex] at (1.5,0) {$x$};
+            \node [below right,text height=1.5ex,text depth=0.25ex] at (1.5,-0.6) {$x'$};
+            \draw [very thin] (0,-0.75) -- ++(0,-0.2) ++(0,0.1) -- node[below]{$vt$} ++(0.5,0) ++(0,-0.1) -- ++(0,0.2);
+    
+            \draw [orx,very thick] (0,0)
+                -- (1,0)
+                to[out=0,in=180] (1.5,0.8)
+                to[out=0,in=180] (2,0)
+                -- (4.92,0)
+            ;
+        \end{tikzpicture}
+        \caption{Axes that eliminate the effect of time.}
+        \label{fig:axesXprimeYprime}
+    \end{figure}
+    \begin{itemize}
+        \item In the $x'y'$-axes, the wave isn't moving.
+        \item From Figure \ref{fig:axesXprimeYprime}, we can see that $x=x'+vt$.
+        \item Additionally, we can express (shape of) the wave as $y'=f(x')$.
+        \item Thus, $y=f(x-vt)$ represents a wave propagating in the $+x$ direction.
+        \item Similarly, $y=f(x+vt)$ represents a wave propagating in the $-x$ direction.
+    \end{itemize}
+    \item When two waves collide (or we otherwise have to deal with more than one wave in the same medium), we apply the \textbf{superposition principle}.
+    \item \textbf{Superposition principle}: If $y_1,y_2,\dots$ are individual wavefunctions, the total disturbance $y$ is given by $y(x,t)=y_1(x,t)+y_2(x,t)+\cdots$.
+    \item \textbf{Constructive interference}: When two waves in the same medium add to produce a bigger wave.
+    \item \textbf{Destructive interference}: When two waves in the same medium cancel parts of each other out.
+    \begin{itemize}
+        \item Difference between a medium at equilibrium and a medium with two waves destructively interfering (at the instant the waves collide, the medium looks as if it's at equilibrium):
+        \begin{itemize}
+            \item The energy of the wave is contained in the kinetic energy of the individual particles of the medium moving up and down.
+            \item As such, even when we don't see a visible wave, those particles still have a velocity vector that is containing the energy. It's like the \emph{position} gets back to equilibrium for a moment, but the \emph{velocity}, where the kinetic energy is contained, is most definitely not at equilibrium.
+        \end{itemize}
+    \end{itemize}
+    \item In PHYS 13100, we used $F=ma$ to analyze a block of mass $m$ oscillating on a spring, solving
+    \begin{align*}
+        F &= ma\\
+        -kx &= m\cdot\dv[2]{x}{t}\\
+        \dv[2]{x}{t}+\frac{k}{m}\cdot x &= 0
+    \end{align*}
+    to describe its dynamics.
+    \item Creating an analogy to $F=ma$ for wave motion (deriving the wave equation).
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \begin{scope}
+                \draw [stealth-stealth] (0,2) node[above]{$y$} -- (0,0) -- (5,0) node[right]{$x$};
+                \draw [orx,very thick] (0,0)
+                    -- (1,0)
+                    to[out=0,in=180] (1.5,0.8)
+                    to[out=0,in=180] (2,0)
+                    -- (4.92,0)
+                ;
+                \node at (0.5,0.6) {\normalsize$t$};
+            \end{scope}
+    
+            \begin{scope}[xshift=7cm]
+                \draw (0,0) rectangle (4,3);
+    
+                \fill [orz]
+                    ([xshift=1.1cm,yshift=1.3cm]120:2.3mm) to[out=30,in=-170] ([xshift=2.7cm,yshift=1.9cm]100:2.3mm) --
+                    ([xshift=2.7cm,yshift=1.9cm]-80:2.3mm) to[out=-170,in=30] ([xshift=1.1cm,yshift=1.3cm]-60:2.3mm) -- cycle
+                ;
+                \draw [orx,thick]
+                    ([xshift=1.1cm,yshift=1.3cm]120:2.3mm) to[out=30,in=-170] ([xshift=2.7cm,yshift=1.9cm]100:2.3mm)
+                    ([xshift=2.7cm,yshift=1.9cm]-80:2.3mm) to[out=-170,in=30] ([xshift=1.1cm,yshift=1.3cm]-60:2.3mm)
+                ;
+                \filldraw [draw=orx,fill=orz,thick,rotate around={30:(1.1,1.3)}] (1.1,1.3) ellipse (1.4mm and 2.3mm);
+                \filldraw [draw=orx,fill=orz,thick,rotate around={10:(2.7,1.9)}] ([xshift=2.7cm,yshift=1.9cm]100:2.3mm) arc[start angle=90,end angle=-90,x radius=1.4mm,y radius=2.3mm];
+                \draw [orx,thick,rotate around={10:(2.7,1.9)},densely dashed] ([xshift=2.7cm,yshift=1.9cm]100:2.3mm) arc[start angle=90,end angle=270,x radius=1.4mm,y radius=2.3mm];
+    
+                \draw [blx,semithick,-latex] (1.1,1.3) -- ++(-150:1) node[below,black]{$F$};
+                \draw [blx,semithick,-latex] (2.7,1.9) -- ++(10:1) node[above,black]{$F$};
+                \draw [blx,semithick,-latex] (2.2,2.1) -- ++(0,0.6) node[right,black]{$a_y$};
+    
+                \draw [densely dashed,line width=0.3pt] (0.2,1.3) -- (1.1,1.3) node[circle,fill=pix,inner sep=1.2pt]{} -- (1.1,0.4) node[below,text height=1.5ex,text depth=0.25ex]{$x$};
+                \draw [densely dashed,line width=0.3pt] (3.7,1.9) -- (2.7,1.9) node[circle,fill=pix,inner sep=1.2pt]{} -- (2.7,0.4) node[below,text height=1.5ex,text depth=0.25ex]{$x+\Delta x$};
+    
+                \node at (0.5,1.6) {$\alpha_1$}
+                    edge [->,out=-170,in=-165,in looseness=1.8] (0.3,1.1)
+                ;
+                \node at (3.5,1.6) {$\alpha_2$}
+                    edge [->,out=10,in=5,in looseness=2] (3.7,2)
+                ;
+                \node at (1.85,1.65) {$m$};
+                \draw [white,double=black,double distance=0.2pt,ultra thick] ([xshift=1.1cm,yshift=1.3cm]-60:0.4)
+                    -- ++(-60:0.2)
+                    ++(120:0.1)
+                    to[out=30,in=-170] node[below,black]{$s$} ([xshift=2.7cm,yshift=1.9cm]-80:0.5)
+                    ++(-80:0.1)
+                    -- ++(100:0.2)
+                ;
+            \end{scope}
+            
+            \draw [white,double=black,double distance=0.4pt,semithick] (1.27,0.67) rectangle (1.53,0.87);
+            \draw [->] (1.4,0.87) -- (1.4,1.5) -- (7,1.5);
+        \end{tikzpicture}
+        \caption{Deriving the wave equation.}
+        \label{fig:waveEquationDerivation}
+    \end{figure}
+    \begin{itemize}
+        \item $F$ is a tension force.
+        \item We know for the sliver of the string in Figure \ref{fig:waveEquationDerivation}, $F_y=ma_y$.
+        \item From our FBD, we have that $F_y=F\sin\alpha_2-F\sin\alpha_1$.
+        \item Since the string segment is short, assume $\alpha_1=\alpha_2$. Let's also ignore gravity since $F>>F_g$: it doesn't matter in what position you play an instrument, relative to the Earth's surface, does it?
+        \item For small values of $\alpha$ (we assume our string is taut), $\sin\alpha\approx\tan\alpha=\pdv{y}{x}$.
+        \item Thus, $F_y=F(\pdv*{y}{x}|_{x+\Delta x}-\pdv*{y}{x}|_{x})$.
+        \item Additionally, $m=Ms$, where $M$ is the linear mass density and $s$ is the arc length of the string segment. Furthermore, since $\alpha$'s are small in taut strings, $\Delta s\approx\Delta x$, so $m\approx M\Delta x$.
+        \item Lastly, observe that $a_y=\pdv*[2]{y}{t}$.
+        \item Therefore, $F=ma$ becomes
+        \begin{align*}
+            F\left( \eval{\pdv{y}{x}}_{x+\Delta x}-\eval{\pdv{y}{x}}_x \right) &= M\Delta x\cdot\pdv[2]{y}{t}\\
+            \frac{\eval{\pdv{y}{x}}_{x+\Delta x}-\eval{\pdv{y}{x}}_x}{\Delta x} &= \frac{M}{F}\cdot\pdv[2]{y}{t}
+        \end{align*}
+        from which we can take limits as follows:
+        \begin{align*}
+            \lim_{\Delta x\to 0}\frac{\eval{\pdv{y}{x}}_{x+\Delta x}-\eval{\pdv{y}{x}}_x}{\Delta x} &= \lim_{\Delta x\to 0}\frac{M}{F}\cdot\pdv[2]{y}{t}\\
+            \Aboxed{\pdv[2]{y}{x} &= \frac{M}{F}\cdot\pdv[2]{y}{t}}
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Wave equation}: The final result above.
+    \begin{itemize}
+        \item Holds for a 1D wave on a string.
+    \end{itemize}
+    \item Tie a piece of string to a wall and shake the free end like a harmonic oscillator. This creates a \textbf{harmonic} wave that propagates towards the wall.
+    \item \textbf{Harmonic} (wave): A wave produced by a disturbance changing like a harmonic oscillator.
+    \begin{itemize}
+        \item The wavefunction for a harmonic wave is sinusoidal, propagates like a wave (i.e., like $f(x-vt)$), and needs to have a constant $k$ to make the dimensional argument of sine dimensionless: $y(x,t)=A\sin(k[x-vt])$.
+    \end{itemize}
+    \item \textbf{Amplitude}: The constant $A$ in the wavefunction of a harmonic wave.
+    \item \textbf{Wavenumber}: The constant $k$ in the wavefunction of a harmonic wave. \emph{Units are} $\si{\per\meter}$.
+    \item \textbf{Wavelength}: The \emph{distance} over which wave motion repeats \emph{for a fixed time $t$}. \emph{Denoted by} $\bm{\lambda}$.
+    \begin{itemize}
+        \item Mathematically, the existence of the wavelength implies that $y(x,t)=y(x+\lambda,t)$.
+        \item But for a harmonic wave, this implies that $A\sin(k[x-vt])=A\sin(k[(x+\lambda)-vt])$, meaning that $k\lambda=2\pi$.
+        \item Thus, we know that the wave number $k=\frac{2\pi}{\lambda}$.
+    \end{itemize}
+    \item \textbf{Period}: The \emph{time} over which wave motion repeats \emph{for a fixed point $x$}. \emph{Denoted by} $\bm{T}$.
+    \begin{itemize}
+        \item Similarly, $y(x,t)=y(x,t+T)$.
+        \item For a harmonic wave, $A\sin(k[x-vt])=A\sin(k[x-v(t+T)])$, meaning that $kvT=2\pi$.
+        \item Thus, we know that the wave speed $v=\frac{2\pi}{k}\cdot\frac{1}{T}=\lambda f$, where $f$ is the frequency of the wave, for simple harmonic motion.
+        \item Alternately, if we let $\omega=2\pi f$ be the angular frequency, then $v=\frac{\omega}{k}$.
+    \end{itemize}
+    \item It follows that for a harmonic wave,
+    \begin{align*}
+        y(x,t) &= A\sin\left[ 2\pi\left( \frac{x}{\lambda}-\frac{t}{T} \right) \right]\\
+        &= A\sin[kx-\omega t]\footnotemark
+    \end{align*}
+    \footnotetext{Dr. Gazes prefers this form, but both are correct and can be used.}
+    \item To account for cosine and other waves that "start" at different parts, we include a \textbf{phase constant} $\phi$:
+    \begin{equation*}
+        y(x,t) = A\sin[kx-\omega t+\phi]
+    \end{equation*}
+    \item To check that the above is in fact a wave, we must feed it into the wave equation:
+    \begin{align*}
+        \pdv[2]{x}(A\sin[kx-\omega t+\phi]) &= \frac{M}{F}\cdot\pdv[2]{t}(A\sin[kx-\omega t+\phi])\\
+        -Ak^2\sin[kx-\omega t+\phi] &= \frac{-A\omega^2M}{F}\sin[kx-\omega t+\phi]\\
+        k^2 &= \frac{M\omega^2}{F}\\
+        \frac{\omega}{k} &= \sqrt{\frac{F}{M}}
+    \end{align*}
+    \begin{itemize}
+        \item It follows since $v=\frac{\omega}{k}$ that $v=\sqrt{F/M}$.
+    \end{itemize}
+    \item We originally found this speed/force/mass relationship to be true for a harmonic wave, but this shows that it is true for \emph{any} wave.
+    \item \textbf{General 1D wave equation}: Making the modification from above, the following equation.
+    \begin{equation*}
+        \pdv[2]{y}{x} = \frac{1}{v^2}\cdot\pdv[2]{y}{t}
+    \end{equation*}
+\end{itemize}
+
+
+
+\section{Office Hours (Gazes)}
+\begin{itemize}
+    \item How does proving that $v=\sqrt{F/M}$ with a harmonic wavefunction prove that this relation holds for \emph{all} waves?
 \end{itemize}
 
 
