@@ -265,5 +265,307 @@
 
 
 
+\section{Wave Dynamics}
+\begin{itemize}
+    \item \marginnote{8/6:}TA office hours on Wednesday and Sunday; 2 timeslots on both days.
+    \item Dr. Gazes will post lab sections this afternoon.
+    \item \textbf{Transverse velocity}: The speed at which a fixed point in the medium through which a transverse wave travels moves up and down. \emph{Given by}
+    \begin{align*}
+        v_t = \pdv{y}{t}
+    \end{align*}
+    \begin{itemize}
+        \item For a harmonic wave, $v_t=\omega A\cos(kx-\omega t+\phi)$.
+    \end{itemize}
+    \item \textbf{Transverse acceleration}: The acceleration of a fixed point in the medium through which a transverse wave travels. \emph{Given by}
+    \begin{align*}
+        a_t = \pdv{v_t}{t}
+    \end{align*}
+    \begin{itemize}
+        \item For a harmonic wave, $a_t=-\omega^2A\sin(kx-\omega t+\phi)$.
+    \end{itemize}
+    \item When a point achieves its maximum positive displacement $y=+A$, it has $v_t=0$ and $a_t=-\omega^2A$.
+    \begin{itemize}
+        \item Similarly, at $y=-A$, it still has $v_t=0$, but it also has $a_t=\omega^2A$.
+        \item When a point has zero displacement ($y=0$), it has $v_t=\pm\omega A$ and $a_t=0$.
+    \end{itemize}
+    \item $y$ and $a_t$ are $\ang{180}$ out of phase with each other.
+    \item $y$ and $v_t$ are $\ang{90}$ out of phase with each other.
+    \item \textbf{Power}: The rate at which a wave carries energy. \emph{Given by}
+    \begin{equation*}
+        P = \dv{W}{t}
+        = \dv{E}{t}
+        = \vec{F}\cdot\vec{v}
+    \end{equation*}
+    \item Wave energy:
+    \begin{itemize}
+        \item Kinetic: $K=\frac{1}{2}mv_t^2$ for each little sliver of the string.
+        \begin{itemize}
+            \item Thus, since $v=\omega A=2\pi fA$, we have that $K\propto \omega^2,f^2,A^2$.
+            \item Additionally, since $P=\vec{F}\cdot\vec{v}=F\cdot(2\pi fA)$, we have that $P\propto v,f^2,A^2$.
+        \end{itemize}
+        \item Places where the string crosses the equilibrium axis have maximum stretching, i.e., potential energy.
+    \end{itemize}
+    \item When you shake a string attached to a wall, the power $P_\text{hand}$ exerted by your hand is given by
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \shade [left color=gax,right color=white] (2*pi,-1) rectangle ++(0.2,2);
+            \draw [thick] (2*pi,-1) -- ++(0,2);
+    
+            \draw [ory,very thick,densely dashed,scale=0.5] (0,0) -- (4*pi,0);
+            \draw [orx,very thick,scale=0.5] (0,0) plot[domain=0:4*pi,smooth] (\x,{sin(\x r)});
+    
+            \draw [very thin,densely dashed] (-1,0) coordinate (A) -- (0,0) coordinate (B);
+            \draw [grx,semithick,latex-latex] (0,-0.6) -- (0,0.6) node[right,black]{$v_t$};
+            \draw [blx,thick,-latex] (0,0) -- ++(-135:1) coordinate (C) node[below,black]{$F_\text{hand}$}
+                pic [black,fill=blz,angle eccentricity=0.7,pic text={$\alpha$},pic text options={yshift=0.6pt}] {angle=A--B--C}
+            ;
+            \fill [pix] (0,0) circle (2pt);
+
+            \fill (2*pi,2pt) arc[start angle=90,end angle=270,radius=2pt];
+    
+            \draw [grx,ultra thick,-latex] (4.7,0.4) -- ++(0.7,0) node[above,black]{$v$};
+            \draw [stealth-stealth] (-0.9,1.2) node[above]{$y$} -- ++(0,-0.4) node[above right=-1pt]{\scriptsize$+$} -- ++(0.4,0) node[right]{$x$};
+        \end{tikzpicture}
+        \caption{Power of a wave.}
+        \label{fig:wavePower}
+    \end{figure}
+    \begin{align*}
+        P_\text{hand} &= \vec{F}_\text{hand}\cdot\vec{v}\\
+        &= F_{\text{hand},y}v_t\\
+        &= (F\cdot -\sin\alpha)\cdot\left( \pdv{y}{t} \right)\\
+        &\approx (-F\tan\alpha)\cdot\left( \pdv{y}{t} \right)\\
+        &= \left( -F\cdot\pdv{y}{x} \right)\cdot\left( \pdv{y}{t} \right)\\
+        &= (-F\cdot kA\cos(kx-\omega t+\phi))\cdot(-\omega A\cos(kx-\omega t+\phi))\\
+        &= Fk\omega A^2\cos^2(kx-\omega t+\phi)\\
+        &= Mv^2k\omega A^2\cos^2(kx-\omega t+\phi)\\
+        &= Mv\omega^2A^2\cos^2(kx-\omega t+\phi)
+    \end{align*}
+    \begin{itemize}
+        \item Thus, since the average value of $\cos^2(x)=\frac{1}{2}$, the average power $\bar{P}$ of a wave on a string is given by
+        \begin{equation*}
+            \bar{P} = \frac{1}{2}Mv\omega^2A^2
+        \end{equation*}
+        \begin{itemize}
+            \item Increasing the amplitude of a wave increases the power of the wave without changing the frequency or wave speed.
+            \item This is what radio stations do to boost the power of their broadcast (since they can't change the speed of light and changing the frequency would change their channel).
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Compound string}: Two pieces of string (of differing composition) attached together.
+    \item When an incident wave encounters a change of medium, it both transmits \emph{and} reflects in parts.
+    \begin{itemize}
+        \item The "knot" moving up and down is the source of the transmitted and reflected waves.
+    \end{itemize}
+    \item Compound string analysis:
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw [ory,thick] (-3.5,0) to[out=0,in=180] ++(0.5,0.8) node[above,black]{incident} to[out=0,in=180] ++(0.5,-0.8);
+            \draw [ory,thick] (-1.5,0) to[out=0,in=180] ++(0.5,0.8) node[above,black]{reflected} to[out=0,in=180] ++(0.5,-0.8);
+            \draw [ory,line width=2pt] (0.5,0) to[out=0,in=180] ++(0.5,0.8) node[above,black]{transmitted} to[out=0,in=180] ++(0.5,-0.8);
+    
+            \draw [orx,thick] (-4,0) node[left,label={left:${\color{black}-\infty}$}]{\large$\cdots$} -- node[below=4pt,black]{$\mu_1$} (0,0);
+            \draw [orx,line width=2pt] (0,0) node[circle,fill=pix,inner sep=1.5pt,label={below:${\color{black}x=0}$}]{} -- node[below=4pt,black]{$\mu_2$} (4,0) node[right,label={[xshift=-1mm]right:${\color{black}+\infty}$}]{\large$\cdots$};
+    
+            \draw [grx,ultra thick,-latex] (-2.6,0.5) -- ++(0.5,0);
+            \draw [rex,ultra thick,-latex] (-1.4,0.5) -- ++(-0.4,0);
+            \draw [grx,ultra thick,-latex] (1.4,0.5) -- ++(0.4,0);
+
+            \draw [stealth-stealth] (-4.5,1.2) node[above]{$y$} -- ++(0,-0.4) node[above right=-1pt]{\scriptsize$+$} -- ++(0.4,0) node[right]{$x$};
+        \end{tikzpicture}
+        \caption{Compound string waves.}
+        \label{fig:compoundString}
+    \end{figure}
+    \begin{itemize}
+        \item General wave equations for the incident wave ($y_i$), the transmitted wave ($y_t$), and the reflected wave ($y_r$):
+        \begin{gather*}
+            y_i(x,t) = A_i\cos(k_1x\pm\omega_1t)\\
+            y_t(x,t) = A_t\cos(k_2x\pm\omega_2t)\\
+            y_r(x,t) = A_r\cos(k_3x\pm\omega_3t)
+        \end{gather*}
+        \item According to the coordinate system in Figure \ref{fig:compoundString}, we choose $-,-,+$ from top to bottom for our wave equations.
+        \item $\omega_1=\omega_2=\omega_3$ because the frequency of the incident wave will be the frequency with which the knot moves.
+        \item $k=\frac{\omega}{v}=\omega\sqrt{M/F}$ varies because while $\omega$ and the tension force are the same (the latter because otherwise the knot would be accelerating), the linear mass density varies.
+        \begin{itemize}
+            \item However, since the incident and reflected waves move in the same medium, $k_1=k_3$.
+        \end{itemize}
+        \item Boundary conditions:
+        \begin{enumerate}
+            \item String doesn't break, so $y$ is continuous at $x=0$.
+            \item String has no kinks (because then you would have a point of zero mass with an unbalanced force on it, leading to an infinite acceleration, which is impossible), so $\pdv*{y}{x}$ is continuous at $x=0$.
+        \end{enumerate}
+        \item Thus, since
+        \begin{equation*}
+            y =
+            \begin{cases}
+                y_i+y_r & x<0\\
+                y_t & x>0
+            \end{cases}
+        \end{equation*}
+        boundary condition 1 implies that $y_i(0,t)+y_r(0,t)=y_t(0,t)$ for all $t$. Consequently,
+        \begin{align*}
+            A_i\cos(k_1(0)-\omega t)+A_r\cos(k_1(0)+\omega t) &= A_t\cos(k_2(0)-\omega t)\\
+            A_i\cos(-\omega t)+A_r\cos(-\omega t) &= A_t\cos(-\omega t)\\
+            A_i+A_r &= A_t
+        \end{align*}
+        \item Additionally, boundary condition 2 implies that $\eval{\pdv*{y_i}{x}}_{x=0}+\eval{\pdv*{y_r}{x}}_{x=0}=\eval{\pdv*{y_t}{x}}_{x=0}$ for all $t$. Consequently,
+        \begin{align*}
+            \eval{\pdv{x}(A_i\cos(k_1x-\omega t))}_{x=0}+\eval{\pdv{x}(A_r\cos(k_1x+\omega t))}_{x=0} &= \eval{\pdv{x}(A_t\cos(k_2x-\omega t))}_{x=0}\\
+            \eval{-A_ik_1\sin(k_1x-\omega t)}_{x=0}+\eval{-A_rk_1\sin(k_1x+\omega t)}_{x=0} &= \eval{-A_tk_2\sin(k_2x-\omega t)}_{x=0}\\
+            -A_ik_1\sin(-\omega t)-A_rk_1\sin(\omega t) &= -A_tk_2\sin(-\omega t)\\
+            -A_ik_1\sin(-\omega t)+A_rk_1\sin(-\omega t) &= -A_tk_2\sin(-\omega t)\\
+            -A_ik_1+A_rk_1 &= -A_tk_2\\
+            k_1(A_i-A_r) &= k_2A_t
+        \end{align*}
+        \item It follows by solving like a system of equations that
+        \begin{align*}
+            \frac{A_r}{A_i} &= \frac{k_1-k_2}{k_1+k_2}&
+            \frac{A_t}{A_i} &= \frac{2k_1}{k_1+k_2}
+        \end{align*}
+        \item This combined with the fact that $k_1\propto\sqrt{\mu_1}$ and $k_2\propto\sqrt{\mu_2}$ implies that
+        \begin{align*}
+            \frac{A_r}{A_i} &= \frac{\sqrt{\mu_1}-\sqrt{\mu_2}}{\sqrt{\mu_1}+\sqrt{\mu_2}}&
+            \frac{A_t}{A_i} &= \frac{2\sqrt{\mu_1}}{\sqrt{\mu_1}+\sqrt{\mu_2}}
+        \end{align*}
+    \end{itemize}
+    \item Let's run a few checks on some special cases.
+    \begin{itemize}
+        \item Let $\mu_1=\mu_2$, i.e., the compound string is a uniform string. Then $A_r/A_i=0$ and $A_t/A_i=1$, as we would expect.
+        \item Let $\mu_1<<\mu_2$, i.e., one string is tied to an immovable wall. Then $A_r/A_i\to -1$ and $A_t/A_i\to 0$, as we would expect by Newton's third law.
+        \item Let $\mu_1>>\mu_2$. Then $A_r/A_i\to 1$ and $A_t/A_i\to 2$.
+    \end{itemize}
+    \item Suppose you have a string tied between two walls.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.append style={black}
+        ]
+            \footnotesize
+            \draw [yshift=-1.5cm,-stealth]
+                (0,0.1) -- ++(0,-0.2) node[below]{$0$}
+                (6,0.1) -- ++(0,-0.2) node[below]{$L$}
+                (-0.5,0) -- (6.5,0) node[right]{$x$}
+            ;
+            
+            \draw [ory,very thick] (0.5,0) to[out=0,in=180] ++(0.5,-0.8) node[below]{$y_-$} to[out=0,in=180] ++(0.5,0.8);
+            \draw [ory,very thick] (4.5,0) to[out=0,in=180] ++(0.5,0.8) node[above]{$y_+$} to[out=0,in=180] ++(0.5,-0.8);
+            \draw [rex,ultra thick,-latex] (4.6,0.5) -- ++(-0.7,0);
+            \draw [grx,ultra thick,-latex] (1.4,-0.5) -- ++(0.7,0);
+
+            \draw [orx,very thick] (0,0) -- (6,0);
+
+            \shade [left color=white,right color=gax] (0,-1) rectangle ++(-0.2,2);
+            \shade [left color=gax,right color=white] (6,-1) rectangle ++(0.2,2);
+            \draw [thick]
+                (0,1) -- (0,-1)
+                (6,1) -- (6,-1)
+            ;
+            \fill
+                (0,2pt) arc[start angle=90,end angle=-90,radius=2pt]
+                (6,2pt) arc[start angle=90,end angle=270,radius=2pt]
+            ;
+        \end{tikzpicture}
+        \caption{A string tied between two walls.}
+        \label{fig:stringWalls}
+    \end{figure}
+    \begin{itemize}
+        \item If you send a wave $y_+$ in the $-x$-direction, it will be reflected and inverted in its entirety at the left wall into the wave $y_-$.
+        \item This yields a total wavefunction
+        \begin{align*}
+            y &= y_++y_-\\
+            &= A\cos(kx+\omega t)-A\cos(kx-\omega t)\\
+            &= A[\cos(kx+\omega t)-\cos(kx-\omega t)]\\
+            &= 2A\sin\left( \frac{(kx+\omega t)+(kx-\omega t)}{2} \right)\sin\left( \frac{(kx+\omega t)-(kx+\omega t)}{2} \right)\\
+            &= 2A\sin(kx)\sin(\omega t)
+        \end{align*}
+        \item Boundary conditions:
+        \begin{enumerate}
+            \item $y(0,t)=0$ for all $t$.
+            \item $y(L,t)=0$ for all $t$.
+        \end{enumerate}
+        \item From the second boundary condition, we know that we must have $\sin(kL)=0$, i.e., $kL=n\pi$ for some $n\in\mathbb{N}$ (the wavenumber cannot be negative or zero by definition).
+        \item Thus, $k_n=\frac{n\pi}{L}$.
+        \item It follows since $k=\frac{2\pi}{\lambda}$ that $L=\frac{n}{2}\cdot\lambda$.
+    \end{itemize}
+    \item More specifically, if $L=\frac{n}{2}\cdot\lambda$ for some $n\in\mathbb{N}$, then we will have a \textbf{standing wave}.
+    \item \textbf{Node}: A point in the medium of a standing wave with amplitude zero.
+    \item \textbf{Antinode}: A point in the medium of a standing wave with maximum amplitude.
+    \item Frequency of standing waves:
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.append style={black}
+            ]
+                \footnotesize
+                \draw [ory,very thick,dashed] (0,0) -- (6,0);
+                \draw [orx,very thick]
+                    (0,0) sin (3,0.7) cos (6,0)
+                    (0,0) sin (3,-0.7) cos (6,0)
+                ;
+        
+                \shade [left color=white,right color=gax] (0,-1) rectangle ++(-0.2,2);
+                \shade [left color=gax,right color=white] (6,-1) rectangle ++(0.2,2);
+                \draw [thick]
+                    (0,1) -- (0,-1)
+                    (6,1) -- (6,-1)
+                ;
+                \fill
+                    (0,2pt) arc[start angle=90,end angle=-90,radius=2pt]
+                    (6,2pt) arc[start angle=90,end angle=270,radius=2pt]
+                ;
+            \end{tikzpicture}
+            \caption{$n=1$.}
+            \label{fig:harmonicFrequenciesa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.append style={black}
+            ]
+                \footnotesize
+                \draw [ory,very thick,dashed] (0,0) -- (6,0);
+                \draw [orx,very thick]
+                    (0,0) sin (1.5,0.7) cos (3,0) sin (4.5,-0.7) cos (6,0)
+                    (0,0) sin (1.5,-0.7) cos (3,0) sin (4.5,0.7) cos (6,0)
+                ;
+        
+                \shade [left color=white,right color=gax] (0,-1) rectangle ++(-0.2,2);
+                \shade [left color=gax,right color=white] (6,-1) rectangle ++(0.2,2);
+                \draw [thick]
+                    (0,1) -- (0,-1)
+                    (6,1) -- (6,-1)
+                ;
+                \fill
+                    (0,2pt) arc[start angle=90,end angle=-90,radius=2pt]
+                    (6,2pt) arc[start angle=90,end angle=270,radius=2pt]
+                ;
+            \end{tikzpicture}
+            \caption{$n=2$.}
+            \label{fig:harmonicFrequenciesb}
+        \end{subfigure}
+        \caption{Fundamental harmonic frequencies.}
+        \label{fig:harmonicFrequencies}
+    \end{figure}
+    \vspace{-1em}
+    \begin{align*}
+        f &= \frac{v}{\lambda}\\
+        &= \sqrt{\frac{F}{M}}\cdot\frac{n}{2L}
+    \end{align*}
+    \begin{itemize}
+        \item When $n=1$, we call $f_1=\frac{1}{2L}\sqrt{F/M}$ the \textbf{first fundamental harmonic frequency}.
+        \item When $n=2$, we call $f_1=2f_1$ the \textbf{second fundamental harmonic frequency}.
+        \item Similarly, $f_n=nf_1$ for the \textbf{$\bm{n^\text{th}}$ fundamental harmonic frequency}.
+    \end{itemize}
+    \item Different instruments have different \textbf{overtones} (combinations of harmonics).
+    \item We have some lab stuff to do before Monday.
+    \item If you vibrate a string at a certain frequency, you can build up energy in the wave. Otherwise, you will just have all sorts of dissonant destructive interference. Think about pushing a swing --- you have to push it at the right time to build up a big amplitude.
+\end{itemize}
+
+
+
 
 \end{document}

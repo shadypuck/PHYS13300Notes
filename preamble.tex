@@ -8,6 +8,7 @@
 \usepackage{siunitx}
 \usepackage{scrextend}
 \usepackage[bottom]{footmisc}
+\usepackage{subcaption,float}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb}
 \usepackage{bm}
@@ -36,11 +37,16 @@
 \deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
 \deffootnote[2.1em]{0em}{0em}{\textsuperscript{\thefootnote}}
 
+\usetikzlibrary{angles}
 \colorlet{orx}{orange!70!yellow!88!black}
+\colorlet{ory}{orx!50}
 \colorlet{orz}{orx!25}
 \colorlet{blx}{cyan}
+\colorlet{blz}{blx!25}
 \colorlet{pix}{magenta}
 \colorlet{grx}{green!65!black}
+\colorlet{rex}{red!80!black}
+\colorlet{gax}{gray!70}
 
 \addbibresource{../main.bib}
 \DefineBibliographyStrings{english}{bibliography={References}}
