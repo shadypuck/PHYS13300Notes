@@ -1,0 +1,116 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+
+\begin{document}
+
+
+
+
+\section{Mechanical Waves}
+\begin{enumerate}[label={\arabic*)}]
+    \item \marginnote{8/9:}\textcite{bib:YoungFreedman}: Problem 15.9.\par
+    Which of the following wave functions satisfies the wave equation?
+    \begin{enumerate}
+        \item $y(x,t)=A\cos(kx+\omega t)$.
+        \item $y(x,t)=A\sin(kx+\omega t)$.
+        \item $y(x,t)=A(\cos kx+\cos\omega t)$.
+        \item For the wave of part (b), write the equations for the transverse velocity and transverse acceleration of a particle at point $x$.
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 15.26.\par
+    A fellow student with a mathematical bent tells you that the wave function of a traveling wave on a thin rope is $y(x,t)=(\SI{2.30}{\milli\meter})\cos[(\SI{6.98}{\radian\per\meter})x+(\SI{742}{\radian\per\second})t]$. Being more practical, you measure the rope to have a length of $\SI{1.35}{\meter}$ and a mass of $\SI{0.00338}{\kilo\gram}$. You are then asked to determine:
+    \begin{enumerate}
+        \item Amplitude.
+        \item Frequency.
+        \item Wavelength.
+        \item Wave speed.
+        \item Direction the wave is traveling.
+        \item Tension in the rope.
+        \item Average power transmitted by the wave.
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 15.30.\par
+    \textbf{Interference of Triangular Pulses.} Two triangular wave pulses are traveling toward each other on a stretched string as shown below. Each pulse is identical to the other and travels at $\SI{2.00}{\centi\meter\per\second}$. The leading edges of the pulses are $\SI{1.00}{\centi\meter}$ apart at $t=0$. Sketch the shape of the string at $t=\SI{0.250}{\second}$, $t=\SI{0.500}{\second}$, $t=\SI{0.750}{\second}$, $t=\SI{1.000}{\second}$, and $t=\SI{1.250}{\second}$.
+    \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+            \footnotesize
+            \draw [orx,very thick] (0,0)
+                -- (1,0)
+                -- (2,1)
+                -- (3,0)
+                -- (4,0)
+                -- (5,1)
+                -- (6,0)
+                -- (7,0)
+            ;
+    
+            \draw [very thin,|-|] (0.85,0.05) -- node[left]{$\SI{1.00}{\centi\meter}$} ++(0,0.95);
+            \draw [very thin,|-|] (1,-0.15) -- node[below]{$\SI{1.00}{\centi\meter}$} ++(1,0);
+            \draw [very thin,|-|] (2,-0.15) -- node[below]{$\SI{1.00}{\centi\meter}$} ++(1,0);
+            \draw [very thin,|-|] (3,0.3) -- node[above]{$\SI{1.00}{\centi\meter}$} ++(1,0);
+            \draw [very thin,|-|] (4,-0.15) -- node[below]{$\SI{1.00}{\centi\meter}$} ++(1,0);
+            \draw [very thin,|-|] (5,-0.15) -- node[below]{$\SI{1.00}{\centi\meter}$} ++(1,0);
+            \draw [very thin,|-|] (6.15,0.05) -- node[right]{$\SI{1.00}{\centi\meter}$} ++(0,0.95);
+    
+            \draw [grx,ultra thick,-latex] (2,1.1) -- node[above=1mm,black]{$v=\SI{2.00}{\centi\meter\per\second}$} ++(1,0);
+            \draw [grx,ultra thick,-latex] (5,1.1) -- node[above=1mm,black]{$v=\SI{2.00}{\centi\meter\per\second}$} ++(-1,0);
+        \end{tikzpicture}
+    \end{center}
+    \item \textcite{bib:YoungFreedman}: Problem 15.32.\par
+    \textbf{Interference of Rectangular Pulses.} The below figure shows two rectangular wave pulses on a stretched string traveling toward each other. Each pulse is traveling with a speed of $\SI{1.00}{\milli\meter\per\second}$ and has the height and width shown in the figure. If the leading edges of the pulses are $\SI{8.00}{\milli\meter}$ apart at $t=0$, sketch the shape of the string at $t=\SI{4.00}{\second}$, $t=\SI{6.00}{\second}$, and $t=\SI{10.0}{\second}$.
+    \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+            \footnotesize
+            \draw [orx!60!black,line join=round,double=orx,double distance=1.2pt] (0,0)
+                -- (1,0)
+                -- (1,0.75)
+                -- (2,0.75)
+                -- (2,0)
+                -- (4,0)
+                -- (4,-1)
+                -- (5,-1)
+                -- (5,0)
+                -- (6,0)
+            ;
+    
+            \draw [very thin,|-|] (0.5,0.05) -- node[xshift=-0.05cm,fill=white,inner sep=2pt]{$\SI{3.00}{\milli\meter}$} ++(0,0.7);
+            \draw [very thin,|-|] (1,0.9) -- node[above]{$\SI{4.00}{\milli\meter}$} ++(1,0);
+            \draw [very thin,|-|] (2,-0.15) -- node[below]{$\SI{8.00}{\milli\meter}$} ++(1.95,0);
+            \draw [very thin,|-|] (4,-1.15) -- node[below]{$\SI{4.00}{\milli\meter}$} ++(1,0);
+            \draw [very thin,|-|] (5.5,-0.05) -- node[xshift=0.05cm,fill=white,inner sep=2pt]{$\SI{4.00}{\milli\meter}$} ++(0,-0.95);
+    
+            \draw [grx,ultra thick,-latex] (2.1,0.4) -- ++(0.5,0) node[right,black]{$v=\SI{1.00}{\milli\meter\per\second}$};
+            \draw [grx,ultra thick,-latex] (3.9,-0.75) -- ++(-0.5,0) node[left,black]{$v=\SI{1.00}{\milli\meter\per\second}$};
+        \end{tikzpicture}
+    \end{center}
+    \item \textcite{bib:YoungFreedman}: Problem 15.34.\par
+    Adjacent antinodes of a standing wave on a string are $\SI{15.0}{\centi\meter}$ apart. A particle at an antinode oscillates in simple harmonic motion with amplitude $\SI{0.850}{\centi\meter}$ and period $\SI{0.0750}{\second}$. The string lies along the $+x$-axis and is fixed at $x=0$.
+    \begin{enumerate}
+        \item How far apart are the adjacent nodes?
+        \item What are the wavelength, amplitude, and speed of the two traveling waves that form this pattern?
+        \item Find the maximum and minimum transverse speeds of a point at an antinode.
+        \item What is the shortest distance along the string between a node and an antinode?
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 15.64.\par
+    A strong string of mass $\SI{3.00}{\gram}$ and length $\SI{2.20}{\meter}$ is tied to supports at each end and is vibrating in its fundamental mode. The maximum transverse speed of a point at the middle of the string is $\SI{9.00}{\meter\per\second}$. The tension in the string is $\SI{330}{\newton}$.
+    \begin{enumerate}
+        \item What is the amplitude of the standing wave at its antinode?
+        \item What is the magnitude of the maximum transverse acceleration of a point at the antinode?
+    \end{enumerate}
+    \item A harmonic wave travels down a string in the $+x$ direction. At position $x=0$ and time $t=0$, the following is observed: the displacement of the string is $+\SI{1.0}{\centi\meter}$, the transverse velocity is $-\SI{2.0}{\centi\meter\per\second}$, and the transverse acceleration is $-\SI{4.0}{\centi\meter\per\square\second}$.
+    \begin{enumerate}
+        \item What is the frequency of the wave?
+        \item What is the amplitude of the wave?
+    \end{enumerate}
+    \item A long, uniform rope of length $L$ hangs vertically. The only tension in the rope is that produced by its own weight.
+    \begin{enumerate}
+        \item Show that, as a function of the distance $y$ from the lower end of the rope, the speed of a transverse wave pulse on the rope is $\sqrt{gy}$.
+        \item How much time does it take for a wave pulse to travel from one end of the rope to the other?
+    \end{enumerate}
+    \item Using continuity conditions on a string, we derived the relative amplitudes for transmitted and reflected waves at a boundary. Show that the average power of the \emph{transmitted} wave plus the average power of the \emph{reflected} wave is equal to the average power of the \emph{incident} wave. (Otherwise, energy would not be conserved.)
+\end{enumerate}
+
+
+
+
+\end{document}
