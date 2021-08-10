@@ -1,0 +1,346 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{15}
+
+\begin{document}
+
+
+
+
+\chapter{Sound and Hearing}
+\section{Intro to Sound Waves}
+\begin{itemize}
+    \item \marginnote{8/9:}First quiz this Friday.
+    \begin{itemize}
+        \item There to get you ready for the midterm.
+        \item Starts at 10:00 AM.
+        \item 30 minutes for the quiz plus 20 minutes to scan and upload $\Rightarrow$ due at 10:50 AM.
+        \item Send Dr. Gazes an email if you have technical issues.
+        \item Study:
+        \begin{itemize}
+            \item HW 1-2.
+            \item Chapter 15-16, and parts of 33.
+            \item No questions on homework material to which we don't have the solutions.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Standing wave}: A wave with nodes and antinodes that do not move.
+    \item Consider an air-filled pipe of length $L$ with a piston at one end and being open at the other end.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.append style={black}
+        ]
+            \footnotesize
+            \fill [blz] (0,0) rectangle (0.3,1);
+            \draw [blx,thick]
+                (4,0) -- node[above=3mm]{$\rho_0$\qquad$p_0$} (0,0) -- node[left]{$f\longleftrightarrow$} (0,1) -- (4,1) node[above]{$N$} node[below right=3mm,fill=white,inner sep=1.5pt]{open}
+                (0.3,0) -- ++(0,1) node[above]{$A$}
+                (4,0.5) ellipse (2mm and 5mm)
+            ;
+    
+            \begin{scope}[yshift=-3cm]
+                \draw [stealth-stealth]
+                    (0.1,1) -- ++(-0.2,0) node[left]{$p_0$}
+                    (4,0.1) -- ++(0,-0.2) node[below]{$L$}
+                    (0,2) node[above]{$P$} -- (0,0) -- (4.5,0) node[right]{$x$}
+                ;
+                \draw [orx,thick,yshift=1cm,yscale=0.5,xscale=1/pi] plot [domain=0:4*pi,smooth] (\x,{sin(\x r)});
+            \end{scope}
+        \end{tikzpicture}
+        \caption{An air-filled pipe.}
+        \label{fig:pipeWithAir}
+    \end{figure}
+    \begin{itemize}
+        \item The air in it has density $\rho_0$ and pressure $p_0$.
+        \item Reviews compression and rarefaction.
+        \item Creating a plot of pressure vs. $x$-distance yields a transverse pressure wave.
+        \item We consider the pressure at the end to be essentially "clamped" at atmospheric pressure $p_0$.
+        \begin{itemize}
+            \item Thus, the wave gets reflected at the end of the pipe.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Sound wave}: A wave propagating in a material.
+    \item Speed of sound:
+    \begin{itemize}
+        \item For a wave on a string, $v=\sqrt{F/M}$.
+        \item Tension is how hard a sliver of string is being pulled on by its neighbors. Mass density is inertial; it tells us how much a sliver of string resists being moved by its neighbor.
+        \item Thus, for a sound wave, we should have something kind of like $v=\sqrt{p_0/\rho_0}$.
+        \item In fact, adjusting for some other factors, we get (at STP)
+        \begin{equation*}
+            v_\text{sound} = \sqrt{\frac{1.4p_0}{\rho_0}}
+        \end{equation*}
+    \end{itemize}
+    \item Let $\delta p=p-p_0$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.append style={black}
+        ]
+            \footnotesize
+            \fill [blz] (0,0) rectangle (0.3,1);
+            \draw [blx,thick]
+                (4,0) -- (0,0) -- (0,1) -- (4,1) node[above]{$N$}
+                (0.3,0) -- ++(0,1) node[above]{$A$}
+                (4,0.5) ellipse (2mm and 5mm)
+            ;
+    
+            \begin{scope}[yshift=-2.5cm]
+                \draw [stealth-stealth] (0,-1.5) --(0,1.5) node[above]{$\delta p$};
+                \draw [-stealth]
+                    (4,0.1) -- ++(0,-0.2) node[below]{$L$}
+                    (0,0) node[below left]{$0$} -- (4.5,0) node[right]{$x$}
+                ;
+                \draw [orx,thick,xscale=8/pi]
+                    plot [domain=0:pi/2,smooth] (\x,{cos(\x r)})
+                    plot [domain=0:pi/2,smooth] (\x,{-cos(\x r)})
+                ;
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Standing waves in an air-filled pipe.}
+        \label{fig:pipeStandingWaves}
+    \end{figure}
+    \begin{itemize}
+        \item Then some ways to get a standing wave are $L=\frac{\lambda}{4},\frac{\lambda}{4}+\frac{\lambda}{2},\frac{\lambda}{4}+\lambda,\dots$.
+        \item Thus, standing waves are given by $L=\frac{\lambda}{4}+m\cdot\frac{\lambda}{2}$, where $m\in\mathbb{N}\cup\{0\}$.
+    \end{itemize}
+    \item When you have a node for pressure, you have an antinode for displacement and vice versa.
+    \item It follows from the fact that $L=\frac{n\lambda}{4}$ for $n\in 2\mathbb{N}+1$ that $L=\frac{n}{4}\cdot\frac{v_\text{sound}}{f}$ for $n\in 2\mathbb{N}+1$.
+    \begin{itemize}
+        \item Thus, $f_n=\frac{n}{4}\cdot\frac{v_\text{sound}}{L}$.
+        \item $f_1$ is again the fundamental frequency, and $f_n=nf_1$, but only where $n\in 2\mathbb{N}+1$.
+    \end{itemize}
+    \item Hissing air has all kinds of frequencies. When you blow it over the opening of a bottle, only the frequencies with large amplitudes will produce standing waves.
+    \begin{itemize}
+        \item When you partially fill the bottle, decreasing the length of the tube of air, higher frequencies are selected for.
+    \end{itemize}
+    \item When you blow air past a tube that is open at both ends, you have pressure nodes (denoted by $N_p$) at both ends and you can get all sorts of standing waves in between.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            every node/.append style={black}
+        ]
+            \footnotesize
+            \draw [blx,thick]
+                (0,0) -- (4,0)
+                (0,1) node[above]{$N_p$} -- (4,1) node[above]{$N_p$}
+            ;
+    
+            \draw [orx,thick,yshift=0.5cm,xscale=4/pi,yscale=0.4]
+                plot [domain=0:pi,smooth] (\x,{sin(\x r)})
+                plot [domain=0:pi,smooth] (\x,{-sin(\x r)})
+            ;
+            \draw [grx,thick,yshift=0.5cm,xscale=2/pi,yscale=0.4]
+                plot [domain=0:2*pi,smooth] (\x,{sin(\x r)})
+                plot [domain=0:2*pi,smooth] (\x,{-sin(\x r)})
+            ;
+    
+            \node [fill=orx,inner sep=1mm,label={right:$L=\lambda/2$}] at (4.5,0.6) {};
+            \node [fill=grx,inner sep=1mm,label={right:$L=\lambda$}] at (4.5,0.2) {};
+        \end{tikzpicture}
+        \caption{Standing waves in an uncapped pipe.}
+        \label{fig:pipeWavesUncapped}
+    \end{figure}
+    \begin{itemize}
+        \item Here, we have $L=n\cdot\frac{\lambda}{2}$, where $n\in\mathbb{N}$.
+        \item Open-open pipes are just like a string clamped at both ends.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Sound Waves in More Dimensions}
+\begin{itemize}
+    \item 2001: A Space Odyssey starts with a 16 Hz sound.
+    \item Sound in 1D vs. sound in 3D.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.append style={black},
+            scale=0.5
+        ]
+            \footnotesize
+            \node [circle,fill=pix,inner sep=2pt,label={[xshift=-2pt,yshift=2pt]below right:s}] at (0,0) {};
+            \draw [orx,thick]
+                (0,0) circle (1cm)
+                (0,0) circle (2cm)
+                (0,0) circle (3cm)
+            ;
+    
+            \draw [grx,ultra thick,-latex] (0:3.2) -- ++(0:1.2) node[below right=-2pt]{$v_\text{sound}$};
+            \foreach \r in {45,90,...,315} {
+                \draw [grx,ultra thick,-latex] (\r:3.2) -- ++(\r:1.2);
+            }
+    
+            \draw [->] (22.5:1.6) -- (22.5:1.9);
+            \node at (22.5:2.5) {$\lambda$};
+            \draw [<-] (22.5:3.1) -- (22.5:3.4);
+        \end{tikzpicture}
+        \caption{Sound waves in 3D.}
+        \label{fig:3DSoundWaves}
+    \end{figure}
+    \item \textbf{Wavelength} (3D): The distance between the crests of adjacent waves.
+    \item How much energy is captured by your ear depends on the \textbf{intensity}.
+    \item \textbf{Intensity}: The average power per unit area. \emph{Denoted by} $\bm{I}$. \emph{Units} $\si{\watt\per\square\meter}$.
+    \begin{itemize}
+        \item In 3D, $I=\frac{\bar{P}}{4\pi r^2}$.
+        \item Thus, the power at your ear is given by $P_\text{ear}=IA_\text{ear}$.
+    \end{itemize}
+    \item \textbf{Threshold intensity}: The lowest intensity that can still be heard. \emph{Denoted by} $\bm{I_0}$.
+    \begin{itemize}
+        \item For humans, $I_0\approx\SI{e-12}{\watt\per\square\meter}$.
+    \end{itemize}
+    \item \textbf{Sound intensity level}: The following quantity. \emph{Units} $\si{\deci\bel}$.
+    \begin{equation*}
+        \beta = 10\log\left( \frac{I}{I_0} \right)
+    \end{equation*}
+    \begin{itemize}
+        \item $\beta(\text{whisper})\approx\SI{20}{\deci\bel}$.
+        \item $\beta(\text{NYC Subway})\approx\SI{100}{\deci\bel}$.
+        \begin{itemize}
+            \item $\num{e8}$ times the intensity of a whisper!
+        \end{itemize}
+        \item $\beta(\text{ears hurt})\approx\SI{120}{\deci\bel}$.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Sound Wave Phenomena}
+\begin{itemize}
+    \item Speakers at varying distances from one's ear:
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            every node/.append style={black}
+        ]
+            \footnotesize
+            \draw [thick] (-0.5,-0.5) rectangle (0.5,0.5);
+            \filldraw [draw=rex,fill=rez,thick] (0,0) circle (2mm);
+            \draw [very thin]
+                (45:0.07) -- (45:0.15)
+                (90:0.07) -- (90:0.15)
+                (135:0.07) -- (135:0.15)
+            ;
+    
+            \begin{scope}
+                \draw (0.5,0.2) to[out=0,in=180] (2,1);
+                \draw [semithick]
+                    (2.4,1.1) -- ++(-0.4,0) -- ++(0,-0.2) -- ++(0.4,0)
+                    (2.5,1) ellipse (1mm and 4mm)
+                ;
+            \end{scope}
+            \begin{scope}[yscale=-1]
+                \draw (0.5,0.2) to[out=0,in=180] (1.5,1);
+                \draw [semithick]
+                    (1.9,1.1) -- ++(-0.4,0) -- ++(0,-0.2) -- ++(0.4,0)
+                    (2,1) ellipse (1mm and 4mm)
+                ;
+            \end{scope}
+    
+            \draw [rex,thick] (5,0.5) arc[start angle=30,end angle=0,radius=1cm] node[right]{receiver} arc[start angle=0,end angle=-30,radius=1cm];
+    
+            \draw [very thin,dashed]
+                (2.1,-1) -- ++(0,-1)
+                (2.6,1) -- ++(0,-3)
+                (5.16,0) -- ++(0,-2)
+            ;
+            \draw [very thin,|-|] (2.1,-2) -- node[below]{$\Delta x$} (2.6,-2);
+            \draw [very thin,|-|] (2.6,-2) -- node[below]{$x$} (5.16,-2);
+        \end{tikzpicture}
+        \caption{Speakers at varying distances from one's ear.}
+        \label{fig:varyingDistanceSpeakers}
+    \end{figure}
+    \begin{itemize}
+        \item $y=y_1+y_2=A\cos(kx-\omega t)+A\cos(k[x+\Delta x]-\omega t)$.
+        \item If $\Delta x=0$, then
+        \begin{equation*}
+            y = 2A\cos(kx-\omega t)
+        \end{equation*}
+        \item If $\Delta x=\frac{\lambda}{2}$, then
+        \begin{align*}
+            y &= A\left[ \cos(kx-\omega t)+\cos\left( kx+k\cdot\frac{\lambda}{2}-\omega t \right) \right]\\
+            &= A\left[ \cos(kx-\omega t)+\cos\left( kx+\frac{2\pi}{\lambda}\cdot\frac{\lambda}{2}-\omega t \right) \right]\\
+            &= A[\cos(kx-\omega t)+\cos(kx-\omega t+\pi)]\\
+            &= A[\cos(kx-\omega t)-\cos(kx-\omega t)]\\
+            &= 0
+        \end{align*}
+        so you get total cancellation/destructive interference.
+        \item Similarly, you can electronically delay the signal. If $\Delta t=\frac{T}{2}$, then the waves cancel. This is the principle behind noise-cancelling headphones.
+        \item $\Delta x$ is called the \textbf{path length difference}.
+    \end{itemize}
+    \item Sound waves of slightly varying frequency:
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.append style={black}
+        ]
+            \footnotesize
+            \begin{scope}[yshift=2cm]
+                \draw [stealth-stealth] (0,-1.5) -- (0,1.5) node[above]{$P$};
+                \draw [-stealth] (0,0) -- (4.5,0) node[right]{$t$};
+    
+                \draw [orx,thick,xscale=2/pi] plot[domain=0:2*pi,samples=500,smooth] (\x,{cos(8*\x r)});
+                \node at (3.2,1.3) {\normalsize$\bar{\omega}$};
+            \end{scope}
+            \begin{scope}[yshift=-2cm]
+                \draw [stealth-stealth] (0,-1.5) -- (0,1.5) node[above]{$P$};
+                \draw [-stealth] (0,0) -- (4.5,0) node[right]{$t$};
+    
+                \draw [orx,thick,xscale=2/pi] plot[domain=0:2*pi,samples=500,smooth] (\x,{cos(\x r)});
+                \node at (3.2,1.3) {\normalsize$\Delta\omega$};
+            \end{scope}
+    
+            \begin{scope}[xshift=8cm]
+                \draw [stealth-stealth] (0,-1.5) -- (0,1.5) node[above]{$P$};
+                \draw [-stealth] (0,0) -- (4.5,0) node[right]{$t$};
+    
+                \draw [orx,thick,xscale=2/pi] plot[domain=0:2*pi,samples=500,smooth] (\x,{cos(\x r)*cos(8*\x r)});
+                \draw [orx,thick,dashed,xscale=2/pi] plot[domain=0:2*pi,samples=500,smooth] (\x,{cos(\x r)});
+                \draw [orx,thick,dashed,xscale=2/pi] plot[domain=0:2*pi,samples=500,smooth] (\x,{-cos(\x r)});
+                \node at (3.2,1.3) {\normalsize$y_\text{total}$};
+            \end{scope}
+    
+            \draw [help lines,->,shorten >=5mm] (5,2) -- (8,0);
+            \draw [help lines,->,shorten >=5mm] (5,-2) -- (8,0);
+        \end{tikzpicture}
+        \caption{Sound waves of slightly varying frequencies.}
+        \label{fig:varyingFrequencies}
+    \end{figure}
+    \begin{itemize}
+        \item Consider frequencies $f_1,f_2$ where $\Delta f<<f_1,f_2$.
+        \item Since $k=2\pi f/v_\text{sound}$ and $\omega=2\pi f$ (i.e., both quantities depend on frequency), we have that
+        \begin{align*}
+            y &= y_1+y_2\\
+            &= A[\cos(k_1x-\omega_1t)+\cos(k_2x-\omega_2t)]
+            \intertext{Suppose $x=0$.}
+            &= A[\cos(\omega_1t)+\cos(\omega_2t)]\\
+            &= 2A\cos\left( \frac{\omega_1+\omega_2}{2}\cdot t \right)\cos\left( \frac{\omega_1-\omega_2}{2}\cdot t \right)\\
+            &= 2A\cos(\bar{\omega}t)\cos\left( \frac{\Delta\omega}{2}\cdot t \right)
+        \end{align*}
+        \item Since $\bar{\omega}>>\Delta\omega$, $y$ looks like the end result in Figure \ref{fig:varyingFrequencies}.
+        \item Thus, we will hear $\bar{\omega}$, but there will be silences interspersed.
+        \begin{itemize}
+            \item These nodes are called \textbf{beats}, and $f_\text{beat}=f_1-f_2$.
+        \end{itemize}
+    \end{itemize}
+    \item Suppose we have a source $s$ producing a sound of frequency $f$. An observer $o$ runs toward the source at speed $v_o$.
+    \begin{itemize}
+        \item Thus, the observer is being hit by wavefronts moving, relative to them, at speed $v+v_o$. Thus, since $v=\lambda f$, the frequency $f'$ that the observer hears is given by
+        \begin{equation*}
+            f' = \frac{v+v_o}{\lambda}
+            = \frac{v+v_o}{v}\cdot f
+            > f
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Doppler Effect}: The change in frequency produced by the speed of the observer relative to the source. \emph{Also known as} \textbf{Doppler Shift}.
+    \begin{itemize}
+        \item Also happens when the source moves toward the observer. In this case, though, $\lambda$ varies: With respect to the source, waves are being emitted at the same frequency, but they're only moving away from the source at speed $v-v_s$. Thus, $\lambda'=v-v_s/f$, so $f'=\frac{v}{v-v_s}\cdot f$.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
