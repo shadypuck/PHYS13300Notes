@@ -567,5 +567,62 @@
 
 
 
+\section{Chapter 15: Mechanical Waves}
+\emph{From \textcite{bib:YoungFreedman}.}
+\begin{itemize}
+    \item \marginnote{8/10:}An alternate way of deriving the speed of a harmonic wave:
+    \begin{itemize}
+        \item The wave speed is equivalent to the speed we must move at in the $x$-direction to stay at the same "wave part," be that a crest, a trough, or anywhere in between.
+        \item At every similar wave part, $y$-displacement from the $x$-axis is equal; in other words, $A\sin(kx-\omega t)=\text{constant}$.
+        \item But this implies that $kx-\omega t=\text{constant}$.
+        \item Taking partial derivatives wrt time of the above equation, we get
+        \begin{align*}
+            k\cdot\pdv{x}{t}-\omega &= 0\\
+            v &= \frac{\omega}{k}
+        \end{align*}
+        as desired.
+    \end{itemize}
+    \item The second partial derivative of the harmonic wave function wrt $x$ yields the \textbf{curvature} of the string.
+    \item An alternate way of deriving the general 1D wave equation (for a harmonic wave):
+    \begin{itemize}
+        \item Take second partial derivatives in both variables:
+        \begin{align*}
+            \pdv[2]{y(x,t)}{t} &= -\omega^2A\cos(kx-\omega t)&
+            \pdv[2]{y(x,t)}{x} &= -k^2a\cos(kx-\omega t)
+        \end{align*}
+        \item Notice that
+        \begin{equation*}
+            \frac{\pdv*[2]{y(x,t)}{t}}{\pdv*[2]{y(x,t)}{x}} = \frac{\omega^2}{k^2} = v^2
+        \end{equation*}
+        \item The above can be rearranged to yield
+        \begin{equation*}
+            \pdv[2]{y(x,t)}{x} = \frac{1}{v^2}\pdv[2]{y(x,t)}{t}
+        \end{equation*}
+    \end{itemize}
+    \item Applying a constant, perpendicular force to the end of a string does not cause the end of the string to accelerate upwards with constant acceleration, but rather "the effect of the force $F_y$ is to set successively more and more mass in motion" \parencite[475]{bib:YoungFreedman}.
+    \begin{itemize}
+        \item From the impulse-momentum theorem, the transverse impulse up to time $t$ must be mirrored by the change in transverse momentum, i.e., $F_yt=mv_y$.
+        \item Since the wave moves with constant velocity, the amount of mass set into motion varies with time $t$, so $v_y$ does not have to change.
+        \item Extends this to derive $v=\sqrt{F/M}$ for a triangular pulse, but notes that the equation is valid for any pulse since every pulse is a series of pulses with different values of $v_y$.
+    \end{itemize}
+    \item The principle of superposition doesn't hold for mediums that don't obey Hooke's law, i.e., are not linear.
+    \item We call a traveling wave that to distinguish it from a standing wave.
+    \item The fact that the nodes of a standing wave $y=2A\sin kx\sin\omega t$ don't move follows from the fact that nodes are found where $y=0$, i.e., where $\sin kx=0$, and the solutions to the latter equation don't depend on time.
+    \item \textbf{Fundamental frequency}: The smallest possible frequency that can produce a standing wave on a string.
+    \item \textbf{Harmonic}: One of the fundamental harmonic frequencies.
+    \item $f_2$ is the second harmonic, or the first \textbf{overtone}.
+    \begin{itemize}
+        \item Similarly, $f_3$ is the third harmonic, or the second overtone.
+    \end{itemize}
+    \item \textbf{Normal mode}: A motion in which all particles of an oscillating system move sinusoidally with the same frequency.
+    \item \textbf{Harmonic content}: The extent to which frequencies higher than the fundamental are present.
+    \item We can write that $f_1=\frac{1}{2L}\sqrt{F/M}$.
+    \begin{itemize}
+        \item With respect to string instruments, this implies that tighter strings yield higher frequencies, and heavier strings have lower frequencies!
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
