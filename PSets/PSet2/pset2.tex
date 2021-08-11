@@ -1,0 +1,134 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+
+\begin{document}
+
+
+
+
+\section{Sound and Light}
+\begin{enumerate}[label={\arabic*)}]
+    \item \marginnote{8/12:}\textcite{bib:YoungFreedman}: Problem 15.25.\par
+    A jet plane at takeoff can produce sound of intensity $\SI{10.0}{\watt\per\square\meter}$ at $\SI{30.0}{\meter}$ away. But you prefer the tranquil sound of normal conversation, which is $\SI{1.0}{\micro\watt\per\square\meter}$. Assume that the plane behaves like a point source of sound.
+    \begin{enumerate}
+        \item What is the closest distance you should live from the airport runway to preserve your peace of mind?
+        \item What intensity from the jet does your friend experience if she lives twice as far from the runway as you do?
+        \item What power of sound does the jet produce at takeoff?
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 15.28.\par
+    \textbf{Reflection.} A wave pulse on a string has the dimensions shown in the following figure at $t=0$. The wave speed is $\SI{40}{\centi\meter\per\second}$.
+    \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+            \footnotesize
+            \draw [orx,very thick] (0,0) -- (2,0) -- (3,1) -- (4,0) -- (6,0) node[circle,fill=pix,inner sep=1.5pt,label={[black]right:$O$}]{};
+    
+            \draw [very thin,|-|] (1.85,0.05) -- node[left]{$\SI{4.0}{\milli\meter}$} ++(0,0.95);
+            \draw [very thin,|-|] (2,1.15) -- node[above]{$\SI{4.0}{\milli\meter}$} ++(1,0);
+            \draw [very thin,|-|] (3,1.15) -- node[above]{$\SI{4.0}{\milli\meter}$} ++(1,0);
+            \draw [very thin,|-|] (4,0.2) -- node[above]{$\SI{8.0}{\milli\meter}$} ++(2,0);
+    
+            \draw [grx,ultra thick,-latex] (4.7,0.8) -- node[above,black]{$v=\SI{40}{\centi\meter\per\second}$} ++(1,0);
+        \end{tikzpicture}
+    \end{center}
+    \begin{enumerate}
+        \item If point $O$ is a fixed end, draw the total wave on the string at $t=\SI{15}{\milli\second}$, $\SI{20}{\milli\second}$, $\SI{25}{\milli\second}$, $\SI{30}{\milli\second}$, $\SI{35}{\milli\second}$, $\SI{40}{\milli\second}$, and $\SI{45}{\milli\second}$.
+        \item Repeat part (a) for the case in which point $O$ is a free end.
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 16.24.\par
+    The fundamental frequency of a pipe that is open at both ends is $\SI{524}{\hertz}$.
+    \begin{enumerate}
+        \item How long is the pipe?
+    \end{enumerate}
+    If one end is now closed, find the new fundamental's
+    \begin{enumerate}[resume]
+        \item Wavelength;
+        \item Frequency.
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 16.35.\par
+    Two loudspeakers, $A$ and $B$, are driven by the same amplifier and emit sinusoidal waves in phase. Speaker $B$ is $\SI{12.0}{\meter}$ to the right of speaker $A$. The frequency of the waves emitted by each speaker is $\SI{688}{\hertz}$. You are standing between the speakers, along the line connecting them, and are at a point of constructive interference. How far must you walk toward speaker $B$ to move to a point of destructive interference?
+    \item \textcite{bib:YoungFreedman}: Problem 16.50.\par
+    The siren of a fire engine that is driving northward at $\SI{30.0}{\meter\per\second}$ emits a sound of frequency $\SI{2000}{\hertz}$. A truck in front of this fire engine is moving northward at $\SI{20.0}{\meter\per\second}$.
+    \begin{enumerate}
+        \item What is the frequency of the siren's sound that the fire engine driver hears reflected from the back of the truck?
+        \item What wavelength would this driver measure for these reflected sound waves?
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 16.62.\par
+    A bat flies toward a wall, emitting a steady sound of frequency $\SI{1.70}{\kilo\hertz}$. This bat hears its own sound plus the sound reflected by the wall. How fast should the bat fly in order to hear a beat frequency of $\SI{8.00}{\hertz}$.
+    \item \textcite{bib:YoungFreedman}: Problem 33.39.\par
+    A ray of light is incident in air on a block of a transparent solid whose index of refraction is $n$. If $n=1.38$, what is the \emph{largest} angle of incidence $\theta_a$ for which total internal reflection will occur at the vertical face (point $A$ in the below figure)?
+    \begin{center}
+        \begin{tikzpicture}[scale=0.6]
+            \footnotesize
+            \filldraw [very thin,fill=blt] (0,0) rectangle (3,4);
+            \draw [densely dashed] (1.5,5) -- (1.5,4) coordinate (B) -- (1.5,3);
+    
+            \draw [rex,thick,-latex] (3,5) coordinate (A) -- (1.5,4) coordinate (C) -- (0,1.5) node[left,black]{$A$};
+            \pic [draw,<-,angle radius=4mm,angle eccentricity=1.5,pic text={$\theta_a$}] {angle=A--B--C};
+        \end{tikzpicture}
+    \end{center}
+    \item \textcite{bib:YoungFreedman}: Problem 33.52.\par
+    Light is incident in air at an angle $\theta_a$ on the upper surface of a transparent plate, the surfaces of the plate being plane and parallel to each other.
+    \begin{center}
+        \begin{tikzpicture}
+            \footnotesize
+            \filldraw [very thin,fill=blt] (0,0) rectangle (5,2);
+            \draw [very thin,|-|]
+                (-0.2,0) node[below right,xshift=4mm]{$n$}
+                --       node[right      ,xshift=4mm]{$n'$} node[fill=white,inner sep=2pt]{$t$}
+                ++(0,2)  node[above right,xshift=4mm]{$n$}
+            ;
+    
+            \draw [very thin,densely dash dot]
+                (1.65,1)   coordinate (p11)
+                -- ++(0,2) coordinate (p12)
+            ;
+            \draw [very thin,densely dash dot]
+                (3.15,-1)  coordinate (p21)
+                -- ++(0,2) coordinate (p22)
+            ;
+            \draw [very thin,densely dashed]
+                (3.15,0) node[below left]{$P$}
+                -- ++(0.5,1) node[above right]{$Q$}
+            ;
+            \draw [very thin,<->,shorten >=1pt,shorten <=1pt] (4.85,-0.85) -- node[fill=white,inner sep=2pt]{$d$} ++(0.5,1);
+    
+            \draw [
+                rex,thick,postaction={decorate},
+                decoration={
+                    markings,
+                    mark={at position 0.15 with {\arrow{latex}}},
+                    mark={at position 0.85 with {\arrow{latex}}}
+                }
+            ]
+                (-0.35,3)     coordinate (A)
+                -- ++(2,-1)   coordinate (B)
+                -- ++(1.5,-2) coordinate (C)
+                -- ++(2,-1)   coordinate (D)
+            ;
+            \draw [rex,thick,densely dashed] (1.65,2) -- ++(4,-2);
+    
+            \pic [draw,->,shorten >=1pt,angle eccentricity=1.5,pic text={$\theta_a$},pic text options={yshift=1pt}] {angle=p12--B--A};
+            \pic [draw,->,shorten >=1pt,angle eccentricity=1.5,pic text={$\theta_b'$},pic text options={yshift=-1pt}] {angle=p11--B--C};
+            \pic [draw,->,shorten >=1pt,angle eccentricity=1.5,pic text={$\theta_b$},pic text options={yshift=1pt}] {angle=p22--C--B};
+            \pic [draw,->,shorten >=1pt,angle eccentricity=1.5,pic text={$\theta_a'$},pic text options={yshift=-1pt}] {angle=p21--C--D};
+        \end{tikzpicture}
+    \end{center}
+    \begin{enumerate}
+        \item Prove that $\theta_a=\theta'_a$.
+        \item Show that this is true for any number of different parallel plates.
+        \item Prove that the lateral displacement $d$ of the emergent beam is given by the relationship
+        \begin{equation*}
+            d = t\cdot\frac{\sin(\theta_a-\theta'_b)}{\cos\theta'}
+        \end{equation*}
+        where $t$ is the thickness of the plate.
+        \item A ray of light is incident at an angle of $\ang{66.0}$ on one surface of a glass plate $\SI{2.40}{\centi\meter}$ thick with an index of refraction of 1.80. The medium on either side of the plate is air. Find the lateral displacement between the incident and emergent waves.
+    \end{enumerate}
+    \item An airplane has a defective speedometer. In order to figure out how fast the plane is flying, the pilot (an aspiring opera singer) leans out the window and sings "middle C" (a note of frequency $\SI{262}{\hertz}$) at a mountain looming ahead. The echo off the mountain is heard by the pilot as "middle A" (frequency $\SI{440}{\hertz}$). How fast is the plane flying?
+\end{enumerate}
+
+
+
+
+\end{document}
