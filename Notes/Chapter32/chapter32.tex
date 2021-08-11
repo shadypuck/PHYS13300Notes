@@ -1,0 +1,145 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{31}
+
+\begin{document}
+
+
+
+
+\chapter{Electromagnetic Waves}
+\section{Creating EM Waves}
+\begin{itemize}
+    \item \marginnote{8/10:}Quizzes and tests are open notebook, open notes, open textbook.
+    \begin{itemize}
+        \item You can use a TI-84 type calculator, but nothing fancier.
+    \end{itemize}
+    \item Reviews that a charge at rest generates an electric field and that a charge moving with constant velocity $v$ generates a magnetic field in addition to its electric field.
+    \begin{itemize}
+        \item Relativity says that you can't tell whether a charge is moving relative to you or whether you're moving relative to the charge, so a charge at rest and a moving charge have identical field lines, when appropriate frames of reference are taken.
+    \end{itemize}
+    \item However, when a charge accelerates for a brief time, kinks will be generated in the field lines that correspond to exactly what was going on during the acceleration.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \foreach \r in {30,90,...,330} {
+                \draw [orx,semithick,postaction={decorate},decoration={markings,mark=at position 0.3 with \arrow{latex}}] (0,0) -- ++(\r:1) -- ++(-0.2,0) -- ++(\r:1);
+            }
+            \draw [orx,dashed,semithick] (0,0) circle (1cm);
+    
+            \fill [pix] (0,0) circle (2pt) node[below right,black,yshift=-3pt]{$q$};
+    
+            \draw [blx,ultra thick,-latex] (1.3,0) -- node[above,black]{$a$} ++(1,0);
+    
+            \path (-2.5,0) -- (2.5,0);
+        \end{tikzpicture}
+        \caption{An accelerating charge.}
+        \label{fig:acceleratingCharge}
+    \end{figure}
+    \begin{itemize}
+        \item The field lines are radial before and after the acceleration, but not radial during it (these are the kinks).
+        \item The kinks are perpendicular to the field lines, and generate a transverse electric field.
+        \item The transverse electric field then propagates at the speed of light.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Defining EM Waves}
+\begin{itemize}
+    \item \textbf{Electromagnetic wave}: The propagation of the transverse electric field.
+    \item According to Faraday's Law, changing magnetic fields induce changing electric fields.
+    \item According to Ampere's Law, currents induce magnetic fields.
+    \begin{itemize}
+        \item Maxwell adjusts this.
+        \item You can have currents that are real, but also currents that are not technically currents.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \draw [semithick]
+                    (-1.5,0) -- (-0.3,0) node[right=1pt]{$\vec{E}$} (-0.3,-0.5) -- ++(0,1) node[above]{$+Q$}
+                    (1.5,0) -- (0.3,0) (0.3,-0.5) -- ++(0,1) node[above]{$-Q$}
+                ;
+        
+                \draw [rex,very thick,-latex] (-1.4,0.2) -- node[above,black]{$I$} ++(0.7,0);
+                \draw [rex,very thick,-latex] (0.7,0.2) -- node[above,black]{$I$} ++(0.7,0);
+            \end{tikzpicture}
+            \caption{Generating a displacement current.}
+            \label{fig:displacementCurrent}
+        \end{figure}
+        \begin{itemize}
+            \item For example, between the plates of a charging capacitor, the changing electric field still produces a magnetic field.
+            \item This \textbf{displacement current} is induced by the changing electric flux $\dv*{\Phi_E}{t}$, which is the root cause of the magnetic field.
+            \item Mathematically, $I_\text{displacement}=\epsilon_0\cdot\dv*{\Phi_E}{t}$.
+        \end{itemize}
+        \item Thus, according to the Maxwell-Ampere law, changing electric fields induce changing magnetic fields.
+    \end{itemize}
+    \item As the transverse electric field approaches you, the changing magnetic field induces a planar displacement current going in one direction at the front end and the opposite direction at the other end.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.append style={black}
+        ]
+            \footnotesize
+            \draw [-stealth] (0,0) -- (4.5,0) node[right]{$x$};
+    
+            \draw [rex,thick,-latex] (1.6,-1.5) -- ++(0,3) node[right]{$I_d$};
+            \draw [rex,thick,-latex] (0.4,1.5) -- ++(0,-3) node[left]{$I_d$};
+    
+            \draw [orx,thick,-latex] (0.5,0) -- ++(0,1);
+            \draw [orx,thick,-latex] (1,0) -- ++(0,1) node[above]{$E_\text{trans}$};
+            \draw [orx,thick,-latex] (1.5,0) -- ++(0,1);
+            \draw [white,ultra thick,shorten <=2pt] (0.5,0,0) -- ++(0,0,1);
+            \draw [blx,thick,-latex] (0.5,0,0) -- ++(0,0,1);
+            \draw [blx,thick,-latex] (1,0,0) -- ++(0,0,1) node[below,fill=white,inner sep=2pt]{$B_\text{trans}$};
+            \draw [blx,thick,-latex] (1.5,0,0) -- ++(0,0,1);
+    
+            \draw [grx,ultra thick,-latex] (1.8,0.5) -- node[above]{$v$} ++(1,0);
+        \end{tikzpicture}
+        \caption{An idealized wave with a planar wavefront.}
+        \label{fig:planarWavefront}
+    \end{figure}
+    \begin{itemize}
+        \item As the front passes you, a magnetic field is induced, too, by the Maxwell-Ampere law.
+        \item The two interchanging pulses create a self-sustaining wave.
+    \end{itemize}
+    \item Essentially, Maxwell's conclusion is that changing transverse electric fields and changing transverse magnetic fields induce each other.
+    \begin{itemize}
+        \item The speed that this occurs at is
+        \begin{equation*}
+            v = \frac{1}{\sqrt{\mu_0\epsilon_0}} = \SI{3e8}{\meter\per\second}
+        \end{equation*}
+        \item To derive this speed, Maxwell used his observation that in one dimension, the transverse electric field obeys the equation, $\pdv[2]{E_\text{trans}}{x}=\mu_0\epsilon_0\pdv[2]{E_\text{trans}}{t}$.
+        \item By comparison with the wave equation, $\mu_0\epsilon_0=\frac{1}{v^2}$, which can be solved for the above.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{EM Waves in the World}
+\begin{itemize}
+    \item Accelerating charges are commonly seen in
+    \begin{enumerate}
+        \item Orbiting electrons in an atom;
+        \item LC circuits. 
+    \end{enumerate}
+    \item For an LC circuit,
+    \begin{equation*}
+        f_\text{EM wave} = f_\text{LC} = \frac{1}{2\pi}\cdot\frac{1}{\sqrt{LC}}
+    \end{equation*}
+    \item Homemade circuits can make frequencies between $\num{e4}$ - $\SI[per-mode=power]{e11}{\per\second}$, and thus since $c=f\lambda$, wavelengths between $\num{e4}$ - $\SI{e-3}{\meter}$ (waves from kilometers to millimeters in length).
+    \item Orbiting electrons give frequencies between $\num{e11}$ - $\SI[per-mode=power]{e18}{\per\second}$, and wavelengths between $\num{e-3}$ - $\SI{e-10}{\meter}$ (waves from millimeters down to angstroms in length).
+    \begin{itemize}
+        \item Thus, we can cover 14 orders of magnitude in total.
+        \item Visible is only 4000-7000 angstroms!
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
