@@ -1,0 +1,106 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{2}
+
+\begin{document}
+
+
+
+
+\section{Mirrors, Lenses, and Polarization}
+\begin{enumerate}[label={\arabic*)}]
+    \item \marginnote{8/16:}\textcite{bib:YoungFreedman}: Problem 33.29.\par
+    A beam of unpolarized light of intensity $I_0$ passes through a series of ideal polarizing filters with their polarizing axes turned to various angles as shown in the following figure.
+    \begin{center}
+        \begin{tikzpicture}[
+            z={(-0.4,-0.1)},
+            every node/.style={black}
+        ]
+            \footnotesize
+            \filldraw [draw=blx,fill=blz,semithick] (2,0) ellipse (4mm and 1cm);
+            \filldraw [draw=blx,fill=blz,semithick] (4,0) ellipse (4mm and 1cm);
+            \filldraw [draw=blx,fill=blz,semithick] (6,0) ellipse (4mm and 1cm);
+            \draw [very thin] (2,-1.5) -- ++(0,3);
+            \draw [very thin] (4,-1.5) -- ++(0,3);
+            \draw [very thin] (6,-1.5) -- ++(0,3);
+            \draw [orx,very thick] (2,0,0) -- (2,1.2,0);
+            \draw [orx,very thick] (4,0,0) -- (4,0.6,{-0.6*3^0.5});
+            \draw [orx,very thick] (6,0,0) -- (6,0,-1.2);
+            \draw (6,0.2,0) -- (6,0.2,-0.2) node[above right]{$\ang{90}$} -- (6,0,-0.2);
+            \draw [->] plot[domain=0:60,smooth] (4,{0.7*cos(\x)},{-0.7*sin(\x)}) node[above right,xshift=-2mm,yshift=3mm]{$\ang{60}$};
+    
+            \node [circle,fill=pix,inner sep=1.5pt,label={below:$A$}] at (3,0) {};
+            \node [circle,fill=pix,inner sep=1.5pt,label={below:$B$}] at (5,0) {};
+            \node [circle,fill=pix,inner sep=1.5pt,label={below:$C$}] at (7,0) {};
+    
+            \draw [rex,thick,postaction={decorate},decoration={markings,mark=at position 0.4 with \arrow{latex}}] (-0.2,0) -- node[above,xshift=-2mm]{$I_0$} node[below,xshift=-2mm]{Unpolarized} (2,0);
+        \end{tikzpicture}
+    \end{center}
+    \begin{enumerate}
+        \item What is the light intensity (in terms of $I_0$) at points $A$, $B$, and $C$?
+        \item If we remove the middle filter, what will be the light intensity at point $C$?
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 33.30.\par
+    Light of original intensity $I_0$ passes through two ideal polarizing filters having their polarizing axes oriented as shown in the following figure. You want to adjust the angle $\phi$ so that the intensity at point $P$ is equal to $I_0/10$.
+    \begin{center}
+        \begin{tikzpicture}[
+            z={(-0.4,-0.1)},
+            every node/.style={black}
+        ]
+            \footnotesize
+            \filldraw [draw=blx,fill=blz,semithick] (2,0) ellipse (4mm and 1cm);
+            \filldraw [draw=blx,fill=blz,semithick] (5,0) ellipse (4mm and 1cm);
+            \draw [very thin] (2,-1.5) -- ++(0,3);
+            \draw [very thin] (5,-1.5) -- ++(0,3);
+            \draw [orx,very thick] (2,0,0) -- (2,1.2,0);
+            \draw [orx,very thick] (5,0,0) -- (5,0.6,{-0.6*3^0.5});
+            \draw [->] plot[domain=0:60,smooth] (5,{0.7*cos(\x)},{-0.7*sin(\x)}) node[above right,xshift=-2mm,yshift=3mm]{$\phi$};
+    
+            \node [circle,fill=pix,inner sep=1.5pt,label={below:$P$}] at (7,0) {};
+    
+            \draw [rex,thick,postaction={decorate},decoration={markings,mark=at position 0.4 with \arrow{latex}}] (-0.2,0) -- node[below,xshift=-2mm]{$I_0$} (2,0);
+        \end{tikzpicture}
+    \end{center}
+    \begin{enumerate}
+        \item If the original light is unpolarized, what should $\phi$ be?
+        \item If the original light is linearly polarized in the same direction as the polarizing axis of the first polarizer the light reaches, what should $\phi$ be?
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 34.40.\par
+    A converging lens with a focal length of $\SI{12.0}{\centi\meter}$ forms a virtual image $\SI{8.00}{\milli\meter}$ tall, $\SI{17.0}{\centi\meter}$ to the right of the lens. Determine the position and size of the object. Is the image erect or inverted? Are the object and image on the same side or opposite sides of the lens? Draw a principal-ray diagram for this situation.
+    \item \textcite{bib:YoungFreedman}: Problem 34.43.\par
+    \textbf{Combination of Lenses I.} A $\SI{1.20}{\centi\meter}$-tall object is $\SI{50.0}{\centi\meter}$ to the left of a converging lens of focal length $\SI{40.0}{\centi\meter}$. A second converging lens, this one having a focal length of $\SI{60.0}{\centi\meter}$, is located $\SI{300.0}{\centi\meter}$ to the right of the first lens along the same optic axis.
+    \begin{enumerate}
+        \item Find the location and height of the image (call it $I_1$) formed by the lens with a focal length of $\SI{40.0}{\centi\meter}$.
+        \item $I_1$ is now the object fot the second lens. Find the location and height of the image produced by the second lens. This is the final image produced by the combination of lenses.
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 34.69.\par
+    You are in your car driving on a highway at $\SI{25}{\meter\per\second}$ when you glance in the passenger-side mirror (a convex mirror with radius of curvature $\SI{150}{\centi\meter}$) and notice a truck approaching. If the image of the truck is approaching the vertex of the mirror at a speed of $\SI{1.9}{\meter\per\second}$ when the truck is $\SI{2.0}{\meter}$ from the mirror, what is the speed of the truck relative to the highway?
+    \item \textcite{bib:YoungFreedman}: Problem 34.77.\par
+    \begin{enumerate}
+        \item You want to use a lens with a focal length of $\SI{35.0}{\centi\meter}$ to produce a real image of an object, with the height of the image twice the height of the object. What kind of lens do you need and where should the object be placed?
+        \item Suppose you want a virtual image of the same object, with the same magnification --- what kind of lens do you need, and where should the object be placed?
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 34.86.\par
+    An object is placed $\SI{22.0}{\centi\meter}$ from a screen.
+    \begin{enumerate}
+        \item At what two points between object and screen may a converging lens with a $\SI{3.00}{\centi\meter}$ focal length be placed to obtain an image on the screen?
+        \item What is the magnification of the image for each position of the lens?
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 34.90.\par
+    \textbf{Two Lenses in Contact.}
+    \begin{enumerate}
+        \item Prove that when two thin lenses with focal lengths $f_1$ and $f_2$ are placed \emph{in contact}, the focal length of the combination is given by the relationship
+        \begin{equation*}
+            \frac{1}{f} = \frac{1}{f_1}+\frac{1}{f_2}
+        \end{equation*}
+        \item A converging meniscus lens has an index of refraction of $1.55$ and radii of curvature for its surfaces of magnitudes $\SI{4.50}{\centi\meter}$ and $\SI{9.00}{\centi\meter}$. The concave surface is placed upward and filled with carbon tetrachloride (\ce{CCl4}), which has $n=1.46$. What is the focal length of the \ce{CCl4}-glass combination.
+    \end{enumerate}
+    \item We start out with vertically polarized light. This light then passes through a stack of $N$ sheets of Polaroid. The first sheet has its transmission axis oriented $\ang{90}/N$ from the vertical. Subsequent sheets are oriented such that each is rotated by $\ang{90}/N$ relative to the one before it, so that the last sheet is oriented horizontally. Show that in the limit as $N\to\infty$, there will be \emph{no} loss of intensity through the stack.
+\end{enumerate}
+
+
+
+
+\end{document}
