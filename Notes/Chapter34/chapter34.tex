@@ -1,0 +1,352 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{33}
+
+\begin{document}
+
+
+
+
+\chapter{Geometric Optics}
+\section{Mirrors}
+\begin{itemize}
+    \item \marginnote{8/12:}Take what we know about reflection and refraction and apply it to mirrors and lenses.
+    \item Bathroom mirror: A flat piece of glass with a shiny background behind it.
+    \item Spherical mirror: Some part of a reflective sphere.
+    \item Relating the \textbf{radius of curvature} and the distance to the \textbf{focal point}, or the \textbf{focal length}, of a concave spherical mirror.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            scale=1.3,
+            pics/point/.style args={#1:#2}{code={
+                \coordinate (#2);
+                \node [circle,fill=pix,inner sep=1.5pt,label={#1:$#2$}] {};
+            }}
+        ]
+            \footnotesize
+            \def\r{30}
+            \draw [name path=axis] (0,0) -- (4,0) node[right]{axis};
+    
+            \draw [blx,thick] (2.5,1) arc[start angle=45,end angle=-45,radius={2^0.5}];
+    
+            \draw [very thin,dashed] (1.5,0) pic{point=below:C} -- ++(\r:2^0.5) pic{point=right:A};
+            \pic at ({1.5+2^0.5},0) {point=below right:V};
+    
+            \draw [
+                rex,thick,-latex,name path=ray,postaction={decorate},decoration={
+                    markings,mark=at position 0.1 with \arrow{latex}
+                }
+            ]
+                (A) ++(-2.7,0) coordinate (1)
+                -- (A) node[circle,fill=pix,inner sep=1.5pt]{}
+                -- ++({180+2*\r}:2)
+            ;
+    
+            \path [name intersections={of=axis and ray,by=F}] pic at (F) {point=below:F};
+            \pic [draw,angle eccentricity=1.3,pic text={$\theta$}] {angle=1--A--C};
+            \pic [draw,angle eccentricity=1.3,pic text={$\theta$}] {angle=C--A--F};
+            \pic [draw,angle eccentricity=1.3,pic text={$\theta$}] {angle=F--C--A};
+        \end{tikzpicture}
+        \caption{Spherical mirror analysis.}
+        \label{fig:sphericalMirror}
+    \end{figure}
+    \begin{itemize}
+        \item For a distant source $s$, we can approximate the rays as parallel.
+        \item Consider one specific ray.
+        \item Drawing a normal to the surface of the spherical mirror, this normal will be a radius passing through the \textbf{center of curvature}.
+        \item It follows by the law of reflection and the alternate interior angle theorem that all $\theta$ are equal.
+        \item This makes $\triangle CFA$ isosceles.
+        \item Now assume \textbf{paraxial rays}.
+        \item Then $\triangle CFA$ converges to a line segment (a radius) with midpoint $F$.
+        \item Therefore,
+        \begin{equation*}
+            f = \frac{R}{2}
+        \end{equation*}
+        for a concave spherical mirror.
+    \end{itemize}
+    \item \textbf{Radius of curvature}: The radius of the sphere into which the spherical mirror would fit. \emph{Denoted by} $\bm{R}$.
+    \item \textbf{Focal point}: The point where parallel rays converge, after reflecting off of a curved mirror. \emph{Denoted by} $\bm{F}$.
+    \item \textbf{Focal length}: The distance from the focal point to the mirror. \emph{Denoted by} $\bm{f}$.
+    \item \textbf{Center of curvature}: The center of the sphere into which the spherical mirror would fit. \emph{Denoted by} $\bm{C}$.
+    \item \textbf{Paraxial ray}: A ray that is close to the mirror axis.
+    \item Alternatively, if you look at a convex mirror, it appears (via ray tracing) that all rays of light originated from the focal point.
+    \begin{itemize}
+        \item The image in this type of mirror will be a virtual image.
+        \item In this case, we say that $f=-R/2$.
+    \end{itemize}
+    \item A spherical mirror does not focus all rays to a \emph{single} point --- the rays only go to \emph{approximately} the same point.
+    \begin{itemize}
+        \item The farther the rays get from being paraxial, the more they diverge from the focal point.
+    \end{itemize}
+    \item To have a true focal point, we need a parabolic mirror.
+    \item Unfortunately, parabolic mirrors are hard to make.
+    \item \textbf{Ray tracing}: Take a few \textbf{principal rays} and see where the image forms.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            scale=2.5,
+            pics/point/.style args={#1:#2}{code={
+                \coordinate (#2);
+                \node [circle,fill=pix,inner sep=1.5pt,label={#1:${\color{black}#2}$}] {};
+            }}
+        ]
+            \footnotesize
+            \draw [name path=axis] (0,0) -- (3.5,0) node[right]{axis};
+    
+            \draw [blx,thick,name path=mirror] (2,1) arc[start angle=45,end angle=-45,radius={2^0.5}];
+    
+            \draw [grx,ultra thick,-stealth] (0.5,0) node[above left,black]{object} edge [black,thin,->,out=90,in=180,shorten >=2pt] (0.5,0.4) -- ++(0,{2^0.5/2}) coordinate (P1);
+    
+            \path [name path=Afinder] (P1) -- ++(4,0);
+            \draw [
+                rex,thick,-latex,postaction={decorate},
+                decoration={markings,mark=at position 0.2 with \arrow{latex}},
+                name intersections={of=mirror and Afinder,by=A},name path=parallel
+            ] (P1) -- (A) -- ++(-120:2);
+            \draw [
+                rex,thick,-latex,postaction={decorate},
+                decoration={markings,mark=at position 0.2 with \arrow{latex}},
+                name intersections={of=mirror and axis,by=V},name path=central
+            ] (P1) -- (V) pic{point={[xshift=-2pt,yshift=2pt]below right:V}} -- (P1 |- 0,{-2^0.5/2});
+            \path [name intersections={of=axis and parallel,by=F},name path=Fmirror] (P1) -- ($(P1)!1.5!(F)$);
+            \draw [
+                rex,thick,-latex,line join=bevel,postaction={decorate},
+                decoration={markings,mark=at position 0.2 with \arrow{latex}},
+                name intersections={of=mirror and Fmirror}
+            ] (P1) -- (intersection-1) -- ++(-2,0);
+            \path [name intersections={of=parallel and central,by={,,I}},name path=Imirror] (P1) -- ($(P1)!2!(I)$);
+            \draw [
+                rex,thick,postaction={decorate},
+                decoration={
+                    markings,
+                    mark=at position 0.33 with \arrow{latex},
+                    mark=at position 0.85 with \arrowreversed{latex}
+                },
+                name intersections={of=axis and Imirror,by=C},name intersections={of=mirror and Imirror}
+            ] (P1) -- (intersection-1) pic at (C) {point={[xshift=2pt,yshift=2pt]below left:C}};
+    
+            \draw [grx,ultra thick,stealth-] (I) node[below left,yshift=-1mm,black,fill=white,inner sep=1.5pt]{image} edge[black,thin,->,out=90,in=180,shorten >=2pt] (I |- 0,-0.1) -- (I |- 0,0);
+            \pic at (F) {point={[fill=white,circle,inner sep=0pt,xshift=1pt,yshift=0pt]below right:F}};
+        \end{tikzpicture}
+        \caption{Ray tracing.}
+        \label{fig:rayTracing}
+    \end{figure}
+    \item \textbf{Principal ray}: A ray with well-understood geometry.
+    \item \textbf{Focal ray}: A ray that goes through the focal point.
+    \begin{itemize}
+        \item Will be reflected out as a parallel ray.
+    \end{itemize}
+    \item \textbf{Central ray}: A ray that hits the center of the mirror.
+    \begin{itemize}
+        \item Will be reflected out with the same incident angle relative to the axis.
+    \end{itemize}
+    \item \textbf{Radial ray}: A ray that passes through the center of curvature.
+    \begin{itemize}
+        \item It follows a \emph{radius} of the sphere of curvature.
+        \item Will be reflected such that it heads right back to where it started.
+    \end{itemize}
+    \item Calculating the location of the image in a spherical mirror.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            scale=2.5,
+            pics/point/.style args={#1:#2}{code={
+                \coordinate (#2);
+                \node [circle,fill=pix,inner sep=1.5pt,label={#1:${\color{black}#2}$}] {};
+            }}
+        ]
+            \footnotesize
+            \draw [name path=axis] (0,0) -- (3.5,0) node[right]{axis};
+    
+            \draw [blx,thick,name path=mirror] (2,1) arc[start angle=45,end angle=-45,radius={2^0.5}];
+    
+            \draw [grx,ultra thick,-stealth] (0.5,0) coordinate (Q1) node[below left,black]{$Q$} node[above left,black]{object} edge [black,thin,->,out=90,in=180,shorten >=2pt] (0.5,0.4) -- ++(0,{2^0.5/2}) coordinate (P1) node[above left,black]{$P$};
+    
+            \path [name path=Afinder] (P1) -- ++(4,0);
+            \path [name intersections={of=mirror and Afinder,by=A},name path=parallel] (P1) -- (A) -- ++(-120:2);
+            \draw [
+                rex,thick,-latex,postaction={decorate},
+                decoration={markings,mark=at position 0.2 with \arrow{latex}},
+                name intersections={of=mirror and axis,by=V},name path=central
+            ] (P1) -- (V) pic{point={[xshift=-2pt,yshift=2pt]below right:V}} -- (P1 |- 0,{-2^0.5/2});
+            \path [name intersections={of=parallel and central,by={,,I}},name path=Imirror] (P1) -- ($(P1)!2!(I)$);
+            \draw [
+                rex,thick,postaction={decorate},
+                decoration={
+                    markings,
+                    mark=at position 0.33 with \arrow{latex},
+                    mark=at position 0.85 with \arrowreversed{latex}
+                },
+                name intersections={of=axis and Imirror,by=C},name intersections={of=mirror and Imirror}
+            ] (P1) -- (intersection-1) pic at (C) {point={[xshift=2pt,yshift=2pt]below left:C}};
+    
+            \draw [grx,ultra thick,stealth-] (I) coordinate (P2) node[below=1pt,xshift=-1pt,black]{$P'$} node[below right,xshift=4mm,black]{image} edge[black,thin,->,out=135,in=0,shorten >=2pt] (I |- 0,-0.1) -- (I |- 0,0) coordinate (Q2) node[above,black]{$Q'$};
+    
+            \path [name intersections={of=axis and parallel,by=F}] (F) pic {point={[fill=white,circle,inner sep=0pt,xshift=1pt,yshift=0pt]below right:F}};
+            \pic [draw,angle radius=2mm] {right angle=C--Q1--P1};
+            \pic [draw,angle radius=2mm] {right angle=C--Q2--P2};
+            \pic [draw,angle radius=4mm,angle eccentricity=1,pic text={=},pic text options={rotate=160,yshift=-0.5pt}] {angle=P1--C--Q1};
+            \pic [draw,angle radius=4mm,angle eccentricity=1,pic text={=},pic text options={rotate=-20,yshift=-0.5pt}] {angle=P2--C--Q2};
+            \pic [draw,angle radius=6mm,angle eccentricity=1,pic text={\large--},pic text options={rotate=170}] {angle=P1--V--Q1};
+            \pic [draw,angle radius=6mm,angle eccentricity=1,pic text={\large--},pic text options={rotate=190}] {angle=Q2--V--P2};
+    
+            \draw [very thin,|-|] (P1) ++(0,0.4) -- node[above]{$s$} ++(1.92,0);
+            \draw [very thin,|-|] (P2) ++(0,-0.8) -- node[below]{$s'$} ++(0.76,0);
+        \end{tikzpicture}
+        \caption{Deriving the mirror equation.}
+        \label{fig:mirrorEquation}
+    \end{figure}
+    \begin{itemize}
+        \item The image in a spherical mirror will be an inverted, \textbf{real} image.
+        \item Two principal rays define where the image is.
+        \item Considering the image of the top point in our object, choose to analyze a central ray and a radial ray.
+        \item Then $\triangle PVQ$ and $\triangle P'VQ'$ are similar, and $\triangle PCQ$ and $\triangle P'CQ'$ are similar.
+        \item It follows that
+        \begin{align*}
+            \frac{\overline{PQ}}{{\color{white}(}\overline{P'Q'}{\color{white})}} &= \frac{\overline{QV}}{{\color{white}(}\overline{Q'V}{\color{white})}} = \frac{s}{s'}&
+            \frac{\overline{PQ}}{{\color{white}(}\overline{P'Q'}{\color{white})}} &= \frac{\overline{QC}}{{\color{white}(}\overline{Q'C}{\color{white})}} = \frac{s-R}{R-s'}
+        \end{align*}
+        \item Thus, we have the following, which can be solved for the mirror equation.
+        \begin{equation*}
+            \frac{s}{s'} = \frac{s-R}{R-s'}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Real image}: An image that could be substituted for an image on a screen in real space.
+    \item \textbf{Object distance}: The distance from an object to a spherical mirror. \emph{Denoted by} $\bm{s}$.
+    \item \textbf{Image distance}: The distance from an object's image to the mirror. \emph{Denoted by} $\bm{s'}$.
+    \item \textbf{Mirror equation}: The formula
+    \begin{equation*}
+        \frac{1}{s}+\frac{1}{s'} = \frac{1}{f}
+    \end{equation*}
+    \item \textbf{Lateral magnification}: The ratio of the distance from the object to the mirror and the distance from the image to the mirror. \emph{Denoted by} $\bm{m}$.
+    \begin{itemize}
+        \item Mathematically,
+        \begin{equation*}
+            m = \frac{-s'}{s}
+        \end{equation*}
+        \item If $m<0$, the image is inverted.
+        \item If $m>0$, the image is upright.
+        \item Sign convention: $s,s'$ are positive in front of the mirror and negative behind the mirror.
+    \end{itemize}
+    \item Check the above equations on the example of a plane mirror.
+    \begin{itemize}
+        \item For a plane mirror, $R=\infty$, so $\frac{1}{f}=0$.
+        \item It follows by the mirror equation that $s'=-s$.
+        \item Therefore, $m=1$, as desired.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Lenses}
+\begin{itemize}
+    \item \textbf{Double convex} (lens): A lens with two convex exterior surfaces. \emph{Also known as} \textbf{convex} (lens), \textbf{converging} (lens), \textbf{positive} (lens).
+    \item \textbf{Double concave} (lens): A lens with two concave exterior surfaces. \emph{Also known as} \textbf{concave} (lens), \textbf{diverging} (lens), \textbf{negative} (lens).
+    \item \textbf{Plano convex} (lens): A lens with one concave exterior surface and one flat exterior surface.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=1.3]
+            \footnotesize
+            \draw [name path={axis}] (0,0) -- (6,0) node[right]{axis};
+    
+            \draw [very thin,dashed]
+                (1,0) coordinate (C) node[circle,fill=pix,inner sep=1.5pt,label={below:$C$}]{}
+                ++(30:-0.5) -- ++(30:0.5) -- node[below]{$R$} ++(30:{2^0.5}) coordinate (V)
+                -- ++(30:1) coordinate (B)
+                (V) -- ++(1.5,0) coordinate (D)
+            ;
+    
+            \draw [rex,thick,postaction={decorate},decoration={markings,mark=at position 0.1 with \arrow{latex}},-latex,name path={ray}] (V) ++(-2.2,0) coordinate (A) -- (V) -- ++(3.5,-1.3);
+            
+            \draw [blx,thick] (2,1) arc[start angle=45,end angle=-45,radius={2^0.5}] -- node[below left,black,text height=1.5ex,text depth=0.25ex]{$1$} node[below right,black,text height=1.5ex,text depth=0.25ex]{$n$} node[below right,xshift=5mm,black,text height=1.5ex,text depth=0.25ex]{$1$} cycle;
+    
+            \path [name intersections={of=axis and ray,by=F}] (F) node [circle,fill=pix,inner sep=1.5pt,label={below:$F$}] {};
+            \draw [very thin,|-|] (-0.15,0) -- node[left]{$y$} (-0.15,0 |- V);
+            \draw [very thin,|-|] (V |- 0,1.3) -- node[above]{$f$} (F |- 0,1.3);
+            \pic [draw,angle eccentricity=1.3,angle radius=6mm,pic text={$\theta_1$}] {angle=A--V--C};
+            \pic [draw,angle eccentricity=1.2,angle radius=1cm,pic text={$\theta_1$}] {angle=D--V--B};
+            \pic [draw,angle eccentricity=1.3,angle radius=1cm,pic text={$\theta_\text{def}$}] {angle=F--V--D};
+            \pic [draw,angle eccentricity=1.41,angle radius=5mm,pic text={$\theta_2$},pic text options={fill=white,inner sep=1.5pt}] {angle=F--V--B};
+        \end{tikzpicture}
+        \caption{Plano convex lens analysis.}
+        \label{fig:planoConvexLens}
+    \end{figure}
+    \begin{itemize}
+        \item Clearly, $\theta_\text{def}=\theta_2-\theta_1$ and $\sin\theta_1=y/R$.
+        \item If this is a \textbf{thin lens}, then we can invoke the small angle approximation and say that $\theta_1\approx y/R$.
+        \item By Snell's Law, $\sin\theta_2=n\sin\theta_1$.
+        \item Invoking the SAA again, we have that $\theta_2=n\theta_1$.
+        \item It follows that
+        \begin{align*}
+            \theta_\text{def} &= \theta_2-\theta_1\\
+            &= n\theta_1-\theta_1\\
+            &= (n-1)\theta_1\\
+            &= (n-1)\cdot\frac{y}{r}
+        \end{align*}
+        \item Therefore, since $\sin\theta_\text{def}=\frac{y}{f}$ (i.e., with the SAA $\theta_\text{def}=y/f$), we have that
+        \begin{align*}
+            f &= \frac{y}{\theta_\text{def}}\\
+            &= \frac{y}{(n-1)\cdot y/R}\\
+            &= \frac{R}{n-1}
+        \end{align*}
+        \item More commonly, we express this with
+        \begin{equation*}
+            \frac{1}{f} = (n-1)\cdot\frac{1}{R}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Thin lens}: A lens where $\theta$'s are small.
+    \item If you substitute a convex lens for the plano convex lens, everything gets doubled.
+    \begin{itemize}
+        \item Importantly, we now have
+        \begin{equation*}
+            \frac{1}{f} = (n-1)\cdot\frac{2}{R}
+        \end{equation*}
+    \end{itemize}
+    \item We can also generalize a convex lens to a lens with two convex sides of varying radii of curvature on its two sides.
+    \item \textbf{Lens maker's equation}: The following formula.
+    \begin{equation*}
+        \frac{1}{f} = (n-1)\cdot\left( \frac{1}{R_1}+\frac{1}{R_2} \right)
+    \end{equation*}
+    \begin{itemize}
+        \item Notice that if, for instance, the first side is planar, then $R_1=\infty$ and the $1/R_1$ term disappears.
+        \item Sign convention: $R_1,R_2$ are positive for convex lenses and negative for concave lenses.
+    \end{itemize}
+    \item Remember that knowing the focal length of a lens allows us to ray trace.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            pics/point/.style args={#1:#2}{code={
+                \coordinate (#2);
+                \node [circle,fill=pix,inner sep=1.5pt,label={#1:${\color{black}#2}$}] {};
+            }}
+        ]
+            \footnotesize
+            \fill [blz] (3,1) arc[start angle=30,end angle=-30,radius=2] arc[start angle=210,end angle=150,radius=2];
+            \draw [name path=axis] (0,0) -- (6,0) node[right]{axis};
+            \draw [blx,thick] (3,1) arc[start angle=30,end angle=-30,radius=2] arc[start angle=210,end angle=150,radius=2];
+    
+            \draw [grx,ultra thick,-stealth] (1,0) node[above left,black]{object} edge [black,thin,->,out=90,in=180,shorten >=2pt] (1,0.55) -- ++(0,0.9) coordinate (P1);
+            \draw [grx,ultra thick,-stealth] (5,0) node[below right,black]{image} edge [black,thin,->,out=-90,in=0,shorten >=2pt] (5,-0.55) -- ++(0,-0.9) coordinate (P2);
+    
+            \draw [rex,thick,-latex,postaction={decorate},decoration={markings,mark=at position 0.2 with \arrow{latex}},name path=parallel] (P1) -- (3.05,0.9) -- ($(3.05,0.9)!1.5!(P2)$);
+            \draw [rex,thick,-latex,postaction={decorate},decoration={markings,mark=at position 0.2 with \arrow{latex}}] (P1) -- ($(P1)!1.3!(P2)$);
+            \draw [rex,thick,-latex,postaction={decorate},decoration={markings,mark=at position 0.2 with \arrow{latex}},name path=focal] (P1) -- (2.95,-0.9) -- ($(2.95,-0.9)!1.6!(P2)$);
+    
+            \path [name intersections={of=parallel and axis}] (intersection-1) pic{point=above right:F};
+            \path [name intersections={of=focal and axis}] (intersection-1) pic{point=below left:F};
+        \end{tikzpicture}
+        \caption{Convex lens rays.}
+        \label{fig:convexLensRays}
+    \end{figure}
+    \begin{itemize}
+        \item Central rays in thin lenses have negligible lateral displacement.
+        \item An image through a convex lens will be an inverted real image.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}

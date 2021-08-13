@@ -319,5 +319,62 @@
 
 
 
+\section{Dispersion}
+\begin{itemize}
+    \item \marginnote{8/12:}The way that atoms shake in a material with light passing through it depends on the frequency of the light.
+    \item Thus, $n=n(f)$.
+    \begin{itemize}
+        \item For example, $n_\text{blue}\neq n_\text{red}$.
+    \end{itemize}
+    \item In general, $n$ increases as $f$ increases (or $\lambda$ decreases).
+    \begin{itemize}
+        \item Thus, $n_\text{blue}>n_\text{red}$, for example.
+    \end{itemize}
+    \item Thus, if you have light made up of all kinds of different colors, every color will travel through the material at a different speed.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black}
+        ]
+            \footnotesize
+            \draw [yellow,thick] (-120:1) -- ++(-2,-0.5) node[left]{white};
+            \draw [red,thick] (-120:1) -- (-60:0.9) -- ++(2,-0.3) node[right]{red};
+            \draw [blue,thick] (-120:1) -- (-60:1.1) -- ++(2,-0.7) node[right]{blue};
+    
+            \draw [thick] (0,0) -- (-60:2) -- (-120:2) -- cycle;
+        \end{tikzpicture}
+        \caption{A prism dispersing light.}
+        \label{fig:prism}
+    \end{figure}
+    \begin{itemize}
+        \item This is the principle behind a \textbf{prism}.
+    \end{itemize}
+    \item \textbf{Dispersion}: The dependence of the index of refraction on the frequency of light.
+    \item When light passes through water droplets in the sky, it gets refracted by different amounts, depending on the color of the light. This is what creates a rainbow!
+    \item \textbf{Fermat's Principle}: Light follows the path that takes the least time.
+    \item Light traveling between $A$ and $B$ via a mirror.
+    \begin{itemize}
+        \item In this case, least time implies shortest distance.
+        \item And indeed, the path with the shortest distance via the mirror is the one where $\theta_1=\theta_2$, as can be proven with optimization and calculus.
+    \end{itemize}
+    \item Light traveling between $A$ and $B$ via a change of medium.
+    \begin{itemize}
+        \item In this case, shortest distance \emph{does not} imply least time.
+        \item If $n_1<n_2$, you can travel faster in $n_1$ then you can in $n_2$, so you want to minimize the time you spend in $n_2$ without going too far out of your way.
+        \item It follows that the path with the least time will be the one given by Snell's law.
+    \end{itemize}
+    \item Why does light take the path of least time?
+    \begin{itemize}
+        \item Fermat says, "because it does."
+        \item Quantum physics has a more bizarre reason for this.
+    \end{itemize}
+    \item How does light know which path to take?
+    \begin{itemize}
+        \item It doesn't --- it tries all paths and only one succeeds.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
