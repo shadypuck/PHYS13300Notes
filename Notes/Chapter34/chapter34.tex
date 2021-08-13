@@ -130,7 +130,7 @@
             \draw [grx,ultra thick,stealth-] (I) node[below left,yshift=-1mm,black,fill=white,inner sep=1.5pt]{image} edge[black,thin,->,out=90,in=180,shorten >=2pt] (I |- 0,-0.1) -- (I |- 0,0);
             \pic at (F) {point={[fill=white,circle,inner sep=0pt,xshift=1pt,yshift=0pt]below right:F}};
         \end{tikzpicture}
-        \caption{Ray tracing.}
+        \caption{Ray tracing a concave mirror.}
         \label{fig:rayTracing}
     \end{figure}
     \item \textbf{Principal ray}: A ray with well-understood geometry.
@@ -236,13 +236,54 @@
         \item It follows by the mirror equation that $s'=-s$.
         \item Therefore, $m=1$, as desired.
     \end{itemize}
+    \item \marginnote{8/13:}Ray tracing a convex mirror.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            scale=2.5,
+            pics/point/.style args={#1:#2}{code={
+                \coordinate (#2);
+                \node [circle,fill=pix,inner sep=1.5pt,label={#1:${\color{black}#2}$}] {};
+            }}
+        ]
+            \footnotesize
+            \draw [name path=axis] (0,0) -- (3.5,0) node[right]{axis};
+    
+            \draw [blx,thick,name path=mirror] (2,1) arc[start angle=135,end angle=225,radius={2^0.5}];
+    
+            \draw [grx,ultra thick,-stealth] (0.5,0) node[above left,black]{object} edge [black,thin,->,out=90,in=180,shorten >=2pt] (0.5,0.4) -- ++(0,{2^0.5/2}) coordinate (P1);
+    
+            \path [name path=Afinder] (P1) -- ++(4,0);
+            \draw [
+                rex,thick,-latex,postaction={decorate},
+                decoration={markings,mark=at position 0.2 with \arrow{latex}},
+                name intersections={of=mirror and Afinder,by=A},name path=parallel
+            ] (P1) -- (A) -- ++(120:1);
+            \draw [
+                rex,thick,-latex,postaction={decorate},
+                decoration={markings,mark=at position 0.2 with \arrow{latex}},
+                name intersections={of=mirror and axis,by=V},name path=central
+            ] (P1) -- (V) -- (P1 |- 0,{-2^0.5/2});
+            \path [name path=Ffinder] (A) -- ++(-60:1);
+            \draw [rex,thick,dashed,name intersections={of=Ffinder and axis,by=F}] (A) -- (F) pic{point=below:F};
+            \path [name path=P2finder] (V) -- ++($(V)-(P1)+(0,2^0.5)$);
+            \draw [rex,thick,dashed,name intersections={of=P2finder and Ffinder,by=P2}] (V) -- (P2);
+    
+            \draw [grx,ultra thick,-stealth] (P2 |- 0,0) -- (P2) node[above right,black]{image} edge [out=-90,in=0,->,black,thin,shorten >=2pt] (P2 |- 0,0.1);
+        \end{tikzpicture}
+        \caption{Ray tracing a convex mirror.}
+        \label{fig:rayTracingConvex}
+    \end{figure}
+    \begin{itemize}
+        \item Upright, smaller, virtual image.
+    \end{itemize}
 \end{itemize}
 
 
 
 \section{Lenses}
 \begin{itemize}
-    \item \textbf{Double convex} (lens): A lens with two convex exterior surfaces. \emph{Also known as} \textbf{convex} (lens), \textbf{converging} (lens), \textbf{positive} (lens).
+    \item \marginnote{8/12:}\textbf{Double convex} (lens): A lens with two convex exterior surfaces. \emph{Also known as} \textbf{convex} (lens), \textbf{converging} (lens), \textbf{positive} (lens).
     \item \textbf{Double concave} (lens): A lens with two concave exterior surfaces. \emph{Also known as} \textbf{concave} (lens), \textbf{diverging} (lens), \textbf{negative} (lens).
     \item \textbf{Plano convex} (lens): A lens with one concave exterior surface and one flat exterior surface.
     \begin{figure}[h!]
@@ -338,11 +379,93 @@
             \path [name intersections={of=focal and axis}] (intersection-1) pic{point=below left:F};
         \end{tikzpicture}
         \caption{Convex lens rays.}
-        \label{fig:convexLensRays}
+        \label{fig:lensRaysConvex}
     \end{figure}
     \begin{itemize}
         \item Central rays in thin lenses have negligible lateral displacement.
         \item An image through a convex lens will be an inverted real image.
+    \end{itemize}
+    \item \marginnote{8/13:}Ray tracing a concave lens.
+    \begin{itemize}
+        \item Upright, smaller, virtual image.
+    \end{itemize}
+    \item Note that the lens maker's equation used by \textcite{bib:YoungFreedman} is $1/f=(n-1)(1/R_1-1/R_2)$, along with a complicated sign convention.
+    \begin{itemize}
+        \item The textbook uses this formula because it follows from the study of thick lenses, with which many older textbooks start.
+    \end{itemize}
+    \item A concave mirror and a plano convex lens with a mirrored background image the same way.
+    \begin{itemize}
+        \item A convex lens mirrors the same way as both, but with the image on the other side of the lens as opposed to the same side of the apparatus.
+    \end{itemize}
+    \item Therefore, the lens equation is also analogously
+    \begin{equation*}
+        \frac{1}{s}+\frac{1}{s'} = \frac{1}{f}
+    \end{equation*}
+    \begin{itemize}
+        \item However, this equation comes with the sign convention that $s$ is positive in front of the lens and negative behind the lens, and $s'$ is positive behind the lens and negative in front of the lens.
+    \end{itemize}
+    \item Similarly,
+    \begin{equation*}
+        m = \frac{-s'}{s}
+    \end{equation*}
+    for lenses, with the new sign convention.
+    \item Note that the focal length is positive for convex lenses and negative for concave lenses.
+    \item Just like mirrors can image images from other mirrors, lenses can image images from other lenses.
+    \begin{itemize}
+        \item You do it the same way, too --- one at a time.
+    \end{itemize}
+    \item Example: Suppose that you have two identical thin lenses, $\SI{15}{\centi\meter}$ apart, with focal length $\SI{10}{\centi\meter}$ each. Place an object $\SI{15}{\centi\meter}$ to the left of the left lens. How does it image?
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            pics/point/.style args={#1:#2}{code={
+                \coordinate (#2);
+                \node [circle,fill=pix,inner sep=1.5pt,label={#1:${\color{black}#2}$}] {};
+            }},
+            every node/.style={black}
+        ]
+            \footnotesize
+            \fill [blz] (2,1) arc[start angle=30,end angle=-30,radius=2] arc[start angle=210,end angle=150,radius=2];
+            \fill [blz] (3.5,1) arc[start angle=30,end angle=-30,radius=2] arc[start angle=210,end angle=150,radius=2];
+            \draw [name path=axis] (0,0) -- (6,0) node[right]{axis};
+            \draw [blx,thick] (2,1)   node[above]{$1$} arc[start angle=30,end angle=-30,radius=2] node[below]{$f=\SI{10}{\centi\meter}$} arc[start angle=210,end angle=150,radius=2];
+            \draw [blx,thick] (3.5,1) node[above]{$2$} arc[start angle=30,end angle=-30,radius=2] node[below]{$f=\SI{10}{\centi\meter}$} arc[start angle=210,end angle=150,radius=2];
+    
+            \pic at (1,0) {point=below:F_1};
+            \pic at (3,0) {point=below:F_1};
+            \pic at (2.5,0) {point=below:F_2};
+            \pic at (4.5,0) {point=below:F_2};
+    
+            \draw [grx,ultra thick,-stealth] (0.5,0) -- ++(0,0.8) node[above right=-2pt,black]{object} edge [black,thin,->,out=-90,in=0,shorten >=2pt] (0.5,0.4);
+            \draw [grx,ultra thick,-stealth] (4.1,0) -- ++(0,-0.64) node[below right=-2pt,black]{image} edge [black,thin,->,out=90,in=0,shorten >=2pt] (4.1,-0.3);
+    
+            \draw (0,-1.7) -- node[below=6mm]{$\si{\centi\meter}$} ++(6,0);
+            \foreach \x [evaluate=\x as \num using int(\x*10)] in {0,0.5,...,6} {
+                \draw (\x,-1.6) -- ++(0,-0.2) node[below]{$\num$};
+            }
+        \end{tikzpicture}
+        \caption{Imaging two lenses.}
+        \label{fig:twoLensImage}
+    \end{figure}
+    \begin{itemize}
+        \item Image location:
+        \begin{itemize}
+            \item For lens 1, we have $f=\SI{10}{\centi\meter}$ and $s=\SI{15}{\centi\meter}$, so $s'=\SI{30}{\centi\meter}$ by the lens equation.
+            \item For lens 2, we still have $f=\SI{10}{\centi\meter}$ but now we have have $s=\SI{-15}{\centi\meter}$, so $s'=\SI{6}{\centi\meter}$ by the lens equation.
+        \end{itemize}
+        \item Magnification:
+        \begin{align*}
+            m_\text{total} &= m_1m_2\\
+            &= \left( -\frac{\SI{30}{\centi\meter}}{\SI{15}{\centi\meter}} \right)\left( -\frac{\SI{6}{\centi\meter}}{\SI{-15}{\centi\meter}} \right)\\
+            &= -\frac{4}{5}
+        \end{align*}
+        \item Thus, the total image is inverted, $4/5$ times the size of the original, and $\SI{6}{\centi\meter}$ to the right of the rightmost lens.
+    \end{itemize}
+    \item Mirrors and lenses have limitations.
+    \begin{itemize}
+        \item Thus, it does make sense to use multiple mirrors/lenses in some circumstances.
+        \item Compensating for the paraxial approximation: When you need a sharper focus in good cameras.
+        \item Compensating for the dependence of $n$ on frequency: Have any single lens do less work.
     \end{itemize}
 \end{itemize}
 
