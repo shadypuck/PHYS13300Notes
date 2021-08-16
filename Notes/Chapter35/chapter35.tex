@@ -1,0 +1,243 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{34}
+
+\begin{document}
+
+
+
+
+\chapter{Interference}
+\section{Measuring Interference in Radio and Light Waves}
+\begin{itemize}
+    \item \marginnote{8/16:}Midterm tomorrow.
+    \begin{itemize}
+        \item 80 minutes long.
+        \item Probably 5 problems.
+        \item Released at 10:00 AM CT.
+        \item 20 extra minutes for downloading/uploading.
+        \item Due at 11:40 AM CT.
+        \item Class Resumes at 11:50 CT.
+        \item Covers HW 1-3, Chapter 15-16, 33-34.
+        \item If there's anything that the textbook covers that he doesn't, you're not responsible for it.
+        \item Review the homeworks, his class examples, and the worked examples in the textbook.
+    \end{itemize}
+    \item It's hard to measure interference analogous to that associated with Figure \ref{fig:varyingDistanceSpeakers} for light waves because their wavelength is so small, so let's look first at radio waves.
+    \item If we have an LC circuit with megahertz frequencies, the wavelength is a few centimeters.
+    \begin{itemize}
+        \item Hertz (1880s): If you set up radio waves between two chunks of grounded metal, you can set up a standing wave between them.
+    \end{itemize}
+    \item Are radio waves and light both EM waves?
+\end{itemize}
+\begin{tchart}{1.4}{Radio Waves}{Light Waves}
+    Speed $c$ & Speed $c$\\
+    Reflection & Reflection\\
+    Refraction & Refraction\\
+    Polarized & Polarized\\
+    Interference & Interference???
+\end{tchart}
+\begin{itemize}
+    \item We measure interference of visible light with the double slit experiment.
+    \begin{itemize}
+        \item Huygen's principle tells us that the two slits with parallel light waves coming in from behind behave as point sources of light.
+        \item Let $r_1$ be the distance from slit 1 to a point $P$ on the screen and let $r_2$ be the distance from slit 2 to $P$.
+        \item Define $\Delta r=r_2-r_1$.
+        \item In 3D, $y(r,t)=A\cos(kr-\omega t)$.
+        \item At point $P$,
+        \begin{align*}
+            y &= y_1(r_1,t)+y_2(r_2,t)\\
+            &= y_1(r,t)+y_2(r+\Delta r,t)\\
+            &= A\cos(kr-\omega t)+A\cos(k[r+\Delta r]-\omega t)\\
+            &= A\cos(kr-\omega t)+A\cos(kr-\omega t+\phi)
+        \end{align*}
+        \item Clearly, $\phi=k\Delta r$. If $\phi=2\pi n$ for $n\in\mathbb{Z}$, we get constructive interference. If $\phi=\pi+2\pi n$ for $n\in\mathbb{Z}$, we get destructive interference.
+        \item Thus, if we want the waves to perfectly add, we require that $\Delta r=n\lambda$ for some $n\in\mathbb{Z}$, and if we want the waves to cancel, we require that $\Delta r=\lambda/2+n\lambda$ for some $n\in\mathbb{Z}$.
+        \item We can succinctly sum up this idea with
+        \begin{equation*}
+            \frac{\phi}{2\pi} = \frac{\Delta r}{\lambda}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Central maximum}: The bright spot in the middle of the screen of the double slit experiment.
+    \item \textbf{Lateral maxima}: All noncentral bright spots on the screen.
+    \item \textbf{First lateral maximum}: The bright spot directly to the right of the central maximum facing the screen.
+    \item If the screen is far away compared to slit separation $d$, then the rays of light are virtually parallel.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=2]
+            \footnotesize
+            \draw [orx,semithick] (0,-1) -- (0,-0.5) (0,-0.4) -- (0,0.4) (0,0.5) -- (0,2);
+    
+            \draw [very thin,dashed] (0,-0.45) coordinate (B) -- ++(1,0) coordinate (A);
+            \draw [very thin] (0,0.45) coordinate (D) -- ++(0.36,-0.72) coordinate (E);
+            \draw [rex,thick,-latex,postaction={decorate},decoration={markings,mark=at position 0.5 with \arrow{>>}}] (0,-0.45) -- ++(2,1) coordinate (C);
+            \draw [rex,thick,-latex,postaction={decorate},decoration={markings,mark=at position 0.5 with \arrow{>>}}] (0,0.45) -- ++(2,1);
+    
+            \draw [very thin,|-|] (-0.15,-0.4) -- node[left]{$d$} ++(0,0.8);
+            \draw [very thin,|-|] (0,-0.45) ++(0.15,-0.3) -- node[below]{$\Delta r$} ++(0.36,0.18);
+            \pic [draw,angle eccentricity=1.3,pic text={$\theta$}] {angle=A--B--C};
+            \pic [draw,angle eccentricity=1.3,pic text={$\theta$}] {angle=B--D--E};
+        \end{tikzpicture}
+        \caption{Double slit experiment $\Delta r$ derivation.}
+        \label{fig:doubleSlitDeltar}
+    \end{figure}
+    \begin{itemize}
+        \item If we let $\theta$ be the angle between the rays and a normal to the slitted surface, then
+        \begin{equation*}
+            \Delta r = d\sin\theta
+        \end{equation*}
+        is a very good approximation.
+        \item It follows that $d\sin\theta=n\lambda$ yields maxima and $d\sin\theta=(n+1/2)\lambda$ yield minima.
+        \item Thus we can measure the wavelength of light with the following:
+        \begin{equation*}
+            d\sin\theta_\text{1st lateral maximum} = \lambda
+        \end{equation*}
+    \end{itemize}
+    \item If we want to measure the intensity on the surface of the screen a distance $r_0$ from the slits (more specifically, the center of the slits), then we can do the following.
+    \begin{align*}
+        E(r,t) &= A\left[ \cos\left( k\left[ r_0+\frac{\Delta r}{2} \right]-\omega t \right)+\cos\left( k\left[ r_0-\frac{\Delta r}{2} \right]-\omega t \right) \right]\\
+        &=  A\left[ \cos\left( kr_0-\omega t+k\cdot\frac{\Delta r}{2} \right)+\cos\left( kr_0-\omega t-k\cdot\frac{\Delta r}{2} \right) \right]\\
+        &= 2A\cos(kr_0-\omega t)\cos\left( \frac{k\Delta r}{2} \right)\\
+        &= 2A\cos(kr_0-\omega t)\cos\left( \frac{k}{2}\cdot d\sin\theta \right)
+    \end{align*}
+    \begin{itemize}
+        \item $x$ will be constant, and $\omega t$ will flicker so fast that we don't notice it changing. The other cosine term matters, though:
+        \item Since $I\propto E^2$, $I(\theta)\propto\cos^2(kd\sin\theta/2)=\cos^2(\pi d\sin\theta/\lambda)$.
+        \item Invoking the SAA for small $\theta$, it follows that
+        \begin{equation*}
+            I(\theta)\propto I_\text{max}\cos^2(\pi d\theta/\lambda)
+        \end{equation*}
+    \end{itemize}
+    \item In the double slit experiment, the two slits behave as two \textbf{coherent} sources of light.
+\end{itemize}
+
+
+
+\section{Thin Films}
+\begin{itemize}
+    \item Shining light on a bubble.
+    \begin{itemize}
+        \item A bubble is a thin film of soapy water with air on both sides.
+        \item If it has thickness $t$, when a wave of light impinges on it, some will be reflected off of the outside of the film, and some will be transmitted before being reflected off of the inside of the film (and some will continue to be transmitted).
+        \item Thinking back to a compound string, $\mu_1>\mu_2$ implies no flip of the reflected wave and $\mu_1<\mu_2$ implies a flip.
+        \item Analogously, if air has IOR $n_1$ and soapy water has IOR $n_2$, $n_1<n_2$ implies a flip and $n_1>n_2$ implies no flip.
+        \item It follows that when a ray of light enters the thin film, the reflection will be flipped, and when a ray of light exits the thin film, the reflection will not be flipped.
+        \item For perpendicular rays, approximate $\Delta r=2t$ between the two reflected rays.
+        \item Thus, accounting for the flip (which adds an extra half-wavelength of $\Delta r$), $2t=m\lambda$ for $m\in\mathbb{Z}$ will imply \emph{destructive} interference. For constructive interference, though, we have to take into account the distortion of the wavelength by the IOR of the soapy water ($\lambda'=\lambda/n_2$): $2tn_2=(m+1/2)\lambda$.
+        \item But this will vary for different wavelengths, so different colors will be emphasized at different parts of the bubble.
+        \item If the bubble is very thin ($t<<\lambda$ where $\lambda$ is the wavelength of light), we'll only retain the flip, meaning that we get destructive interference and a black bubble.
+    \end{itemize}
+    \item Oil also forms a thin film on water.
+\end{itemize}
+
+
+
+\section{Multiple Slits}
+\begin{itemize}
+    \item Three slits:
+    \begin{itemize}
+        \item Assume consistent slit separation $d$.
+        \item If $\Delta r=r_2-r_1=r-3-r_2=m\lambda$, then all three add constructively.
+        \begin{itemize}
+            \item No matter how many adjacent slits you have, if $d\sin\theta=m\lambda$, then you get a maximum.
+        \end{itemize}
+        \item $d\sin\theta=m\lambda$ does \emph{not} imply a minimum for three slits (if two cancel, you still have the third).
+        \item So what is it? How do we get all three cosines in the following equation to sum to zero? Let $\alpha=kr_0-\omega t$. Then
+        \begin{equation*}
+            E = A\left[ \cos(\alpha)+\cos(\alpha+\phi)+\cos(\alpha+2\phi) \right]
+        \end{equation*}
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[b]{0.45\linewidth}
+                \centering
+                \begin{tikzpicture}[
+                    scale=1.2,
+                    every node/.style={black}
+                ]
+                    \footnotesize
+                    \draw [-stealth] (-2,0) -- (2,0) node[right]{$x$};
+                    \draw [-stealth] (0,-2.5) -- (0,2.5) node[above]{$y$};
+            
+                    \draw [very thin,dashed] (30:1.5) -- (30:1.5 |- 0,0) coordinate (cos1);
+                    \draw [very thin,<-|,shorten <=1pt] (0,-0.5) -- node[below]{$\cos\alpha$} (30:1.5 |- 0,-0.5);
+                    \draw [very thin,|->,shorten >=1pt] (190:1.5 |- 0,-0.5) -- node[below]{$\cos(\alpha+2\phi)$} (0,-0.5);
+                    \draw [very thin,|->,shorten >=1pt] (110:1.5 |- 0,1.5) -- node[above=1mm,fill=white,inner sep=1.5pt]{$\cos(\alpha+\phi)$} (0,1.5);
+            
+                    \draw [blx,thick,-latex] (0,0) coordinate (O) -- node[above]{1} (30:1.5) coordinate (1);
+                    \draw [blx,thick,-latex] (0,0)                -- node[left]{1}  (110:1.5) coordinate (2);
+                    \draw [blx,thick,-latex] (0,0)                -- node[below]{1} (190:1.5) coordinate (3);
+            
+                    \pic [draw,angle eccentricity=1.3,pic text={$\alpha$}] {angle=cos1--O--1};
+                    \pic [draw,angle eccentricity=1.3,pic text={$\phi$}] {angle=1--O--2};
+                    \pic [draw,angle eccentricity=1.3,pic text={$\phi$}] {angle=2--O--3};
+                \end{tikzpicture}
+                \caption{Random angles.}
+                \label{fig:phaserDiagrama}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.45\linewidth}
+                \centering
+                \begin{tikzpicture}[
+                    scale=1.2,
+                    every node/.style={black}
+                ]
+                    \footnotesize
+                    \draw [-stealth] (-2,0) -- (2,0) node[right]{$x$};
+                    \draw [-stealth] (0,-2.5) -- (0,2.5) node[above]{$y$};
+        
+                    \draw [very thin,<-|,shorten <=1pt] (0,-0.7) -- node[below]{$\cos\alpha$} (0:1.5 |- 0,-0.7);
+                    \draw [very thin,|->,shorten >=1pt] (120:1.5 |- 0,-1.5) -- node[below=1mm,fill=white,inner sep=1.5pt]{$\cos(\alpha+2\phi)$} (0,-1.5);
+                    \draw [very thin,|->,shorten >=1pt] (240:1.5 |- 0,1.5)  -- node[above=1mm,fill=white,inner sep=1.5pt]{$\cos(\alpha+\phi)$} (0,1.5);
+            
+                    \draw [blx,thick,-latex] (0,0) coordinate (O) -- node[above]{1} (0:1.5) coordinate (1);
+                    \draw [blx,thick,-latex] (0,0)                -- node[left]{1}  (120:1.5) coordinate (2);
+                    \draw [blx,thick,-latex] (0,0)                -- node[left]{1}  (240:1.5) coordinate (3);
+            
+                    \pic [draw,angle eccentricity=1.4,pic text={$\phi$}] {angle=1--O--2};
+                    \pic [draw,angle eccentricity=1.4,pic text={$\phi$},pic text options={fill=white,inner sep=1.5pt}] {angle=2--O--3};
+                    \pic [draw,angle eccentricity=1.4,pic text={$\phi$}] {angle=3--O--1};
+                \end{tikzpicture}
+                \caption{Set angles.}
+                \label{fig:phaserDiagramb}
+            \end{subfigure}
+            \caption{Phaser diagram for three cosines.}
+            \label{fig:phaserDiagram}
+        \end{figure}
+        \begin{itemize}
+            \item We can use a \textbf{phaser diagram}.
+            \item From Figure \ref{fig:phaserDiagram}, we can see that if $\phi=\ang{120},\ang{240},\dots$, then we get cancellation. In other words, we must have $\Delta r=n\lambda/3$ for $\lambda\in\mathbb{Z}$.
+        \end{itemize}
+    \end{itemize}
+    \item $N$ slits.
+    \begin{itemize}
+        \item Maxima at $d\sin\theta=m\lambda$ for $m\in\mathbb{Z}$.
+        \item Minima at $d\sin\theta=m\lambda/N$ for $m\in\mathbb{Z}$.
+        \item Thus, the bands given by $I(\theta)$ will become spikes at with increasingly greater separation.
+        \item Sharp bright spots are a good thing because they help us achieve greater accuracy in measuring the wavelength of light.
+    \end{itemize}
+    \item Example: \ce{Na} gas gives off yellow light ($\lambda\approx\SI{6000}{\angstrom}$).
+    \begin{itemize}
+        \item More specifically, it gives off light at $\SI{5890}{\angstrom}$ and $\SI{5896}{\angstrom}$, so we should have two interference patterns, but very difficult to tell apart.
+        \item For $N$ slits, $\theta_\text{1st min}=\sin^{-1}(\lambda/dN)\approx\lambda/dN$.
+        \item Thus, the width of the maxima is approximately $\lambda/dN$, so for more slits, we get sharper maxima.
+        \item Considering the \textbf{separation angle}, if $\Delta\theta_\text{sep}>\theta_\text{width of max}$, we can tell them apart.
+        \item So to tell whether \ce{Na} is giving off one wavelength or two, we'll have $d\sin\theta_1=m\lambda_1$ and $d\sin\theta_2=m\lambda_2$. Subtracting, we get
+        \begin{align*}
+            d(\sin\theta_1-\sin\theta_2) &= m(\lambda_1-\lambda_2)\\
+            d(\theta_1-\theta_2) &= m(\lambda_1-\lambda_2)\\
+            d\Delta\theta_\text{sep} &= m\Delta\lambda\\
+            \Delta\theta_\text{sep} &\approx \frac{m\Delta\lambda}{d}
+        \end{align*}
+        \item Thus, we can barely resolve the two wavelengths if $m\Delta\lambda/d=\lambda/Nd$, or if
+        \begin{equation*}
+            \frac{\lambda}{\Delta\lambda} = mN
+        \end{equation*}
+        \item Thus, for the sodium doublet, we need $mN\geq 1000$.
+        \item $m$ is the \textbf{order of the maximum}.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
