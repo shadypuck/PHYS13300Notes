@@ -1,0 +1,112 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{35}
+
+\begin{document}
+
+
+
+
+\chapter{Diffraction}
+\section{Single Slit Diffraction}
+\begin{itemize}
+    \item \marginnote{8/17:}Shining light through only one slit still yields an interference pattern.
+    \item We explain this with \textbf{diffraction}.
+    \item Finding the location of minima on the screen:
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw (0,-3) -- (0,-1) (-0.1,0) -- (0.1,0) (0,1) -- (0,3);
+            \draw [very thin,dashed] (0,0) coordinate (O) -- (1,0) coordinate (N);
+    
+            \draw [blx,very thick]
+                (-1.5,-2) -- ++(0,4)
+                (-2,-2) -- ++(0,4)
+                (-2.5,-2) -- ++(0,4)
+            ;
+    
+            \draw [rex,thick,-latex] (0,1) node[circle,fill,inner sep=1.5pt,label={[yshift=2pt,black]below:$P_1$}]{} -- node[above,black]{$r_1$} ++(2,1);
+            \draw [rex,thick,-latex] (0,0) node[circle,fill,inner sep=1.5pt,label={[yshift=2pt,black]below:$P_2$}]{} -- node[above,black]{$r_2$} ++(2,1) coordinate (r0);
+    
+            \draw [very thin,|-|] (-1.1,-1) -- node[left]{$a$} ++(0,2);
+            \draw [very thin,|-|] (-0.5,-1) -- node[left]{$\frac{a}{2}$} ++(0,1);
+            \draw [very thin,|-|] (-0.5,0) -- node[left]{$\frac{a}{2}$} ++(0,1);
+            \pic [draw,angle eccentricity=1.3,pic text={$\theta$}] {angle=N--O--r0};
+        \end{tikzpicture}
+        \caption{Finding diffraction minima.}
+        \label{fig:diffMinima}
+    \end{figure}
+    \begin{itemize}
+        \item Let the one slit have width $a$.
+        \item Only the part of the wavefront that aligns with the slit will pass through. However, according to Huygen's principle, when the light wave reaches the slit, it will act like infinitely many point sources of light all along the length of the slit.
+        \item Consider two specific rays $r_1$ and $r_2$ emanating from the slit in same direction, one at the top and one in the middle. We know that if they are oriented at an angle that makes $\Delta r=\lambda/2$, then they cancel out.
+        \item Generalizing, if any two rays satisfy $\frac{a}{2}\sin\theta=\lambda/2$ (i.e., satisfy $a\sin\theta=\lambda$), then they will cancel.
+        \item Indeed, every $\theta$ satisfying $a\sin\theta=\lambda$ will cancel: Consider all the rays originating from every point in the slit that point in the $\theta$-direction, and notice that for any point in the slit, there will be a point $a/2$ units away from it; the rays from these two points will cancel. Thus, every ray is associated with another ray that cancels it out, guaranteeing that $\theta$ is an interference minimum.
+        \item Note that if $\theta$ yields an interference minimum, then $\theta$ satisfying $a\sin\theta=m\lambda$ where $m\in\N$ will yield interference minima.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Intensity of Single Slit Diffraction}
+\begin{itemize}
+    \item Like before, $\theta=\ang{0}$ gives a \textbf{central diffraction maximum}.
+    \item Finding the intensity maxima in general:
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black}
+        ]
+            \footnotesize
+            \draw (0,-3) -- (0,-1) (-0.1,0) -- (0.1,0) (0,1) -- (0,3);
+            \draw [very thin,dashed] (0,0) coordinate (O) -- (1,0) coordinate (N);
+
+            \draw [semithick,->] (-0.3,0) -- ++(0,0.7) node[left]{$y$};
+
+            \draw [rex,thick,-latex] (0,0.7) -- node[above]{$r$} ++(2,1);
+            \draw [rex,thick,-latex] (0,0) -- node[above]{$r_0$} ++(2,1) coordinate (r0);
+
+            \draw [very thin,|-|] (-0.7,-1) -- node[left]{$a$} ++(0,2);
+            \pic [draw,angle eccentricity=1.3,pic text={$\theta$}] {angle=N--O--r0};
+        \end{tikzpicture}
+        \caption{Finding diffraction maxima.}
+        \label{fig:diffMaxima}
+    \end{figure}
+    \begin{itemize}
+        \item To find the intensity maxima, we derive an equation for the intensity in general as a function of $\theta$.
+        \item To do so, we sum up every infinitesimal contribution of all the points along the slit with an integral, as follows.
+        \item Since $\Delta r=y\sin\theta$ (see Figure \ref{fig:diffMaxima}), the wave function for the electric field wave along the arbitrary ray $r$ a distance $y$ from the central ray is given by
+        \begin{align*}
+            \cos(kr-\omega t) &= \cos(k[r_0+\Delta r]-\omega t)\\
+            &= \cos\left( kr_0-\omega t+\frac{2\pi}{\lambda}\cdot y\sin\theta \right)
+        \end{align*}
+        \item It follows that the electric field $E$ at some point $P$ on the screen is given by
+        \begin{align*}
+            E &= A\int_{-a/2}^{a/2}\cos\left( kr_0-\omega t+\frac{2\pi\sin\theta}{\lambda}\cdot y \right)\dd{y}\\
+            &= \frac{C}{\sin\theta}\cos(kr_0-\omega t)\sin\left( \frac{\pi a}{\lambda}\sin\theta \right)
+        \end{align*}
+        where $C$ represents a bunch of constants.
+        \item Thus, since $I\propto E^2$,
+        \begin{equation*}
+            I \propto \frac{\sin^2\left( \frac{\pi a}{\lambda}\sin\theta \right)}{\sin^2\theta}
+        \end{equation*}
+        \item Additionally, if we define $\alpha=\frac{\pi a}{\lambda}\sin\theta$, then
+        \begin{equation*}
+            I = I_\text{max}\frac{\sin^2\alpha}{\alpha^2}
+        \end{equation*}
+        \item Notice that $\theta\to 0$ implies $\alpha\to 0$ implies $\sin(\alpha)/\alpha\to 1$ implies $I\to I_\text{max}$, as expected.
+        \item Furthermore, since $\sin\alpha$ is bounded but $\alpha$ is not, $\sin^2(\alpha)/\alpha^2$ yields a graph of maxima that drop off in intensity as $\alpha\to\pm\infty$.
+    \end{itemize}
+    \item \textbf{Diffraction}: Bending of a light wave as it goes through a small slit.
+    \begin{itemize}
+        \item As slit width $a$ decreases, minima spread out.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
