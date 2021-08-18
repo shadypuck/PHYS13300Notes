@@ -1,0 +1,58 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{3}
+
+\begin{document}
+
+
+
+
+\section{Interference and Diffraction}
+\begin{enumerate}[label={\arabic*)}]
+    \item \marginnote{8/19:}\textcite{bib:YoungFreedman}: Problem 35.9.\par
+    Two slits spaced $\SI{0.450}{\milli\meter}$ apart are place $\SI{75.0}{\centi\meter}$ from a screen. What is the distance between the second and third dark lines of the interference pattern on the screen when the slits are illuminated with coherent light with a wavelength of $\SI{500}{\nano\meter}$?
+    \item \textcite{bib:YoungFreedman}: Problem 35.20.\par
+    Two slits spaced $\SI{0.0720}{\milli\meter}$ apart are $\SI{0.800}{\meter}$ from a screen. Coherent light of wavelength $\lambda$ passes through the two slits. In their interference pattern on the screen, the distance from the center of the central maximum to the first minimum is $\SI{3.00}{\milli\meter}$. If the intensity at the peak of the central maximum is $\SI{0.0600}{\watt\per\square\meter}$, what is the intensity at points on the screen that are
+    \begin{enumerate}
+        \item $\SI{2.00}{\milli\meter}$ from the center of the central maximum;
+        \item $\SI{1.50}{\milli\meter}$ from the center of the central maximum?
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 35.39.\par
+    Suppose you illuminate two thin slits by monochromatic coherent light in air and find that they produce their first interference \emph{minima} at $\pm\ang{35.20}$ on either side of the central bright spot. You then immerse these slits in a transparent liquid and illuminate them with the same light. Now you find that the first minima occur at $\pm\ang{19.46}$ instead. What is the index of refraction of this liquid?
+    \item \textcite{bib:YoungFreedman}: Problem 35.41.\par
+    Two radio antennae radiating in phase are located at points $A$ and $B$, $\SI{200}{\meter}$ apart (see the following figure). The radio waves have a frequency of $\SI{5.80}{\mega\hertz}$. A radio receiver is moved out from point $B$ along a line perpendicular to the line connecting $A$ and $B$ (line $BC$ shown in the following figure). At what distances from $B$ will there be \emph{destructive} interference? (Note: The distance of the receiver from the sources is not large in comparison to the separation of the sources.)
+    \begin{center}
+        \begin{tikzpicture}
+            \footnotesize
+            \draw (-1,0) -- (3,0) node[right]{$C$};
+            \draw (0,-1) -- (0,2);
+
+            \node [circle,fill=ory,draw,label={above left:$A$}] at (0,1.2) {};
+            \node [circle,fill=ory,draw,label={below left:$B$}] at (0,0) {};
+
+            \draw [very thin,<-|,shorten <=1pt] (-0.45,0) -- node[fill=white,inner sep=1.5pt]{$\SI{200}{\meter}$} ++(0,1.2);
+        \end{tikzpicture}
+    \end{center}
+    \item \textcite{bib:YoungFreedman}: Problem 35.45.\par
+    White light reflects at normal incidence from the top and bottom surfaces of a glass plate ($n=1.52$). There is air above and below the plate. Constructive interference is observed for light whose wavelength in air is $\SI{477.0}{\nano\meter}$. What is the thickness of the plate if the next longer wavelength for which there is constructive interference is $\SI{540.6}{\nano\meter}$?
+    \item \textcite{bib:YoungFreedman}: Problem 36.1.\par
+    Monochromatic light from a distant source is incident on a slit $\SI{0.750}{\milli\meter}$ wide. On a screen $\SI{2.00}{\meter}$ away, the distance from the central maximum of the diffraction pattern to the first minimum is measured to be $\SI{1.35}{\milli\meter}$. Calculate the wavelength of the light.
+    \pagebreak
+    \item \textcite{bib:YoungFreedman}: Problem 36.14.\par
+    Monochromatic light of wavelength $\lambda=\SI{620}{\nano\meter}$ from a distant source passes through a slit $\SI{0.450}{\milli\meter}$ wide. The diffraction pattern is observed on a screen $\SI{3.00}{\meter}$ from the slit. In terms of the intensity $I_0$ at the peak of the central maximum, what is the intensity of the light at the screen the following distances from the center of the central maximum:
+    \begin{enumerate}
+        \item $\SI{1.00}{\milli\meter}$.
+        \item $\SI{3.00}{\milli\meter}$.
+        \item $\SI{5.00}{\milli\meter}$.
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 36.26.\par
+    Monochromatic light is at normal incidence on a plane transmission grating. The first-order maximum in the interference pattern is at an angle of $\ang{11.3}$. What is the angular position of the fourth-order maximum?
+    \item In an experiment, light of wavelength $\lambda$ falls on three slits evenly spaced a distance $d$ apart, and an interference pattern is observed on a distant screen. If the intensity at $\ang{0}$ with two adjacent slits open (and the third slit covered) is $I_2$, what is the intensity at $\ang{0}$ when all three slits are open, $I_3$?
+\end{enumerate}
+
+
+
+
+\end{document}
