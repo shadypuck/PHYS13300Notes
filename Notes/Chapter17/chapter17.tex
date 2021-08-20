@@ -1,0 +1,63 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{16}
+
+\begin{document}
+
+
+
+
+\chapter{Temperature and Heat}
+\section{Thermodynamics Terminology and Fundamentals}
+\begin{itemize}
+    \item \marginnote{8/19:}\textbf{System}: A collection of objects.
+    \begin{itemize}
+        \item We will focus on systems comprised of gas molecules.
+    \end{itemize}
+    \item \textbf{Internal energy}: The energy (of such a system) associated with the microscopic motion of the molecules. \emph{Denoted by} $\bm{E_\text{int}}$.
+    \item Systems of molecules conserve momentum within themselves, like any system, but they can also interact with the rest of the world by exchanging energy.
+    \item \textbf{Heat}: Energy exchanged between hot and cold systems. \emph{Denoted by} $\bm{Q}$.
+    \item \textbf{Temperature}: A measure of $E_\text{int}$. \emph{Denoted by} $\bm{T}$.
+    \item Heat flows from a hot system to a cold system until thermal equilibrium is reached.
+    \begin{itemize}
+        \item Thermal equilibrium implies equal temperatures.
+    \end{itemize}
+    \item \textbf{Zeroth Law of Thermodynamics}: If $T_A=T_B$ and $T_B=T_C$, then $T_A=T_C$.
+    \begin{itemize}
+        \item You can think of $B$ as a thermometer --- if it reads the same for two different systems, those systems have the same temperature.
+    \end{itemize}
+    \item To measure temperature, we need a thermometric property.
+    \begin{itemize}
+        \item One example of a thermometric property is the dependence of the volume of mercury on temperature.
+        \begin{itemize}
+            \item Celsius stuck a column of mercury in ice water and called it $\ang{0}$. Similarly, he called a column of mercury in hot steam $\ang{100}$.
+            \item Fahrenheit used iced brine (salt water) for $\ang{0}$ and sheep's blood for $\ang{100}$.
+        \end{itemize}
+        \item Alternatively, we could measure the \textbf{pressure} of a gas, for instance.
+    \end{itemize}
+    \item \textbf{Pressure}: The quotient of force and area. \emph{Units} $\si{\pascal}$.
+    \begin{itemize}
+        \item $\SI{1}{\pascal}=\SI{1}{\newton\per\square\meter}$.
+        \item $\SI{1}{\atmosphere}=\SI{1.01e5}{\pascal}\approx\SI{14}{\pound\per\square\inch}$.
+    \end{itemize}
+    \item \textbf{Absolute temperature}: The temperature defined by
+    \begin{equation*}
+        T = 273\cdot\frac{P}{P_{\SI{1}{\atmosphere}}}
+    \end{equation*}
+    where $P$ is the pressure of a gas at temperature $T$.
+    \item \textbf{Absolute zero}: The temperature when the pressure of a gas is 0.
+    \item Note that
+    \begin{align*}
+        T_C &= T-\ang{273}&
+        T_F &= \frac{9}{5}T_C+32
+    \end{align*}
+    \item Equations of motion relate kinematic quantities, such as time, position, velocity, and acceleration.
+    \item Equations of state relate thermodynamic properties of a system, such as pressure, volume, temperature, and moles.
+\end{itemize}
+
+
+
+
+\end{document}

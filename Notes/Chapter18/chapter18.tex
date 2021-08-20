@@ -1,0 +1,76 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{17}
+
+\begin{document}
+
+
+
+
+\chapter{Thermal Properties of Matter}
+\section{Macroscopic Derivation of the Ideal Gas Law}
+\begin{itemize}
+    \item \marginnote{8/19:}Atoms have a nucleus (composed of protons and neutrons) orbited by electrons.
+    \item \textbf{Atomic number}: The number of protons. \emph{Denoted by} $\bm{Z}$.
+    \item \textbf{Atomic mass}: Essentially the number of protons plus the number of neutrons. \emph{Denoted by} $\bm{A}$, $\bm{\mu}$. \emph{Units} $\si{\atomicmassunit}$.
+    \begin{itemize}
+        \item $\SI{1}{\atomicmassunit}=\frac{1}{12}m(\ce{{}^{12}_6C})$.
+    \end{itemize}
+    \item \textbf{Avogadro's number}: The number of molecules per mole of a substance, i.e., $\num{6.02e23}$. \emph{Denoted by} $\bm{N_A}$.
+    \begin{itemize}
+        \item $N_A$ carbon-12 atoms weighs $\SI{12}{\gram}$.
+        \item We define $\SI{1}{\mole}=N_A$ of something.
+    \end{itemize}
+    \item \textbf{Boyle's Law}: The product of the pressure and volume of a gas is a constant (that depends on the gas at hand).
+    \item \textbf{Ideal gas law}: The relation
+    \begin{equation*}
+        pV = nRT
+    \end{equation*}
+    relating the pressure, volume, number of moles, and temperature of a dilute gas to a constant (that is not specific to any particular gas).
+    \item \textbf{Universal gas constant}: The constant $\SI[per-mode=fraction]{8.314}{\joule\per\mole\per\kelvin}$. \emph{Denoted by} $\bm{R}$.
+    \item Thus, we can think of temperature as being a reflection of a few macroscopic properties of gasses (e.g., pressure, volume, and number of moles).
+\end{itemize}
+
+
+
+\section{Microscopic Derivation of the Ideal Gas Law}
+\begin{itemize}
+    \item Covers the derivation of the ideal gas law from KMT, as described Chapter 5 of \textcite{bib:APChemNotes}.
+    \item Important addition:
+    \begin{equation*}
+        p = \frac{1}{3}\rho\bar{v}^2
+    \end{equation*}
+    where $p$ is pressure, $\rho$ is density, and $\bar{v}$ is the average velocity of the molecules.
+    \begin{itemize}
+        \item This relates a macroscopic and a microscopic quantity.
+        \item Thus, we can relate the average speed of the molecules to the measurable pressure via
+        \begin{equation*}
+            v_\text{rms} = \sqrt{\frac{3p}{\rho}}
+        \end{equation*}
+    \end{itemize}
+    \item We can calculate from the above equation that the root mean square velocity of hydrogen gas at STP is about $\SI{1800}{\meter\per\second}$. For nitrogen gas, it's about $\SI{450}{\meter\per\second}$.
+    \item \textbf{Boltzmann constant}: The quotient of the universal gas constant and Avogadro's constant, having value $\SI{1.38e-23}{\joule\per\kelvin}$. \emph{Denoted by} $k$.
+    \item It follows that
+    \begin{equation*}
+        \overline{KE}_\text{molecule} = \frac{3}{2}kT
+    \end{equation*}
+    \item Additionally, we have that
+    \begin{equation*}
+        v_\text{rms} = \sqrt{\frac{3kT}{\mu}}
+    \end{equation*}
+    \item This property can be taken advantage of for \textbf{diffusion separation of isotopes}.
+    \item How to separate \ce{{}^{238}U} from \ce{{}^{235}U}:
+    \begin{itemize}
+        \item Create \ce{UF6}, a gas.
+        \item The lighter molecules will effuse slightly faster out of a box with a hole.
+        \item If you apply the cycle over and over again, you will enrich it a little bit each time.
+        \item Eventually, you will have a large proportion of \ce{{}^{235}UF6}, from which the \ce{{}^{235}U} can be extracted.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
