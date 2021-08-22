@@ -1,0 +1,269 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{18}
+
+\begin{document}
+
+
+
+
+\chapter{The First Law of Thermodynamics}
+\section{The First Law and Heat Capacity}
+\begin{itemize}
+    \item \marginnote{8/20:}By the conservation of energy, $\Delta E_\text{int} = Q+W$. This implies the following.
+    \item \textbf{First Law of Thermodynamics}: The following formula, which is analogous to conservation of energy.
+    \begin{equation*}
+        \dd{E_\text{int}} = \dd{Q}-p\dd{V}
+    \end{equation*}
+    \item The work done \emph{by} the gas is the area under the curve defined by the path between two pressure-volume conditions.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.33\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.append style={black},
+                pics/point/.style args={#1:#2}{code={
+                    \node [circle,fill=pix,inner sep=1.5pt,label={#1:$#2$}] {};
+                }}
+            ]
+                \footnotesize
+                \path (0.6,0.1) -- ++(0,-0.2) node[below]{${\color{white}V_a}$};
+                \fill [orz] (0.6,0) -- plot[domain=0.6:2.5,smooth] (\x,{1/\x}) -- (2.5,0);
+    
+                \draw [stealth-stealth] (0,2) node[above]{$p$} -- (0,0) -- (3,0) node[right]{$V$};
+    
+                \draw [orx,thick,postaction={decorate},decoration={
+                    markings,
+                    mark=at position 0.33 with \arrow{>},
+                    mark=at position 0.67 with \arrow{>}
+                }] plot[domain=0.6:2.5] (\x,{1/\x});
+                \draw [orx,thick,dashed]
+                    (0.6,0) -- ++(0,{1/0.6}) pic{point=left:a}
+                    (2.5,0) -- ++(0,{1/2.5}) pic{point=right:b}
+                ;
+    
+                \node at (1.55,0.25) {$\int p\dd{V}$};
+            \end{tikzpicture}
+            \caption{Isothermic process.}
+            \label{fig:workIntegrala}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.32\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.append style={black},
+                pics/point/.style args={#1:#2}{code={
+                    \node [circle,fill=pix,inner sep=1.5pt,label={#1:$#2$}] {};
+                }}
+            ]
+                \footnotesize
+                \fill [orz] (0.6,0) rectangle (2.5,0.8);
+    
+                \draw [stealth-stealth]
+                    (0.1,0.8) -- ++(-0.2,0) node[left]{$p_0$}
+                    (0.6,0.1) -- ++(0,-0.2) node[below]{$V_a$}
+                    (2.5,0.1) -- ++(0,-0.2) node[below]{$V_b$}
+                    (0,2) node[above]{$p$} -- (0,0) -- (3,0) node[right]{$V$}
+                ;
+    
+                \draw [orx,thick,postaction={decorate},decoration={
+                    markings,
+                    mark=at position 0.33 with \arrow{>},
+                    mark=at position 0.67 with \arrow{>}
+                }] (0.6,0.8) -- (2.5,0.8);
+                \draw [orx,thick,dashed]
+                    (0.6,0) -- ++(0,0.8) pic{point=left:a}
+                    (2.5,0) -- ++(0,0.8) pic{point=right:b}
+                ;
+    
+                \node at (1.55,0.35) {$p_0(V_b-V_a)$};
+            \end{tikzpicture}
+            \caption{Isobaric process.}
+            \label{fig:workIntegralb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.32\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.append style={black},
+                pics/point/.style args={#1:#2}{code={
+                    \node [circle,fill=pix,inner sep=1.5pt,label={#1:$#2$}] {};
+                }}
+            ]
+                \footnotesize
+                \path (0.6,0.1) -- ++(0,-0.2) node[below]{${\color{white}V_a}$};
+                \draw [stealth-stealth] (0,2) node[above]{$p$} -- (0,0) -- (3,0) node[right]{$V$};
+    
+                \draw [orx,thick,postaction={decorate},decoration={
+                    markings,
+                    mark=at position 0.33 with \arrow{>},
+                    mark=at position 0.67 with \arrow{>}
+                }] (0.6,1.7) pic{point=left:a} -- node[right]{$W=0$} (0.6,0.4) pic{point=left:b};
+            \end{tikzpicture}
+            \caption{Isochoric process.}
+            \label{fig:workIntegralc}
+        \end{subfigure}
+        \caption{Work as a geometric integral of a pressure/volume graph.}
+        \label{fig:workIntegral}
+    \end{figure}
+    \begin{itemize}
+        \item Thus, for an isothermic process, $W=-\int p\dd{V}$.
+        \item For an isobaric process, $W=-P(V_b-V_a)$.
+        \item For an isochoric process, $W=0$.
+    \end{itemize}
+    \item Two processes of getting from condition $a$ to condition $b$:
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            scale=1.8,
+            every node/.append style={black},
+            pics/point/.style args={#1:#2}{code={
+                \node [circle,fill=pix,inner sep=1.5pt,label={#1:$#2$}] {};
+            }}
+        ]
+            \footnotesize
+            \draw [stealth-stealth] (0,2) node[above]{$p$} -- (0,0) -- (3,0) node[right]{$V$};
+    
+            \draw [blx,thick,dashed] plot[domain=1:2.5] (\x,{1.67/\x});
+            \draw [blx,thick,dashed] plot[domain=0.6:2.5] (\x,{1/\x});
+            \draw [blx,thick,dashed] plot[domain=0.3:2.5] (\x,{0.5/\x});
+            \draw [blx,thick,dashed] plot[domain=0.12:2.5] (\x,{0.2/\x});
+    
+            \draw [orx,very thick,postaction={decorate},decoration={
+                markings,
+                mark=at position 0.13 with \arrow{>},
+                mark=at position 0.6 with \arrow{>},
+                mark=at position 0.4 with {\node[above right=4pt,circle,draw,thin,inner sep=1pt]{2};}
+            }] (0.4,{0.5/0.4}) -- plot[domain=0.8:2] (\x,{1/\x});
+            \draw [orx,very thick,postaction={decorate},decoration={
+                markings,
+                mark=at position 0.25 with \arrow{>},
+                mark=at position 0.75 with \arrow{>},
+                mark=at position 0.4 with {\node[below left=-2pt,circle,draw,thin,inner sep=1pt]{1};}
+            }] (0.4,{0.5/0.4}) pic{point=left:a} plot[domain=0.4:1] (\x,{0.5/\x}) -- (2,0.5) pic{point=above right:b};
+        \end{tikzpicture}
+        \caption{Alternate paths.}
+        \label{fig:alternatePaths}
+    \end{figure}
+    \begin{itemize}
+        \item We know from the first law that $\Delta E_\text{int}$ is the same for both properties.
+        \item However, from the above, we know that $W$ is not the same for both (different areas under the curve).
+        \item Thus, by the first law, heat cannot be the same (it must be offset to compensate).
+    \end{itemize}
+    \item \textbf{Molar heat capacity} (of a gas at constant volume): Defined by the following.
+    \begin{equation*}
+        C_V = \frac{1}{n}\dv{Q_V}{T}
+    \end{equation*}
+    \begin{itemize}
+        \item Tells you how much heat you have to add to raise the temperature a certain amount.
+    \end{itemize}
+    \item Additionally, since $\dd{W}=0$ at constant volume, $\dd{E_\text{int}}=\dd{Q_V}$.
+    \begin{itemize}
+        \item Thus, $C_V=1/n\cdot\dv*{E_\text{int}}{T}$.
+        \item Consequently, since $E_\text{int}=\frac{3}{2}nRT$, we have that $\dv*{E_\text{int}}{T}=\frac{3}{2}nR$.
+        \item Therefore, at constant volume, $C_V=\frac{3}{2}R$.
+    \end{itemize}
+    \item \textbf{Molar heat capacity} (of a gas at constant pressure): Defined by the following.
+    \begin{equation*}
+        C_p = \frac{1}{n}\dv{Q_p}{T}
+    \end{equation*}
+    \begin{itemize}
+        \item For the same $\dd{T}$, $\dd{Q_p}\neq\dd{Q_V}$.
+    \end{itemize}
+    \item We know that $C_p>C_V$.
+    \begin{itemize}
+        \item This is principally because of the difference between the equations $\dd{E_\text{int}}=\dd{Q}$, pertaining to an isochoric process, and $\dd{E_\text{int}}+\dd{W}=\dd{Q}$, pertaining to an isobaric process.
+        \item In the former, we can see that the change in internal energy (which is directly related to the temperature for an ideal gas) is directly reflected by the amount of heat flowing into the system.
+        \item However, in the latter, we raise the temperature by the same amount, so internal energy increases by the same amount. However, the gas must expand to maintain its constant pressure. Thus, some work is done. Thus, more heat must flow into the system to account for the work done \emph{and} maintain the same temperature.
+    \end{itemize}
+    \item For some $\dd{T}$ (i.e., some $\dd{E_\text{int}}$).
+    \begin{itemize}
+        \item Heat added at constant volume: $\dd{E_\text{int}}=\dd{Q_V}=nC_V\dd{T}$.
+        \item Heat added at constant pressure: $\dd{E_\text{int}}=\dd{Q_p}-p\dd{V}=nC_p\dd{T}-p\dd{V}$.
+        \item The amount of heat you add in both cases will be different, but the change in internal energy will be the same.
+        \item Thus,
+        \begin{align*}
+            nC_V\dd{T} &= nC_p\dd{T}-p\dd{V}\\
+            C_p-C_V &= \frac{p}{n}\dv{V}{T}\\
+            &= \frac{p}{n}\cdot\frac{nR}{p}\\
+            &= R\\
+            C_p &= R+\frac{3}{2}R\\
+            &= \frac{5}{2}R
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Storing Energy in Bonds}
+\begin{itemize}
+    \item We know that
+    \begin{align*}
+        \frac{3}{2}kT &= \overline{KE}_\text{molecule}\\
+        &= \frac{1}{2}\mu\bar{v}^2\\
+        &= \frac{1}{2}\mu\bar{v}_x^2+\frac{1}{2}\mu\bar{v}_y^2+\frac{1}{2}\mu\bar{v}_z^2
+    \end{align*}
+    \item \textbf{Equipartition of energy theorem}: Every \textbf{degree of freedom} has associated with it, on average, $\frac{1}{2}kT$ of energy.
+    \begin{itemize}
+        \item Can be derived, but we're not expected to know this.
+    \end{itemize}
+    \item \textbf{Degree of freedom}: Any direction that can be expressed as the time derivative of a coordinate, squared.
+    \item For example, translational kinetic energy has three degrees of freedom: $v_x^2$, $v_y^2$, and $v_z^2$.
+    \begin{itemize}
+        \item Notice that since each has $\frac{1}{2}kT$ of associated energy, the total translational kinetic energy has $\frac{3}{2}kT$ of energy, as desired.
+    \end{itemize}
+    \item Rotational kinetic energy has three degrees of freedom:
+    \begin{align*}
+        K_\text{rot} &= \frac{1}{2}I\omega^2\\
+        &= \frac{1}{2}I_x\omega_x^2+\frac{1}{2}I_y\omega_y^2+\frac{1}{2}I_z\omega_z^2
+    \end{align*}
+    \begin{itemize}
+        \item For a diatomic molecule, it's symmetry implies that $K_\text{rot}$ actually equals just $\frac{1}{2}I_y\omega_y^2+\frac{1}{2}I_z\omega_z^2$, if its axis is aligned with the $x$-axis.
+    \end{itemize}
+    \item Thus, adding up these five degrees of freedom, we have that for each diatomic molecule, $E_\text{int}=\frac{5}{2}kT$.
+    \begin{itemize}
+        \item This implies that for a mole of diatomic molecules, $E_\text{int}=\frac{5}{2}RT$, making $C_V=\frac{5}{2}R$ and $C_P=\frac{7}{2}R$.
+    \end{itemize}
+    \item Factoring in vibrational energy, if we let $x$ be the separation between atoms, we have $x^2$ and $v_x^2$, corresponding to potential- and kinetic-energy degrees of freedom.
+    \begin{itemize}
+        \item This yields $C_V=\frac{7}{2}R$ and $C_P=\frac{9}{2}R$.
+    \end{itemize}
+    \item For hydrogen, we have changes in the molar heat capacity as a function of temperature.
+    \begin{itemize}
+        \item This can be explained by the increase in degrees of freedom at higher temperatures (first only translational, then rotational gets added in, then vibrational).
+        \item Why? Quantum physics --- more excited states become available at higher temperatures.
+    \end{itemize}
+    \item If $D$ is the number of degrees of freedom of a molecule, then
+    \begin{equation*}
+        C_V = D\cdot\frac{1}{2}R
+    \end{equation*}
+    \begin{itemize}
+        \item On the other hand, it is always true that $C_P=C_V+R$.
+        \item Similarly, $E_\text{int}=D\cdot\frac{1}{2}nRT$.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Thermal Expansion}
+\begin{itemize}
+    \item Consider a potential energy vs. bond stretch graph.
+    \begin{itemize}
+        \item Since you can't push atoms too close together, the graph will be asymmetric.
+        \item Indeed, at higher energies, the bond will \emph{stretch} more, but it will not shrink that much more.
+        \item Thus, the average separation increases, and the gas expands.
+    \end{itemize}
+    \item \textbf{Coefficient of linear expansion}: The following quantity, where $L$ is the length of something that's expanding.
+    \begin{equation*}
+        \alpha = \frac{1}{L}\dv{L}{T}
+    \end{equation*}
+    \begin{itemize}
+        \item This formula essentially tells us how much something expands per unit increase in temperature: $\dd{L}=\alpha L\dd{T}$.
+    \end{itemize}
+    \item If we have a circular metal disk with a hole, raising its temperature will enlarge the whole thing (both the outer radius and inner radius increase).
+\end{itemize}
+
+
+
+
+\end{document}

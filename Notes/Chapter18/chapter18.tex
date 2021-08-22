@@ -72,5 +72,73 @@
 
 
 
+\section{Thermodynamic Work}
+\begin{itemize}
+    \item \marginnote{8/20:}Final on Wednesday.
+    \begin{itemize}
+        \item Posted at 10 AM CT, due on Canvas at 12:20 PM CT.
+        \item 2 hours.
+        \item Quantitative questions on HW 1-5 material, qualitative questions on Monday/Tuesday lecture material.
+        \item All chapters.
+        \item Will weight our grades with more/less emphasis on the final and take the higher of the two.
+    \end{itemize}
+    \item Assuming that gas molecules have no internal structure with which to store energy (i.e., they can only store kinetic energy of motion), we have that
+    \begin{align*}
+        E_\text{int} &= nN_A\overline{KE}_\text{molecule}\\
+        &= \frac{3}{2}n(N_Ak)T\\
+        &= \frac{3}{2}nRT
+    \end{align*}
+    \begin{itemize}
+        \item This implies that temperature alone determines the internal energy of a gas.
+        \item This is a good approximation for monoatomic gasses, but we may need other formulas for gasses with more complex molecular structures.
+    \end{itemize}
+    \item \textbf{Heat bath}: A bath that maintains a constant temperature.
+    \begin{itemize}
+        \item Lake Michigan is a good example: Adding or removing heat from it will not significantly affect its temperature.
+    \end{itemize}
+    \item Consider a container in a heat bath of temperature $T$.
+    \begin{itemize}
+        \item The container is made of conducting walls and filled with gas of pressure $p$. It is also capped by a piston with cross-sectional area $A$, pushing down on the gas with force $F$.
+        \item If the piston moves up by a tiny distance $\dd{x}$, then the work $\dd{W}$ exerted by the gas on the piston is given by
+        \begin{align*}
+            \dd{W} &= F\cdot\dd{x}\\
+            &= pA\dd{x}\\
+            &= p\dd{V}
+        \end{align*}
+        \item Similarly, the work exerted by the piston on the gas is given by $\dd{W}=-p\dd{V}$.
+        \item Thus, pushing down on the piston raises the internal energy of the gas. But since the container is in a heat bath, temperature stays the same, i.e., internal energy stays the same. Consequently, work being done on the gas by the piston must cause heat to flow out of the gas.
+        \item If the piston moves from $a$ to $b$, then
+        \begin{align*}
+            W &= \int_a^b-p\dd{V}\\
+            &= -nRT\int_a^b\frac{\dd{V}}{V}\\
+            &= -nRT\ln\left( \frac{V_b}{V_a} \right)
+        \end{align*}
+        \begin{itemize}
+            \item Do remember that this equation only holds in isothermal conditions.
+        \end{itemize}
+        \item If we have an expansion, then $V_b>V_a$, so $W<0$.
+        \begin{itemize}
+            \item Similarly, if we have a compression, then $V_b<V_a$, so $W>0$.
+        \end{itemize}
+    \end{itemize}
+    \item Convention: We will typically talk about work \emph{done on the gas} and heat \emph{added to the gas}.
+    \item \textbf{Isothermal process}: A process during which temperature is held constant.
+    \item \textbf{Isotherm}: A line of constant temperature in a pressure vs. volume graph.
+    \item \textbf{Isochoric process}: A process during which volume is held constant.
+    \item \textbf{Isobaric process}: A process during which pressure is held constant.
+    \item Changes in pressure and volume are pathway independent.
+    \item Consider an insulated container.
+    \begin{itemize}
+        \item As before, though, the container is filled with gas of pressure $p$. It is also capped by a piston with cross-sectional area $A$, pushing down on the gas with force $F$.
+        \item If you compress the gas by pushing the piston down, you're doing positive work on the gas and $E_\text{int}$ increases.
+        \item Temperature increases so much, actually, that you can ignite a gasoline-soaked cotton ball in a fire piston.
+        \item In the piston's frame, a gas molecule colliding with a moving piston leaves with the same velocity it came in with.
+        \item In the lab's frame, a colliding gas molecule leaves the collision with extra velocity (think of a collision between a very light and a very heavy object).
+    \end{itemize}
+    \item \textbf{Adiabatic process}: A process with no transfer of heat.
+\end{itemize}
+
+
+
 
 \end{document}
