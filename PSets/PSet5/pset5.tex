@@ -1,0 +1,85 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{4}
+
+\begin{document}
+
+
+
+
+\section{Thermodynamics}
+\begin{enumerate}[label={\arabic*)}]
+    \item \marginnote{8/23:}\textcite{bib:YoungFreedman}: Problem 36.21.\par
+    An interference pattern is produced by light of wavelength $\SI{580}{\nano\meter}$ from a distant source incident on two identical parallel slits separated by a distance (between centers) of $\SI{0.530}{\milli\meter}$.
+    \begin{enumerate}
+        \item If the slits are very narrow, what would be the angular positions of the first-order and second-order, two-slit interference maxima?
+        \item Let the slits have width $\SI{0.320}{\milli\meter}$. In terms of the intensity $I_0$ at the center of the central maximum, what is the intensity at each of the angular positions in part (a)?
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 36.44.\par
+    \textbf{Observing Jupiter.} You are asked to design a space telescope for Earth orbit. When Jupiter is $\SI{5.93e8}{\kilo\meter}$ away (its closest approach to Earth), the telescope is to resolve, by Rayleigh's criterion, features on Jupiter that are $\SI{250}{\kilo\meter}$ apart. What minimum-diameter mirror is required? Assume a wavelength of $\SI{500}{\nano\meter}$.
+    \item \textcite{bib:YoungFreedman}: Problem 18.6.\par
+    You have several identical balloons. You experimentally determine that a balloon will break if its volume exceeds $\SI{0.900}{\liter}$. The pressure of the gas inside the balloon equals air pressure ($\SI{1.00}{\atmosphere}$).
+    \begin{enumerate}
+        \item If the air inside the balloon is at a constant $\SI{22.0}{\celsius}$ and behaves as an ideal gas, what mass of air can you blow into one of the balloons before it bursts?
+        \item Repeat part (a) if the gas is helium rather than air.
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 18.21.\par
+    Modern vacuum pumps make it easy to attain pressures of the order of $\SI{e-13}{\atmosphere}$ in the laboratory. Consider a volume of air and treat the air as an ideal gas.
+    \begin{enumerate}
+        \item At a pressure of $\SI{9.00e-14}{\atmosphere}$ and an ordinary temperature of $\SI{300.0}{\kelvin}$, how many molecules are present in a volume of $\SI{1.00}{\cubic\centi\meter}$?
+        \item How many molecules would be present at the same temperature but at $\SI{1.00}{\atmosphere}$ instead?
+    \end{enumerate}
+    \item \textcite{bib:YoungFreedman}: Problem 18.38.\par
+    Perfectly rigid containers each hold $n$ moles of an ideal gas, one being hydrogen (\ce{H2}) and the other being neon (\ce{Ne}). If it takes $\SI{300}{\joule}$ of heat to increase the temperature of the hydrogen by $\SI{2.50}{\celsius}$, by how many degrees will the same amount of heat raise the temperature of the neon?
+    \item \textcite{bib:YoungFreedman}: Problem 19.10.\par
+    Five moles of an ideal monatomic gas with an initial temperature of $\SI{127}{\celsius}$ expand and, in the process, absorb $\SI{1500}{\joule}$ of heat and do $\SI{2100}{\joule}$ of work. What is the final temperature of the gas?
+    \item \textcite{bib:YoungFreedman}: Problem 19.43.\par
+    The following figure shows a $pV$-diagram for $\SI{0.0040}{\mole}$ of \emph{ideal} \ce{H2} gas. The temperature of the gas does not change during segment $bc$.
+    \begin{center}
+        \begin{tikzpicture}[
+            xscale=2.5,
+            pics/point/.style args={#1:#2}{code={
+                \node [circle,fill,inner sep=1.5pt,label={#1:$#2$}] {};
+            }}
+        ]
+            \footnotesize
+            \draw (-0.2,0) -- (1,0) node[right,label={[xshift=-4pt]right:$(\si{\liter})$}]{$V$};
+            \draw (0,-0.3) -- (0,2.5) node[above,label={[xshift=-4pt]right:$(\si{\atmosphere})$}]{$p$};
+            \node [below left] {$O$};
+    
+            \coordinate (a) at (0.2,0.5);
+            \coordinate (b) at (0.2,2);
+            \coordinate (c) at (0.8,0.5);
+    
+            \draw [very thin,dashed] (a) -- (a |- 0,0) node[below]{$0.20$};
+            \draw [very thin,dashed] (a) -- (a -| 0,0) node[left]{$0.50$};
+            \draw [very thin,dashed] (b) -- (b -| 0,0) node[left]{$2.0$};
+    
+            \draw [blx,very thick,line join={bevel},postaction={decorate},decoration={
+                markings,
+                mark=at position 0.15 with \arrow{latex},
+                mark=at position 0.53 with \arrow{latex},
+                mark=at position 0.9 with \arrow{latex}
+            }] (a) -- plot[domain=0.2:0.8] (\x,{0.4/\x}) -- cycle;
+    
+            \pic at (a) {point={[xshift=1pt,yshift=1pt]below left:a}};
+            \pic at (b) {point=above:b};
+            \pic at (c) {point={[xshift=-1pt,yshift=1pt]below right:c}};
+        \end{tikzpicture}
+    \end{center}
+    \begin{enumerate}
+        \item What volume does this gas occupy at point $c$?
+        \item Find the temperature of the gas at points $a$, $b$, and $c$.
+        \item How much heat went into or out of the gas during segments $ab$, $ca$, and $bc$? Indicate whether the heat has gone into or out of the gas.
+        \item Find the change in the internal energy of this hydrogen during segments $ab$, $bc$, and $ca$. Indicate whether the internal energy increased or decreased during each segment.
+    \end{enumerate}
+    \item You hear the weather report on the radio. However, the announcer forgets to say what scale is being used: Celsius or Fahrenheit. If it doesn't matter, how cold is it outside?
+    \item A pinhole camera can produce a surprisingly sharp image. The key is using a small hole so only a narrow bundle of rays is allowed through. However, if the pinhole is too small, then diffraction will limit the sharpness of the image. The optimum pinhole size is one that makes the fuzziness due to bundle size comparable to the fuzziness due to diffraction. Assume the distance from pinhole to screen is 1 foot, and the wavelength of the light is $\SI{5500}{\angstrom}$. What is the optimum size of the pinhole?
+\end{enumerate}
+
+
+
+
+\end{document}
