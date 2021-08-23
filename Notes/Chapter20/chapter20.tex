@@ -1,0 +1,235 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{19}
+
+\begin{document}
+
+
+
+
+\chapter{The Second Law of Thermodynamics}
+\section{Thermodynamic Cycles}
+\begin{itemize}
+    \item \marginnote{8/23:}Examples: Engines and pumps.
+    \item In a thermodynamic cycle, the energy doesn't change, so $W_\text{on gas}=-Q$, i.e., $W_\text{by gas}=Q_\text{net}$.
+    \item Thus, $W_\text{by engine}=Q_\text{in}-Q_\text{out}$ per cycle.
+    \item \textbf{Otto cycle}: The thermodynamic cycle used in car engines. \emph{Also known as} \textbf{auto cycle}.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            scale=1.8,
+            every node/.append style={black},
+            pics/point/.style args={#1:#2}{code={
+                \node [circle,fill=pix,inner sep=1.5pt,label={#1:$#2$}] {};
+            }}
+        ]
+            \footnotesize
+            \draw [stealth-stealth] (0,2) node[above]{$p$} -- (0,0) -- (3,0) node[right]{$V$};
+    
+            \draw [blx,thick,dashed] plot[domain=1:2.5,samples=500] (\x,{1.67/\x});
+            \draw [blx,thick,dashed] plot[domain=0.6:2.5,samples=500] (\x,{1/\x});
+            \draw [blx,thick,dashed] plot[domain=0.3:2.5,samples=500] (\x,{0.5/\x});
+            \draw [blx,thick,dashed] plot[domain=0.12:2.5,samples=500] (\x,{0.2/\x});
+    
+            \draw [orx,very thick,postaction={decorate},decoration={
+                markings,
+                mark=at position 0.25  with {\arrow{>} \node[above right,fill=white,inner sep=1.5pt]{$Q=0$};},
+                mark=at position 0.465 with {\arrow{>} \node[right=3pt,fill=white,inner sep=1.5pt]{$Q_\text{out}$};},
+                mark=at position 0.65  with {\arrow{>} \node[below left,fill=white,inner sep=1.5pt]{$Q=0$};},
+                mark=at position 0.91  with {\arrow{>} \node[left =3pt,fill=white,inner sep=1.5pt]{$Q_\text{in}$};}
+            }] plot[domain=0.8:2] (\x,{0.845/\x^(1.756)}) -- plot[domain=2:0.8] (\x,{0.4/\x^2}) -- cycle;
+    
+            \pic at (0.8,{1/0.8}) {point=:};
+        \end{tikzpicture}
+        \caption{Otto cycle.}
+        \label{fig:ottoCycle}
+    \end{figure}
+    \begin{itemize}
+        \item Two adiabatic and two isochoric processes.
+    \end{itemize}
+    \item \textbf{Stirling engine cycle}: The thermodynamic cycle used in steam engines.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            scale=1.8,
+            every node/.append style={black},
+            pics/point/.style args={#1:#2}{code={
+                \node [circle,fill=pix,inner sep=1.5pt,label={#1:$#2$}] {};
+            }}
+        ]
+            \footnotesize
+            \draw [stealth-stealth] (0,2) node[above]{$p$} -- (0,0) -- (3,0) node[right]{$V$};
+            \draw [very thin,dashed] (0.8,{0.5/0.8}) -- (0.8,0) node[below]{$V_1$};
+            \draw [very thin,dashed] (2,{0.5/2}) -- (2,0) node[below]{$V_2$};
+    
+            \draw [blx,thick,dashed] plot[domain=1:2.5,samples=500] (\x,{1.67/\x});
+            \draw [blx,thick,dashed] plot[domain=0.6:2.5,samples=500] (\x,{1/\x}) node[right]{$T_1$};
+            \draw [blx,thick,dashed] plot[domain=0.3:2.5,samples=500] (\x,{0.5/\x}) node[right]{$T_2$};
+            \draw [blx,thick,dashed] plot[domain=0.12:2.5,samples=500] (\x,{0.2/\x});
+    
+            \draw [orx,very thick,postaction={decorate},decoration={
+                markings,
+                mark=at position 0.25 with {\arrow{>} \node[above=4pt,fill=white,inner sep=1.5pt]{$+Q_2$};},
+                mark=at position 0.45 with {\arrow{>} \node[right=3pt,fill=white,inner sep=1.5pt]{$-Q_3$};},
+                mark=at position 0.65 with {\arrow{>} \node[below=3pt,fill=white,inner sep=1.5pt]{$-Q_4$};},
+                mark=at position 0.91 with {\arrow{>} \node[left =3pt,fill=white,inner sep=1.5pt]{$+Q_1$};}
+            }] plot[domain=0.8:2] (\x,{1/\x}) -- plot[domain=2:0.8] (\x,{0.5/\x}) -- cycle;
+            \draw [orx,very thick] plot[domain=0.8:2] (\x,{1/\x}) -- plot[domain=2:0.8] (\x,{0.5/\x}) -- cycle;
+    
+            \pic at (0.8,{1/0.8}) {point=:};
+        \end{tikzpicture}
+        \caption{Stirling engine cycle.}
+        \label{fig:stirlingCycle}
+    \end{figure}
+    \begin{itemize}
+        \item Two isothermal and two isochoric processes.
+        \item For the isothermal processes, $\Delta E_\text{int}=0$, so $Q=W_\text{by gas}=nRT\ln(V_f/V_i)$.
+        \item For the isochoric process, $Q=nC_V\Delta T$.
+        \item $Q_1+Q_3=nC_V(T_1-T_2)+nC_V(T_2-T_1)=0$, so we only have to worry about $Q_2$ and $Q_4$ to determine the work done by the gas:
+        \begin{align*}
+            W_\text{by gas} &= Q_2+Q_4\\
+            &= nR\ln\left( \frac{V_2}{V_1} \right)\cdot(T_1-T_2)
+        \end{align*}
+        \item To get more work, you want the \textbf{compression factor} to be as big as possible.
+        \item You also want the difference between the two temperatures to be as big as possible.
+        \item The engine is powered until $T_1=T_2$, because at that point you can't exchange heat.
+    \end{itemize}
+    \item \textbf{Compression factor}: The ratio of the final volume to the initial volume, i.e., $V_2/V_1$.
+    \item \textbf{Efficiency}: The quotient of the work an engine does and the heat you put in per cycle. \emph{Denoted by} $\bm{e}$. \emph{Given by}
+    \begin{align*}
+        e &= \frac{W_\text{engine}}{Q_\text{in}}\\
+        &= \frac{Q_\text{in}-Q_\text{out}}{Q_\text{in}}\\
+        &= 1-\frac{Q_\text{out}}{Q_\text{in}}
+    \end{align*}
+    \item \textbf{Carnot cycle}.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            scale=1.8,
+            every node/.append style={black},
+            pics/point/.style args={#1:#2}{code={
+                \node [circle,fill=pix,inner sep=1.5pt,label={#1:$#2$}] {};
+            }}
+        ]
+            \footnotesize
+            \draw [stealth-stealth] (0,2) node[above]{$p$} -- (0,0) -- (3,0) node[right]{$V$};
+    
+            \draw [blx,thick,dashed] plot[domain=1:2.5,samples=500] (\x,{1.67/\x}) node[right]{$T_H$};
+            \draw [blx,thick,dashed] plot[domain=0.6:2.5,samples=500] (\x,{1/\x});
+            \draw [blx,thick,dashed] plot[domain=0.3:2.5,samples=500] (\x,{0.5/\x}) node[right]{$T_L$};
+            \draw [blx,thick,dashed] plot[domain=0.12:2.5,samples=500] (\x,{0.2/\x});
+    
+            \draw [orx,very thick,postaction={decorate},decoration={
+                markings,
+                mark=at position 0.13 with {\arrow{>} \node[above=6pt,xshift=2pt,fill=white,inner sep=1.5pt]{$Q_\text{in}$};},
+                mark=at position 0.33 with {\arrow{>} \node[right=3pt,fill=white,inner sep=1.5pt]{$Q=0$};},
+                mark=at position 0.58 with {\arrow{>} \node[below=3pt,fill=white,inner sep=1.5pt]{$Q_\text{out}$};},
+                mark=at position 0.81 with {\arrow{>} \node[left =3pt,fill=white,inner sep=1.5pt]{$Q=0$};}
+            }] plot[domain=1.1:1.6] (\x,{1.67/\x}) plot[domain=1.6:2] (\x,{21.178/\x^(6.404)}) plot[domain=2:1.4] (\x,{0.5/\x}) plot[domain=1.4:1.1] (\x,{2.69/\x^(6.001)});
+    
+            \pic at (1.1,{1.67/1.1}) {point=:};
+        \end{tikzpicture}
+        \caption{Carnot cycle.}
+        \label{fig:carnotCycle}
+    \end{figure}
+    \begin{itemize}
+        \item Two isothermal and two adiabatic processes.
+        \item For this engine, $e=1-Q_\text{out}/Q_\text{in}=1-T_L/T_H$.
+        \begin{itemize}
+            \item Thus, as the temperatures approach each other, efficiency approaches 1.
+            \item But, you cannot run an engine when the heat bath temperatures are equal to each other.
+        \end{itemize}
+        \item Therefore, the Carnot cycle is the most efficient engine you can build, but it's just not physically viable.
+        \begin{itemize}
+            \item A car run on the Carnot cycle would have great mileage but wouldn't get you very far.
+        \end{itemize}
+        \item Conclusion: The Carnot cycle is interesting, but it does not yield a particularly useful engine.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{The Second Law}
+\begin{itemize}
+    \item \textbf{Second Law of Thermodynamics}: It is not possible to remove heat at a high temperature and convert it entirely to work done by the engine. In other words, some heat is always exhausted to the low temperature.
+    \item Maximizing engine efficiency:
+    \begin{itemize}
+        \item You want to maximize the temperature difference.
+        \item You could technically run an engine between air temperature and ice, but it's hard to lug around a bunch of ice.
+        \item Additionally, you can't have $T_H$ be too high because hotter engines emit nastier exhaust (specifically, exhaust that contributes more to acid rain).
+        \item Recall that the area on a $pV$-graph encompassed by the cycle is equal to the work done by the gas.
+    \end{itemize}
+    \item If you run a heat engine backwards, you get a \textbf{heat pump}.
+    \item \textbf{Heat pump}: A device that removes heat from low temperature sinks and exhausts it into high temperature sinks.
+    \begin{itemize}
+        \item This is an air conditioner.
+        \item The second law of thermodynamics asserts that you can't remove heat at a low temperature and move it to a high temperature without doing work on the gas. Thus, you have to plug in the air conditioner and provide power --- heat won't magically flow from cold to hot.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Statistical Mechanics}
+\begin{itemize}
+    \item Free expansion.
+    \begin{itemize}
+        \item Imagine you have gas on one side of a thermally insulated container separated from the rest of the container by a partition.
+        \item If you remove the partition, the gas will expand out to fill the entire container.
+        \item However, the gas is not working against a force ($p=0$) and heat is not flowing in ($Q=0$).
+        \item Therefore, $\dd{E_\text{int}}=\dd{Q}-p\dd{V}=0-0\dd{V}=0$.
+        \item From this, we can conclude that $\Delta T=0$.
+        \item Note that this is an \textbf{irreversible process}.
+    \end{itemize}
+    \item \textbf{Irreversible process}: A process that looks like it could occur on a microscopic level but could not on a macroscopic level.
+    \begin{itemize}
+        \item Imagine a video of the milk molecules moving in a cup of coffee (which would look normal forwards and backwards) vs. a video of milk spreading out in a cup of coffee (which most certainly would not look normal backwards).
+    \end{itemize}
+    \item \textbf{Macrostate}: A set of thermal variables ($n,p,V,T$) defining a system at an instant in time.
+    \item \textbf{Microstate}: A way of arranging the molecules in a system that produces a macrostate.
+    \begin{itemize}
+        \item Multiple microstates can correspond to the same macrostate.
+    \end{itemize}
+    \item Consider a box with 10 molecules inside.
+    \begin{itemize}
+        \item Each molecules has a 50/50 chance of being on the left \emph{or} right side of the box.
+        \item We want to achieve the macrostate defined by 10 molecules on the left side and 0 on the right.
+        \begin{itemize}
+            \item There is only 1 corresponding microstate (namely that just described).
+        \end{itemize}
+        \item We want to achieve the macrostate defined by 3 molecules on the left side and 7 on the right.
+        \begin{itemize}
+            \item There are $\frac{10!}{7!3!}=120$ corresponding microstates.
+        \end{itemize}
+        \item For the even 5/5 split, there are $\binom{10}{5}=252$ corresponding microstates.
+    \end{itemize}
+    \item If there are $N$ molecules and we want $m$ on the left and $N-m$ on the right, the number of microstates that will realize this macrostate is $\frac{N!}{m!(N-m)!}$.
+    \begin{itemize}
+        \item This corresponds to a binomial distribution.
+    \end{itemize}
+    \item \textbf{Fundamental Assumption of Statistical Physics}: All microstates of a system are equally probable.
+    \item \textbf{Number of microstates of a macrostate}: \emph{Denoted by} $\bm{\Omega_\textbf{macro}}$.
+    \item It follows from the fundamental assumption that
+    \begin{equation*}
+        P_\text{macro} \propto \Omega_\text{macro}
+    \end{equation*}
+    \item Relating this back to our example, since $P_{m,N-m}\propto\Omega{m,N-m}$ we have that $(5,5)$ is approximately twice as likely as $(3,7)$.
+    \item If we have $N_A$ of molecules, it is going to be much more likely that the molecules are evenly (or almost evenly) distributed on both sides of the box than anything else.
+    \begin{itemize}
+        \item $\Omega_{N_A,0}=1$ still, but $\Omega_{N_A/2,N_A/2}=\frac{N_A!}{(N_A!)^2}\approx 10^{N_A/3}\approx 10^{\num{2e23}}$, which is a huge number.
+    \end{itemize}
+    \item If you make $N$ and $m$ continuous rather than integer quantities, the binomial distribution becomes a Gaussian distribution.
+    \begin{itemize}
+        \item Thus, Gaussian distributions describe the probability distribution corresponding to the number of molecules on the left and the right.
+        \item The standard deviation of the Gaussian distribution of $N_A$ macrostates is $\sigma\approx\sqrt{N_A}$.
+        \item Thus, the fraction of the width of the central peak to all states is $\sigma/N_A\approx 10^{-12}$.
+        \item Therefore, the width of the spike is approximately one-trillionth the width of the whole distribution, meaning that although you won't typically see a perfect 50/50 split, you won't see very large fluctuations (even 49/51 is very unlikely).
+    \end{itemize}
+    \item It's not that you \emph{can't} have all of the air molecules move to one side of the room; it's that you \emph{won't} have this happen.
+\end{itemize}
+
+
+
+
+\end{document}

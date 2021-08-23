@@ -265,5 +265,48 @@
 
 
 
+\section{Adiabatic Processes}
+\begin{itemize}
+    \item \marginnote{8/23:}Extra Gazes office hours Tuesday 3:30-5:00 PM CT.
+    \item Your grade is calculated two ways, and Gazes takes the higher of the two:
+    \begin{itemize}
+        \item HW (15\%), Lab (15\%), Quiz + midterm (35\%), Final (35\%).
+        \item HW (15\%), Lab (15\%), Quiz + midterm (20\%), Final (50\%).
+    \end{itemize}
+    \item Analyzing an adiabatic process.
+    \begin{itemize}
+        \item $\dd{Q}=0$.
+        \item Thus, since $\dd{E_\text{int}}=-p\dd{V}$, $\dd{E_\text{int}}=nC_V\dd{T}$, and $pV=nRT$, we have that
+        \begin{align*}
+            -\frac{nRT}{V}\dd{V} &= nC_V\dd{T}\\
+            \frac{\dd{T}}{T}+\frac{R}{C_V}\frac{\dd{V}}{V} &= 0
+        \end{align*}
+        \item But since $R=C_p-C_V$, we have that
+        \begin{equation*}
+            \frac{R}{C_V} = \frac{C_p-C_V}{C_V} = \frac{C_p}{C_V}-1 = \gamma-1
+        \end{equation*}
+        where $\gamma$ is the \textbf{ratio of specific heats}.
+        \item We now integrate the above equation.
+        \begin{align*}
+            \int\frac{\dd{T}}{T}+\int(\gamma-1)\frac{\dd{V}}{V} &= \int 0\\
+            \ln T+(\gamma-1)\ln V &= C\\
+            \ln(TV^{\gamma-1}) &= C\\
+            TV^{\gamma-1} &= \e[C]
+        \end{align*}
+        \item Therefore,
+        \begin{equation*}
+            TV^{\gamma-1} = \text{constant}
+        \end{equation*}
+        \item It follows if we multiply the above by $pV/T$ that $pV^\gamma=\text{constant}$ (this equation defines the slopes of adiabatic processes on a $pV$-graph [see the $Q=0$ lines in Figures \ref{fig:ottoCycle} and \ref{fig:carnotCycle} for examples]).
+    \end{itemize}
+    \item \textbf{Ratio of specific heats}: The quotient of the molar heat capacity of a gas at constant pressure and the molar heat capacity of that same gas at constant volume. \emph{Denoted by} $\bm{\gamma}$.
+    \begin{itemize}
+        \item For example, $\gamma=5/3$ for a monoatomic gas, $\gamma=7/5$ for a diatomic gas with rotation, and $\gamma=9/7$ for a diatomic gas with rotation and vibration.
+        \item Note that it is always true that $\gamma>1$.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
