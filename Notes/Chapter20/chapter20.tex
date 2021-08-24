@@ -260,15 +260,63 @@
         \item Allows analogy of concave mirrors to regular lenses.
         \item Also helps define our sign convention: flips what defines positive image distance.
     \end{itemize}
-    \item Quantifying optical roughness?
-    \item What are $C_V$ and $C_p$? Are they specific to certain gasses?
-    \item What is an adiabatic process? Is it a straight conversion from temperature (internal) energy to work? I find this highly unintuitive.
     \item When do we make use of vibration? In Problem 19.43, shouldn't we have needed to use $\frac{7}{2}nR\Delta T$ for every degree Kelvin above $\SI{1000}{\kelvin}$?
     \begin{itemize}
         \item Didn't quite cross over the threshold.
         \item Won't have to account for this on the final.
         \item Everything is monoatomic on the final!
     \end{itemize}
+\end{itemize}
+
+
+
+\section{Entropy}
+\begin{itemize}
+    \item \marginnote{8/24:}\textbf{Entropy} (of a macrostate): The following quantity, where $k$ is the Boltzmann constant. \emph{Denoted by} $\bm{S_\textbf{macro}}$.
+    \begin{equation*}
+        S_\text{macro} = k\ln\Omega_\text{macro}
+    \end{equation*}
+    \item $\Delta S>0$ (i.e., entropy increases) for an irreversible process.
+    \item Entropies of multiple systems:
+    \begin{itemize}
+        \item Consider 2 systems in macrostates $A$ and $B$, respectively.
+        \item The number of microstates pertaining to each macrostate is $\Omega_A$ and $\Omega_B$, respectively.
+        \item We know that $P_A\propto\Omega_A$ and $P_B\propto\Omega_B$.
+        \item Moreover, the probability $P_{AB}$ that the combination of the two systems in in microstate $AB$ is equal to $P_AP_B$ by fundamental probability laws, and the total number of microstates for the combination is equal to $\Omega_A\Omega_B$.
+        \item It follows that
+        \begin{align*}
+            S_{AB} &= k\ln(\Omega_A\Omega_B)\\
+            &= k\ln\Omega_A+k\ln\Omega_B\\
+            &= S_A+S_B
+        \end{align*}
+        i.e., that entropies are additive.
+    \end{itemize}
+    \item Primary consequences of the second law of thermodynamics:
+    \begin{itemize}
+        \item Wrt heat engines: You will never see gas taking in $Q_\text{in}$ and converting entirely to $W_\text{by gas}$ (i.e., there will always be some $Q_\text{out}$).
+        \item Wrt heat pumps: You will never see $Q$ extracted from $T_L$ and exhausted to $T_H$ without some $W_\text{on gas}$.
+        \item Wrt entropy: You will never see a decrease in entropy.
+    \end{itemize}
+    \item Change in entropy for a reversible process:
+    \begin{itemize}
+        \item Consider the Carnot cycle (Figure \ref{fig:carnotCycle}).
+        \item For the cycle, $\Delta S_\text{gas}=0$.
+        \item If we add or subtract $Q$ of heat at a constant $T$,
+        \begin{equation*}
+            \Delta S = \frac{Q}{T}
+        \end{equation*}
+        \item Thus,
+        \begin{align*}
+            \Delta S_\text{univ} &= \Delta S_{Q_\text{in}}+\Delta S_{Q_\text{out}}\\
+            &= \frac{Q_\text{in}}{T_H}-\frac{Q_\text{out}}{T_L}\\
+            \intertext{The above is true for any thermodynamic cycle. But since $Q_\text{in}/Q_\text{out}=T_H/T_L$ for a Carnot cycle\dots}
+            &= \frac{Q_\text{out}T_H/T_L}{T_H}-\frac{Q_\text{out}}{T_L}\\
+            &= 0
+        \end{align*}
+        for a Carnot cycle.
+        \item Thus, overall, $\Delta S=0$. This is actually true of any reversible process.
+    \end{itemize}
+    \item Thus, since every process is either reversible or irreversible, $\Delta S_\text{univ}\geq 0$ for every process in this universe.
 \end{itemize}
 
 

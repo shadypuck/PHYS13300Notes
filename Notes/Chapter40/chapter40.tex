@@ -1,0 +1,46 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{39}
+
+\begin{document}
+
+
+
+
+\chapter{Quantum Mechanics I: Wave Functions}
+\section{The Wave Equation}
+\begin{itemize}
+    \item \marginnote{8/24:}\textbf{Quantum wave}: The wave-like nature of an electron.
+    \item But waves must satisfy a wave equation.
+    \begin{itemize}
+        \item The classical one didn't work.
+        \item In 1925, Schr\"{o}dinger determined that in one dimension, an electron moving in a potential $V$ (the nucleus-electron Coulombic attraction) satisfies
+        \begin{equation*}
+            -\frac{\hbar^2}{2m}\pdv[2]{\Psi(x,t)}{x}+V\Psi = i\hbar\pdv{\Psi}{t}
+        \end{equation*}
+        \begin{itemize}
+            \item This wave equation wasn't derived in an analogous method to Figure \ref{fig:waveEquationDerivation}, but rather was constructed from conservation of energy.
+        \end{itemize}
+        \item This wave function has both real and imaginary parts with the inclusion of $i=\sqrt{-1}$.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Electrons in the Double Slit Experiment}
+\begin{itemize}
+    \item Electrons exhibit both diffraction and interference in the double slit experiment.
+    \begin{itemize}
+        \item $d\sin\theta=m\lambda$ applies when $\lambda$ is the deBroglie wavelength.
+        \item Even with only one electron being emitted at a time, you get interference (further confirms wave-like nature of electrons): $\Psi_\text{electron}=\Psi_\text{slit 1}+\Psi_\text{slit 2}$.
+        \item Observing which slit an electron goes through removes the interference pattern.
+    \end{itemize}
+    \item $P\propto\Psi^2$ is independent of time, so you have static charge distributions.
+\end{itemize}
+
+
+
+
+\end{document}
