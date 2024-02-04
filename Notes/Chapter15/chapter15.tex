@@ -178,7 +178,7 @@
         \item $F$ is a tension force.
         \item We know for the sliver of the string in Figure \ref{fig:waveEquationDerivation}, $F_y=ma_y$.
         \item From our FBD, we have that $F_y=F\sin\alpha_2-F\sin\alpha_1$.
-        \item Since the string segment is short, assume $\alpha_1=\alpha_2$. Let's also ignore gravity since $F>>F_g$: it doesn't matter in what position you play an instrument, relative to the Earth's surface, does it?
+        \item Since the string segment is short, assume $\alpha_1=\alpha_2$. Let's also ignore gravity since $F\gg F_g$: it doesn't matter in what position you play an instrument, relative to the Earth's surface, does it?
         \item For small values of $\alpha$ (we assume our string is taut), $\sin\alpha\approx\tan\alpha=\pdv{y}{x}$.
         \item Thus, $F_y=F(\pdv*{y}{x}|_{x+\Delta x}-\pdv*{y}{x}|_{x})$.
         \item Additionally, $m=Ms$, where $M$ is the linear mass density and $s$ is the arc length of the string segment. Furthermore, since $\alpha$'s are small in taut strings, $\Delta s\approx\Delta x$, so $m\approx M\Delta x$.
@@ -433,8 +433,8 @@
     \item Let's run a few checks on some special cases.
     \begin{itemize}
         \item Let $\mu_1=\mu_2$, i.e., the compound string is a uniform string. Then $A_r/A_i=0$ and $A_t/A_i=1$, as we would expect.
-        \item Let $\mu_1<<\mu_2$, i.e., one string is tied to an immovable wall. Then $A_r/A_i\to -1$ and $A_t/A_i\to 0$, as we would expect by Newton's third law.
-        \item Let $\mu_1>>\mu_2$. Then $A_r/A_i\to 1$ and $A_t/A_i\to 2$.
+        \item Let $\mu_1\ll\mu_2$, i.e., one string is tied to an immovable wall. Then $A_r/A_i\to -1$ and $A_t/A_i\to 0$, as we would expect by Newton's third law.
+        \item Let $\mu_1\gg\mu_2$. Then $A_r/A_i\to 1$ and $A_t/A_i\to 2$.
     \end{itemize}
     \item Suppose you have a string tied between two walls.
     \begin{figure}[h!]

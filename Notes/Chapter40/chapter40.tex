@@ -58,5 +58,189 @@
 
 
 
+\section{Final Review Sheet}
+\begin{itemize}
+    \item \marginnote{2/1/24:}A wavefunction propagates via $f(x-vt)$.
+    \item Derive the wave equation via free-body diagramming an infinitesimal segment of the rope.
+    \begin{equation*}
+        \pdv[2]{y}{x} = \frac{M}{F}\cdot\pdv[2]{y}{t}
+    \end{equation*}
+    \item Convert it into the following form by substituting a generic sinusoidal wave $y(x,t)=A\sin(kx-\omega t)$ into the above wave equation and recalling that $v=\omega/k$.
+    \begin{equation*}
+        \pdv[2]{y}{x} = \frac{1}{v^2}\cdot\pdv[2]{y}{t}
+    \end{equation*}
+    \item Transverse velocity \& acceleration.
+    \item Average power of a wave on a string.
+    \begin{equation*}
+        \bar{P} = \frac{1}{2}Mv\omega^2A^2
+    \end{equation*}
+    \begin{itemize}
+        \item Derive with $P=\vec{F}\cdot\vec{v}$. Recall that the average value of $\cos^2(x)$ is $1/2$.
+    \end{itemize}
+    \item Compound string, boundary conditions, reflection and transmission (like in quantum).
+    \begin{itemize}
+        \item Limiting case is standing waves.
+    \end{itemize}
+    \item Speed of sound in terms of the medium at STP.
+    \begin{equation*}
+        v_\text{sound} = \sqrt{\frac{1.4p_0}{\rho_0}}
+    \end{equation*}
+    \begin{itemize}
+        \item $p_0$ is the pressure of the air; $\rho_0$ is the density of the air.
+    \end{itemize}
+    \item Intensity: Power per unit area.
+    \begin{equation*}
+        I = \frac{\bar{P}}{4\pi r^2}
+    \end{equation*}
+    \item Constructive and destructive interference of soundwaves.
+    \item Beating for sound waves of very similar frequencies.
+    \item For the Doppler effect, recall that $v=\lambda f$ and then think about how $v$ changes.
+    \begin{itemize}
+        \item When an observer runs toward the source at $v_o$, the wavefronts hit them at velocity $v+v_o$, so they hear them at frequency
+        \begin{equation*}
+            f' = \frac{v+v_o}{\lambda}
+            = \frac{v+v_o}{v}\cdot f
+            > f
+        \end{equation*}
+        \item If the source is moving toward the observer at speed $v_s$, then the wavefronts still hit the observer at the same speed $v$ and they are still emitted at the same frequency $f$, but the spacing $\lambda$ between them changes. Relative to the source, the waves move away more slowly, so
+        \begin{equation*}
+            \lambda' = \frac{v-v_s}{f}
+        \end{equation*}
+        which implies that
+        \begin{equation*}
+            f' = \frac{v}{\lambda'}
+            = \frac{v}{v-v_s}\cdot f
+        \end{equation*}
+        \item The tricky part here is the special relativity I have to use and keep straight in my head.
+    \end{itemize}
+    \item A things about ideal gases.
+    \begin{itemize}
+        \item Recall that
+        \begin{align*}
+            KE &= \frac{3}{2}RT = \frac{1}{2}M\bar{v}^2&
+            v_\text{rms} = \sqrt{\frac{3RT}{M}}
+        \end{align*}
+        \item Let $p$ be pressure, $\rho$ be density, and $\bar{v}$ be the average velocity of the molecules. Then
+        \begin{equation*}
+            p = \frac{1}{3}\rho\bar{v}^2
+        \end{equation*}
+        \begin{itemize}
+            \item This yields
+            \begin{equation*}
+                v_\text{rms} = \sqrt{\frac{3\rho}{p}}
+            \end{equation*}
+            \item I can relate this to the density form of the ideal gas law:
+            \begin{align*}
+                PV &= nRT\\
+                \frac{PM}{RT} &= \frac{nM}{V} = \rho\\
+                \frac{1}{3}\bar{v}^2 = \frac{RT}{M} &= \frac{P}{\rho}
+            \end{align*}
+        \end{itemize}
+    \end{itemize}
+    \item In isothermal conditions,
+    \begin{equation*}
+        W = -nRT\ln\frac{V_b}{V_a}
+    \end{equation*}
+    \item Molar heat capacities at constant volume ($C_V$) vs. constant pressure ($C_P$):
+    \begin{align*}
+        C_V &= \frac{1}{n}\dv{Q_V}{T}&
+        C_P &= \frac{1}{n}\dv{Q_P}{T}
+    \end{align*}
+    \begin{itemize}
+        \item These quantities are related by considering that
+        \begin{align*}
+            \dd{E_\text{int}} &= \dd{Q_V}
+                = nC_V\dd{T}&
+            \dd{E_\text{int}} &&= \dd{Q_P}-p\dd{V}
+                = nC_P\dd{T}-p\dd{V}
+        \end{align*}
+        and hence, algebraically,
+        \begin{align*}
+            C_P-C_V &= R&
+            C_V &= \frac{1}{n}\dv{T}(\frac{3}{2}nRT)
+                = \frac{3}{2}R
+        \end{align*}
+        \item Don't forget the equipartition of energy theorem (every DOF [translational, rotational, vibrational] contributes $kT/2$ of energy).
+    \end{itemize}
+    \item Coefficient of linear expansion.
+    \begin{equation*}
+        \alpha = \frac{1}{L}\dv{L}{T}
+    \end{equation*}
+    \item Adiabatic process: $\dd{Q}=0$.
+    \item Ratio of specific heats: $\gamma=C_P/C_V$.
+    \begin{itemize}
+        \item Varies for different kinds of gases (e.g., monoatomic, diatomic with rotation, diatomic with rotation and vibration).
+    \end{itemize}
+    \item For an adiabatic process,
+    \begin{equation*}
+        TV^{\lambda-1} = \text{constant}
+    \end{equation*}
+    \begin{itemize}
+        \item Derive this by noting that $\dd{Q}=0$ and using transitivity between $\dd{E_\text{int}}=-P\dd{V}=nC_V\dd{T}$ where $P=nRT/V$.
+    \end{itemize}
+    \item $W_\text{by engine}=Q_\text{in}-Q_\text{out}$ per cycle.
+    \item Huygens principle: Each part of a wavefront acts as a point source of spherical wavelets.
+    \begin{itemize}
+        \item Theoretical basis for angle of incidence being equal to angle of reflection.
+    \end{itemize}
+    \item Index of refraction: $n=c/v$.
+    \begin{itemize}
+        \item $n$ is a function of frequency, hence why blue light gets diffracted more than red light in a prism.
+    \end{itemize}
+    \item IOR plus Huygens principle allows us to derive the bending of incoming light waves.
+    \item Snell's law:
+    \begin{equation*}
+        n_1\sin\theta_1 = n_2\sin\theta_2
+    \end{equation*}
+    \begin{itemize}
+        \item Implies a critical angle such that for $\theta_\text{inc}>\theta_\text{crit}$, you only get reflection; no refraction.
+    \end{itemize}
+    \item Fermat's principle: Light follows the path that takes the least time.
+    \item Law of Malus: The following formula, where $I_2$ is the intensity of light that gets past the polaroid filter and $I_1$ is the initial intensity.
+    \begin{equation*}
+        I_2 = I_1\cos^2\phi
+    \end{equation*}
+    \begin{itemize}
+        \item Averaging $\cos^2\phi$ again, we get
+        \begin{equation*}
+            I_\text{trans} = \frac{1}{2}I_\text{unpol}
+        \end{equation*}
+    \end{itemize}
+    \item For a spherical mirror, the focal length $f=R/2$.
+    \begin{itemize}
+        \item Ray tracing to find where the image of an object is.
+    \end{itemize}
+    \item Mirror equation.
+    \begin{equation*}
+        \frac{1}{s}+\frac{1}{s'} = \frac{1}{f}
+    \end{equation*}
+    \item Lateral magnification.
+    \begin{equation*}
+        m = -\frac{-s'}{s}
+    \end{equation*}
+    \item Plano-convex lens.
+    \begin{equation*}
+        \frac{1}{f} = (n-1)\cdot\frac{1}{R}
+    \end{equation*}
+    \item Lens maker's equation.
+    \begin{equation*}
+        \frac{1}{f} = (n-1)\cdot\left( \frac{1}{R_1}+\frac{1}{R_2} \right)
+    \end{equation*}
+    \item Double slit experiment $\Delta r$ derivation.
+    \begin{equation*}
+        E(r,t) = 2A\cos(kr_0-\omega t)\cos(\frac{k}{2}\cdot d\sin\theta)
+    \end{equation*}
+    \item Diffraction: If $\alpha=(\pi a/\lambda)\sin\theta$, then
+    \begin{equation*}
+        I = I_\text{max}\frac{\sin^2\alpha}{\alpha^2}
+    \end{equation*}
+    \item Rayleigh criterion: The condition for distinguishing sources of light, given by
+    \begin{equation*}
+        \theta_\text{sep} \geq \frac{1.22\lambda}{a}
+    \end{equation*}
+\end{itemize}
+
+
+
 
 \end{document}
